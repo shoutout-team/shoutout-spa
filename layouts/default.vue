@@ -1,31 +1,27 @@
 <template>
   <v-app light>
-    <v-layout justify-center class="ly-header">
-      <v-flex
-        xs12
-        sm12
-        md8
-        class="mx-5 mt-3 mb-5"
-      >
-        <nuxt-link to="/overview">
-          <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
-        </nuxt-link>
-      </v-flex>
-    </v-layout>
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <nuxt-link to="/">
+            <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
+          </nuxt-link>
+        </v-col>
+      </v-row>
+    </v-container>
     <nuxt />
-    <v-layout justify-center class="ly-footer text-right">
-      <v-flex
-        xs12
-        sm12
-        md8
-        class="mx-5 mt-3 mb-5"
-      >
-        <v-btn depressed class="button" nuxt to="/impressum">
-          Impressum
-        </v-btn>
-        <!--<nuxt-link to="/overview">Datenschutz</nuxt-link> -->
-      </v-flex>
-    </v-layout>
+    <v-container>
+      <v-row>
+        <v-col cols="12" class="text-right">
+          <v-btn text class="button" nuxt to="/impressum">
+            Impressum
+          </v-btn>
+          <v-btn text class="button" nuxt to="/datenschutz">
+            Datenschutz
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-app>
 </template>
 

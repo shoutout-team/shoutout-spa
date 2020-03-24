@@ -1,102 +1,136 @@
 <template>
-  <v-container class="container pa-0" fill-height>
-    <v-layout
-      flex-column
-    >
-      <v-carousel
-        show-arrows
-        hide-delimiter-background
-        hide-delimiters
-        dark
-        height="none"
-        progress
-        progress-color="#1E88E5"
-      >
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12" md="8" lg="6">
+        <h1 class="display-2 mb-3 font-weight-thin">
+          shoutout.
+          <span class="kritzel-wrapper">
+            jetzt
+            <img
+              src="~/assets/kritzel.png"
+              class="kritzel"
+            >
+          </span>
+          <span class="font-weight-black">bald</span>
+        </h1>
+        <img
+          src="~/assets/wirsinddran.png"
+          alt="Wir sind dran"
+          class="index-image mb-10"
         >
-          <v-img height="300" :src="item.src" :alt="item.alt" />
-          <div class="pb-12">
-            <h2 class="ma-4">{{ item.header }}</h2>
-            <blockquote class="text-left ma-4">
-              {{ item.text }}
-            </blockquote>
-          </div>
-        </v-carousel-item>
-      </v-carousel>
-      <div max-width="700" class="mx-auto button">
-        <v-btn
-          exact
-          nuxt
-          depressed
-          outlined
-          color="black"
-          large
-          to="/splitscreen"
-        >
-          Los geht's
-        </v-btn>
-      </div>
-    </v-layout>
+        <p class="font-weight-bold">
+          Ihr braucht ein Shoutout oder wollt shoutouten?
+        </p>
+        <p class="mb-10">Dann lasst uns eure E-Mail Adresse da und wir schicken euch eine Benachrichtigung, sobald wir live sind.</p>
+        <!-- Begin Mailchimp Signup Form -->
+      </v-col>
+      <v-col cols="12" md="4" lg="4" justify-self="right">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/WgSPyhn-6Gg?rel=0"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          />
+        </div>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col cols="12" lg="10">
+        <div id="mc_embed_signup">
+          <form
+            id="mc-embedded-subscribe-form"
+            action="https://jetzt.us19.list-manage.com/subscribe/post?u=302cdd14aadcf8513d7086d26&amp;id=15cdd750e4"
+            method="post"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+          >
+            <div id="mc_embed_signup_scroll">
+              <v-flex class="d-md-flex fillheight mb-md-12">
+                <v-text-field
+                  id="mce-EMAIL"
+                  type="email"
+                  value=""
+                  outlined
+                  tile
+                  color="#000"
+                  name="EMAIL"
+                  label="Deine E-Mail Adresse"
+                  class="required email mr-3"
+                />
+                <v-btn
+                  id="mc-embedded-subscribe"
+                  type="submit"
+                  value="Subscribe"
+                  name="subscribe"
+                  dark
+                  height="56"
+                  color="#000"
+                  tile
+                  x-large
+                  class="align-self-auto mb-10 mb-md-0"
+                >
+                  Ab auf die Liste
+                </v-btn>
+              </v-flex>
+              <p>Bis dahin gebt uns ein shoutout, liked, teilt und folgt uns, damit wir möglichst viele Menschen erreichen.</p>
+              <p class="mb-12">
+                <nuxt-link to="/start" class="font-weight-bold">Hier</nuxt-link> geht es zu unserem Prototypen den wir für den wirvsvirus Hackathon erarbeitet haben.
+              </p>
+              <div id="mce-responses" class="clear">
+                <div id="mce-error-response" class="response" style="display:none" />
+                <div id="mce-success-response" class="response" style="display:none" />
+              </div>
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_302cdd14aadcf8513d7086d26_15cdd750e4" tabindex="-1" value="">
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--End mc_embed_signup-->
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
-<script>
-export default {
-  name: 'Start',
-  data () {
-    return {
-      items: [
-        {
-          alt: 'Jetzt ma’ Tacheles',
-          src: require('~/assets/shoutout-slider-1.jpg'),
-          header: 'Jetzt ma’ Tacheles',
-          text: 'Jeder hat Sie, jeder kennt sie, jeder liebt sie – die kleinen Läden, die das Viertel besonders machen. Das Café um’s Eck, die Kneipe nebenan oder der Buchladen ne Straße weiter.'
-        },
-        {
-          alt: 'Ohne Moos, nix los',
-          src: require('~/assets/shoutout-slider-2.jpg'),
-          header: 'Ohne Moos, nix los',
-          text: 'Diese Läden sind auf Kundschaft angewiesen und müssen in Krisenzeiten besonders hart kämpfen. Deswegen brauchen sie ein Shoutout, eine Plattform, die ihnen eine Stimme gibt.'
-        },
-        {
-          alt: 'Nimm dir ’ne Minute',
-          src: require('~/assets/shoutout-slider-3.jpg'),
-          header: 'Nimm dir ’ne Minute',
-          text: 'Unterstütze was dir lieb ist oder sag ganz offen, was dir am liebsten wäre. Shoutout ist für alle, für Nachbarn und Unternehmer, für Unterstützer und Arbeitgeber. Shoutout ist für dein Viertel.'
-        }
-      ]
-    }
-  },
-  mounted () {
-    this.fetchCompanies()
-  },
-  methods: {
-    async fetchCompanies () {
-      try {
-        const companies = await fetch('https://savethekiez.herokuapp.com/api/v1/companies.json')
-        const parsedCompanies = await companies.json()
-        this.$store.dispatch('setCompanies', parsedCompanies)
-      } catch {}
-    }
-  }
-}
-</script>
+<style lang="scss">
+ .index-image {
+   width: 260px;
 
-<style scoped lang="scss">
-.container {
-  position: relative;
-  max-width: 900px;
+   @media (min-width: 1024px) {
+     transform: translateX(-20px);
+   }
+ }
+ .kritzel-wrapper {
+   display: inline-block;
+   position: relative;
+   overflow: visible;
+ }
+
+ .kritzel {
+   position: absolute;
+   top: 20%;
+   left: 0;
+   width: 100%;
+ }
+
+ .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0;
+    height: 0;
+    overflow: hidden;
 }
 
-.button {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-
-.test {
-  color: #1E88E5;
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 </style>

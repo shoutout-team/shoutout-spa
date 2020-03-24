@@ -1,19 +1,17 @@
 <template>
-  <v-layout
-    justify-space-around
-    align-center
-    class="ma-4"
-  >
-    <v-flex
-      d-flex
-      flex-row
-      flex-wrap
-      justify-space-around
-      class="wrapper"
-    >
-      <selection-card v-for="(field, key) in selectionFields" :key="key" :selection-type="field" />
-    </v-flex>
-  </v-layout>
+  <v-container>
+    <v-row justify="space-between">
+      <v-col
+        v-for="(field, key) in selectionFields"
+        :key="key"
+        cols="12"
+        sm="6"
+        md="5"
+      >
+        <selection-card :selection-type="field" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -55,9 +53,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-.wrapper {
-  max-width: 1600px;
-}
-</style>

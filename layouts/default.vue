@@ -64,6 +64,9 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  mounted () {
+    this.$store.dispatch('initialFetch')
   }
 }
 </script>

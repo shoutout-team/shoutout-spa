@@ -1,3 +1,5 @@
+import endpoints from '~/store/utils/endpoints.js'
+
 export const state = () => ({
   location: {
     coords: {
@@ -6,62 +8,10 @@ export const state = () => ({
     }
   },
   loading: false,
-  companies: [
-    // {
-    //   id: 1,
-    //   headline: 'Cafe123',
-    //   category: 'bar',
-    //   coordinates: {
-    //     latitude: 50.751802,
-    //     longitude: 7.090266
-    //   }
-    // },
-    // {
-    //   id: 9,
-    //   headline: 'Schnittchen',
-    //   category: 'coiffeur',
-    //   coordinates: {
-    //     latitude: 50.7413,
-    //     longitude: 7.090226
-    //   }
-    // },
-    // {
-    //   id: 8,
-    //   headline: 'Café Frida',
-    //   category: 'cafe',
-    //   coordinates: {
-    //     latitude: 50.7413,
-    //     longitude: 7.020226
-    //   }
-    // },
-    // {
-    //   id: 4,
-    //   headline: 'Kio',
-    //   category: 'kiosk',
-    //   coordinates: {
-    //     latitude: 50.151802,
-    //     longitude: 7.00266
-    //   }
-    // },
-    // {
-    //   id: 2,
-    //   headline: 'Frittebud',
-    //   category: 'food',
-    //   coordinates: {
-    //     latitude: 50.651802,
-    //     longitude: 6.990266
-    //   }
-    // },
-    // {
-    //   id: 3,
-    //   headline: 'Vapiano',
-    //   category: 'food',
-    //   coordinates: {
-    //     latitude: 50.751805,
-    //     longitude: 7.123296
-    //   }
-    // }
-  ]
+  categories: {},
+  companies: [],
+  user: {},
+  login: null
 })
 
 export const mutations = {
@@ -73,6 +23,15 @@ export const mutations = {
   },
   setCompanies (state, payload) {
     state.companies = payload
+  },
+  setCategories (state, payload) {
+    state.categories = payload
+  },
+  setUser (state, payload) {
+    state.user = payload
+  },
+  setLogin (state, payload) {
+    state.login = payload
   }
 }
 
@@ -85,5 +44,23 @@ export const actions = {
   },
   setCompanies ({ commit }, payload) {
     commit('setCompanies', payload)
+  },
+  async initialFetch ({ commit }) {
+    const response = await this.$axios.$get(endpoints.INITIAL_ENDPOINT)
+    commit('setCompanies', response.companies)
+    commit('setCategories', response.categories)
+  },
+  // async signUp ({ commit }) {
+  //   const response = await this.$axios.$post(endpoints.SIGNUP_ENDPOINT, example)
+  // },
+  async login ({ commit }, payload) {
+    commit('setLogin', 'pending')
+    try {
+      const response = await this.$axios.$post(endpoints.LOGIN_ENDPOINT, { user: payload })
+      commit('setUser', response.user)
+      commit('setLogin', 'success')
+    } catch (err) {
+      commit('setLogin', 'failed')
+    }
   }
 }

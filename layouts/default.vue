@@ -2,7 +2,7 @@
   <v-app light>
     <v-container>
       <v-row>
-        <v-col cols="12">
+        <v-col cols="12" xl="10">
           <nuxt-link to="/">
             <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
           </nuxt-link>
@@ -17,7 +17,7 @@
             <img src="/instagram.png" alt="facebook" class="share mr-8">
           </a>
         </v-col>
-        <v-col cols="11" lg="8" xl="9" class="text-right">
+        <v-col cols="11" lg="10" xl="9" class="text-right">
           <v-btn text class="button" nuxt to="/impressum">
             Impressum
           </v-btn>

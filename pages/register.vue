@@ -11,9 +11,13 @@
           target="_blank"
           novalidate
         >
-          <h1 class="display-1 font-weight-bold">
-            Registrieren
-          </h1>
+          <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h1 class="display-1 font-weight-bold">
+                Registrieren
+              </h1>
+            </v-col>
+          </v-row>
           <v-row justify="center" wrap>
             <v-col cols="12" sm="6" xl="5">
               <v-radio-group v-model="user.status" :mandatory="true" row wrap>
@@ -28,9 +32,13 @@
               </p>
             </v-col>
           </v-row>
-          <h2 class="title font-weight-bold">
-            Infos zum Inhaber
-          </h2>
+          <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h2 class="title font-weight-bold">
+                Infos zum Inhaber
+              </h2>
+            </v-col>
+          </v-row>
           <v-row justify="center" wrap>
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
@@ -85,9 +93,13 @@
               />
             </v-col>
           </v-row>
-          <h2 class="title font-weight-bold mt-7">
-            Infos zum Unternehmen
-          </h2>
+          <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h2 class="title font-weight-bold mt-7">
+                Infos zum Unternehmen
+              </h2>
+            </v-col>
+          </v-row>
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
@@ -114,15 +126,18 @@
               />
             </v-col>
           </v-row>
-          <v-row>
-            <v-col cols="12" sm="5" md="4" l="3" xl="2">
+          <v-row justify="center" class="mt-6">
+            <v-col cols="12" xl="10">
               <v-btn
                 color="black"
-                block
                 depressed
                 height="44px"
                 tile
                 dark
+                width="100%"
+                max-width="426"
+                nuxt
+                to="/login"
               >
                 Jetzt registrieren
               </v-btn>

@@ -13,9 +13,11 @@
         >
           <v-row justify="center">
             <v-col cols="12" xl="10">
-              <h1 class="display-1 font-weight-bold">
-                Registrieren
-              </h1>
+              <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
+                <h1 class="display-1 font-weight-bold pt-3">
+                  Registrieren
+                </h1>
+              </v-img>
             </v-col>
           </v-row>
           <v-row justify="center" wrap>

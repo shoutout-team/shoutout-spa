@@ -50,9 +50,6 @@ export const actions = {
     commit('setCompanies', response.companies)
     commit('setCategories', response.categories)
   },
-  // async signUp ({ commit }) {
-  //   const response = await this.$axios.$post(endpoints.SIGNUP_ENDPOINT, example)
-  // },
   async login ({ commit }, payload) {
     commit('setLogin', 'pending')
     try {

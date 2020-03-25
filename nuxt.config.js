@@ -17,8 +17,7 @@ export default {
   */
 
   env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
-    TESTVAR: 1234
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
   },
 
   head: {
@@ -66,8 +65,17 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/axios'
   ],
+
+  axios: {
+    proxy: true,
+    prefix: '/api/v1/'
+  },
+  proxy: {
+    '/api/v1/': { target: 'https://savethekiez.herokuapp.com' }
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

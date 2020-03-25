@@ -6,7 +6,7 @@
         <h2 class="mb-5 mt-5">Angaben gemäß § 5 TMG</h2>
         <p class="mb-3">Dominik Criado Rankestraße 10 50935 Köln</p>
         <h2 class="mb-5 mt-5">Angaben gemäß § 5 TMG</h2>
-        <p class="mb-3">Telefon: 00491703190894<br>E-Mail: shoutout@criado.de</p>
+        <p class="mb-3">Telefon: 00491703190894<br>E-Mail: hallo@shoutout.jetzt</p>
         <h2 class="mb-5 mt-5">Haftung für Inhalte</h2>
         <p class="mb-3">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
         <p class="mb-3">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>

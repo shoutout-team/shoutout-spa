@@ -40,7 +40,7 @@ export default {
           headline: 'Für Viertelhelden',
           desc: 'Du bist Zapfmeister, Cafébetreiber, Schnittschwester oder Meisterkoch? Lass es dein Viertel wissen. Registrier dein Unternehmen und nutze die Plattform für ein Shoutout – für Unterstützung, für Ideen, für Aufmerksamkeit.',
           btn: {
-            to: '/overview',
+            to: '/signup',
             text: 'Registrieren'
           },
           img: {

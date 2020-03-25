@@ -1,3 +1,3 @@
 export default function (req, res) {
-  return res.send('az5TN2tjjbY5jjC0xvGpKJ6x8Gh6R6haivFShVoKjXo.kGnBEFplO3j5RXA2BgAAsUhLOaQGzqAyIt8CtmHPraI')
+  return res.send('0ueRc1aGXuitct5y-xf3rrdNgt0RMHU06j2W-4RYYuQ.kGnBEFplO3j5RXA2BgAAsUhLOaQGzqAyIt8CtmHPraI')
 }

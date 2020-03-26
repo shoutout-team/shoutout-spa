@@ -20,6 +20,13 @@
             </v-col>
           </v-row>
           <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h2 class="title font-weight-bold mt-7">
+                Infos zu dir
+              </h2>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="email"
@@ -45,7 +52,7 @@
               />
             </v-col>
           </v-row>
-          <v-row>
+          <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
@@ -64,23 +71,25 @@
                   avatar
                   overlap
                   bottom
-                  offset-x="20"
-                  offset-y="20"
+                  offset-x="25"
+                  offset-y="25"
                   class="mr-7 ml-3"
                 >
                   <template v-slot:badge>
-                    <v-avatar>
+                    <v-avatar size="60">
                       <v-img src="https://cdn.vuetifyjs.com/images/logos/v.png" />
                     </v-avatar>
                   </template>
 
-                  <v-avatar size="60">
-                    <v-img src="https://cdn.vuetifyjs.com/images/john.png">
-                      <input type="file" style="display: none" ref="fileInput" />
+                  <v-avatar size="70">
+                    <v-img :alt="profilPhoto.alt" :src="profilPhoto.src">
+                      <input type="file" class="drop__input" @input="change($event, 'profilPhoto')">
                     </v-img>
                   </v-avatar>
                 </v-badge>
-                <p class="body-2 font-weight-bold">Lade ein Portrait<br> von dir hoch</p>
+                <p class="body-2 font-weight-bold">
+                  Lade ein Portrait<br> von dir hoch
+                </p>
               </v-row>
             </v-col>
           </v-row>
@@ -151,16 +160,21 @@
               <p class="caption font-weight-bold">
                 Profilbilder
               </p>
-              <v-img max-width="600px" d-flex class="align-center" width="100%" src="https://picsum.photos/550/300?random='asdasdas'">
+              <v-img class="mx-auto" max-width="600px" width="100%" :alt="currentImage.alt" :src="currentImage.src">
+                <input ref="fileInput" type="file" class="drop__input" @input="change">
                 <v-avatar color="black" class="temp">
                   <v-icon color="white" size="30px">
                     {{ mdiUpload }}
                   </v-icon>
                 </v-avatar>
-                <input type="file" style="display: none" ref="fileInput" />
               </v-img>
+              <v-row class="align-center">
+                <v-col cols="3" v-for="(image, key) in images" :key="key">
+                  <v-img height="60px" :alt="image.alt" :src="image.src" />
+                </v-col>
+              </v-row>
             </v-col>
-            <v-col cols="12" sm="6" xl="5">
+            <v-col cols="12" sm="6" xl="5" class="mt-12">
               <h2 class="title font-weight-bold">
                 Persönliches Anschreiben
               </h2>
@@ -174,17 +188,38 @@
               />
             </v-col>
           </v-row>
-          <v-row class="my-12">
-            <v-btn
-              nuxt
-              to="/"
-              depressed
-            >
-              <v-avatar color="black" size="70" class="mr-5">
-                <v-icon size="40" color="white">{{ mdiEye }}</v-icon>
-              </v-avatar>
-              <p class="body-2 font-weight-bold">Vorschau deiner Unternehmensseite</p>
-            </v-btn>
+          <v-row class="align-baseline" justify="center">
+            <v-col cols="12" sm="6" xl="5">
+              <v-btn
+                nuxt
+                to="/"
+                depressed
+                width="100%"
+              >
+                <v-avatar color="black" size="70" class="mr-5">
+                  <v-icon size="40" color="white">
+                    {{ mdiEye }}
+                  </v-icon>
+                </v-avatar>
+                <p class="body-2 font-weight-bold">
+                  Vorschau deiner Unternehmensseite
+                </p>
+              </v-btn>
+            </v-col>
+            <v-col cols="12" sm="6" xl="5" class="my-12">
+              <v-btn
+                color="black"
+                depressed
+                dark
+                width="100%"
+                height="50px"
+                tile
+                nuxt
+                to="/"
+              >
+                Speichern
+              </v-btn>
+            </v-col>
           </v-row>
         </v-form>
       </v-col>
@@ -195,21 +230,74 @@
 <script>
 import { mdiUpload, mdiEye } from '@mdi/js'
 
+const readFile = (inputFile) => {
+  const temporaryFileReader = new FileReader()
+  return new Promise((resolve, reject) => {
+    temporaryFileReader.onerror = () => {
+      temporaryFileReader.abort()
+      reject(new DOMException('Problem parsing input file.'))
+    }
+    temporaryFileReader.onload = () => {
+      resolve(temporaryFileReader.result)
+    }
+    temporaryFileReader.readAsDataURL(inputFile)
+  })
+}
+
 export default {
   data () {
     return {
       mdiUpload,
       mdiEye,
       categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
-      selectedCategories: []
+      selectedCategories: [],
+      images: [],
+      profilPhoto: {
+        alt: 'dummy image',
+        src: 'https://cdn.vuetifyjs.com/images/john.png'
+      },
+      currentImage: {
+        alt: 'dummy image',
+        src: 'https://picsum.photos/550/300?random="asdasdas"'
+      }
+    }
+  },
+  methods: {
+    async change (e, storePlace = 'images') {
+      const file = e.target.files[0]
+      if (!file) { return }
+      const content = await readFile(file)
+
+      if (Array.isArray(this[storePlace])) {
+        this[storePlace].push({
+          alt: 'preview',
+          src: content
+        })
+        this.currentImage = this.images[this.images.length - 1]
+      } else {
+        this[storePlace] = {
+          src: content,
+          alt: storePlace
+        }
+      }
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .temp {
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.drop {
+  &__input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

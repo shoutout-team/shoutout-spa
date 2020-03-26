@@ -175,6 +175,7 @@ export default {
       try {
         this.failure = false
         await this.$axios.$post(endpoints.SIGNUP_ENDPOINT, this.formattedUser)
+        this.$emit('success')
       } catch {
         this.failure = true
       }

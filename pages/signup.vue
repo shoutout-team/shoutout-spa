@@ -2,6 +2,9 @@
   <v-container>
     <v-row justify="center">
       <v-col>
+        <v-dialog v-model="modal" fullscreen hide-overlay transition="dialog-bottom-transition">
+          <Modal title="Danke!" message="Deine Registrierung war erfolgreich!" link="Zum Login" @link="closeModal" />
+        </v-dialog>
         <v-row justify="center">
           <v-col cols="12" xl="10">
             <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
@@ -33,7 +36,7 @@
             </v-radio-group>
           </v-col>
         </v-row>
-        <register-form v-if="status === 'new'" />
+        <register-form v-if="status === 'new'" @success="showModal" />
         <login-form v-if="status === 'recurring'" />
       </v-col>
     </v-row>
@@ -41,22 +44,35 @@
 </template>
 
 <script>
+import Modal from '@/components/Modal.vue'
 import RegisterForm from '@/components/RegisterForm.vue'
 import LoginForm from '@/components/LoginForm.vue'
 
 export default {
   components: {
+    Modal,
     RegisterForm,
     LoginForm
   },
   data () {
     return {
-      status: 'new'
+      status: 'new',
+      modal: false
     }
   },
   computed: {
     headline () {
       return this.status === 'new' ? 'Registrieren' : 'Melde dich an'
+    }
+  },
+  methods: {
+    showModal () {
+      window.scrollTo(0, 0)
+      this.modal = true
+    },
+    closeModal () {
+      this.status = 'recurring'
+      this.modal = false
     }
   }
 }

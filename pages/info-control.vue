@@ -170,8 +170,21 @@
                 rows="7"
                 label="Dein Wort an die Community"
                 class="mt-6"
+                hint="Max. 500 Zeichen"
               />
             </v-col>
+          </v-row>
+          <v-row class="my-12">
+            <v-btn
+              nuxt
+              to="/"
+              depressed
+            >
+              <v-avatar color="black" size="70" class="mr-5">
+                <v-icon size="40" color="white">{{ mdiEye }}</v-icon>
+              </v-avatar>
+              <p class="body-2 font-weight-bold">Vorschau deiner Unternehmensseite</p>
+            </v-btn>
           </v-row>
         </v-form>
       </v-col>
@@ -180,12 +193,13 @@
 </template>
 
 <script>
-import { mdiUpload } from '@mdi/js'
+import { mdiUpload, mdiEye } from '@mdi/js'
 
 export default {
   data () {
     return {
       mdiUpload,
+      mdiEye,
       categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
       selectedCategories: []
     }

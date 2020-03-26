@@ -69,6 +69,7 @@
 export default {
   data () {
     return {
+      valid: false,
       user: {
         email: '',
         password: ''
@@ -81,7 +82,7 @@ export default {
   },
   computed: {
     loginRequest () {
-      return this.$store.state.login
+      return this.$store.state.login_request
     }
   },
   watch: {

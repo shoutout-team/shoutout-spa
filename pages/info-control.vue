@@ -170,7 +170,7 @@
               </v-img>
               <v-row class="align-center">
                 <v-col cols="3" v-for="(image, key) in images" :key="key">
-                  <v-img height="60px" :alt="image.alt" :src="image.src" />
+                  <v-img height="60px" @click="dropImage(key)" :alt="image.alt" :src="image.src" />
                 </v-col>
               </v-row>
             </v-col>
@@ -256,6 +256,10 @@ export default {
         alt: 'dummy image',
         src: 'https://cdn.vuetifyjs.com/images/john.png'
       },
+      defaultImage: {
+        alt: 'dummy image',
+        src: 'https://picsum.photos/550/300?random="asdasdas"'
+      },
       currentImage: {
         alt: 'dummy image',
         src: 'https://picsum.photos/550/300?random="asdasdas"'
@@ -280,6 +284,10 @@ export default {
           alt: storePlace
         }
       }
+    },
+    dropImage (key) {
+      this.images.splice(key, 1)
+      this.currentImage = this.images.length > 0 ? this.images[this.images.length - 1] : this.defaultImage
     }
   }
 }

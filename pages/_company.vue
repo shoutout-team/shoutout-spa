@@ -51,7 +51,7 @@
             Jetzt spenden
           </v-btn>
           <h3 class="title mb-2">
-            Diese Seite teilen
+            Diese Seite teilen,
           </h3>
           <a :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A//shoutout.jetzt${$route.fullPath}`" target="_blank">
             <img src="/facebook.png" alt="facebook" class="share mr-8">

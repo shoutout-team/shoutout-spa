@@ -29,7 +29,8 @@ export default {
     return {
       // Destination data items
       starting_address: '',
-      starting_address_obj: {}
+      starting_address_obj: {},
+      startingAddressAutocomplete: null
     }
   },
   watch: {
@@ -42,16 +43,15 @@ export default {
     }
   },
   mounted () {
-    /* eslint-disable */
     console.log(this, window.google)
     const startingAddressInput = document.getElementById('starting_address')
-    const startingAddressAutocomplete = new window.google.maps.places.Autocomplete(startingAddressInput)
-    startingAddressAutocomplete.addListener('place_changed', this.placeChanged)
+    this.startingAddressAutocomplete = new window.google.maps.places.Autocomplete(startingAddressInput)
+    this.startingAddressAutocomplete.addListener('place_changed', this.placeChanged)
   },
   methods: {
     placeChanged () {
-      const place = startingAddressAutocomplete.getPlace()
-      self.starting_address_obj = {
+      const place = this.startingAddressAutocomplete.getPlace()
+      this.starting_address_obj = {
         place
       }
     }

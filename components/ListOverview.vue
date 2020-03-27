@@ -1,23 +1,20 @@
 <template>
-  <v-flex
-    d-flex
-    flex-row
-    flex-wrap
-    justify-space-around
-  >
-    <ListElement
-      v-for="company in sortedCompanys"
-      :key="company.id"
-      class="mb-2"
-      :headline="company.title"
-      :category="company.category"
-      :street="company.street"
-      :city="company.city"
-      :hnr="company.street_number"
-      :distance="company.distance"
-      :link="company.slug"
-    />
-  </v-flex>
+  <v-container>
+    <v-row align="end">
+      <ListElement
+        v-for="company in sortedCompanys"
+        :key="company.id"
+        class="mb-2"
+        :headline="company.title"
+        :category="company.category"
+        :street="company.street"
+        :city="company.city"
+        :hnr="company.street_number"
+        :distance="company.distance"
+        :link="company.slug"
+      />
+    </v-row>
+  </v-container>
 </template>
 
 <script>

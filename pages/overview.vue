@@ -16,7 +16,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" xl="10" class="d-flex align-center">
-        <v-btn class="mx-2 mt-4" fab dark color="black" @click="listView = !listView">
+        <v-btn class="mx-2 mt-4 mb-4" fab dark color="black" @click="listView = !listView">
           <v-icon color="white">
             {{ mdiMapOutline }}
           </v-icon>

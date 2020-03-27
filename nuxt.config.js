@@ -47,6 +47,7 @@ export default {
   ** Global CSS
   */
   css: [
+    { src: '~assets/fonts/init_fonts.scss' }
   ],
   /*
   ** Plugins to load before mounting the App

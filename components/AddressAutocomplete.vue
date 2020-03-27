@@ -15,18 +15,6 @@
 
 <script>
 export default {
-  mounted () {
-    /* eslint-disable */
-    let self = this
-    let starting_address_input = document.getElementById('starting_address')
-    let starting_address_autocomplete = new google.maps.places.Autocomplete(starting_address_input)
-    starting_address_autocomplete.addListener('place_changed', function() {
-      let place = starting_address_autocomplete.getPlace();
-      self.starting_address_obj = {
-       place
-      }
-    });
-  },
   props: {
     extra: {
       type: Object,
@@ -42,15 +30,40 @@ export default {
       // Destination data items
       starting_address: '',
       starting_address_obj: {},
+      startingAddressAutocomplete: null
     }
   },
   watch: {
-    starting_address_obj: function () {
+    starting_address_obj () {
       const location = {
         latitude: this.starting_address_obj.place.geometry.location.lat(),
         longitude: this.starting_address_obj.place.geometry.location.lng()
-      };
-      this.$emit('location', location);
+      }
+      this.$emit('location', location)
+    }
+  },
+  mounted () {
+    this.initalGoogleSetup()
+  },
+  methods: {
+    async initalGoogleSetup () {
+      if (process.client) {
+        await this.$gmapApiPromiseLazy({})
+        this.autocompleteService = new window.google.maps.places.AutocompleteService()
+        this.geocoderService = new window.google.maps.Geocoder()
+        this.addChangeListener()
+      }
+    },
+    addChangeListener () {
+      const startingAddressInput = document.getElementById('starting_address')
+      this.startingAddressAutocomplete = new window.google.maps.places.Autocomplete(startingAddressInput)
+      this.startingAddressAutocomplete.addListener('place_changed', this.placeChanged)
+    },
+    placeChanged () {
+      const place = this.startingAddressAutocomplete.getPlace()
+      this.starting_address_obj = {
+        place
+      }
     }
   }
 }

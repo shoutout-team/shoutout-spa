@@ -36,7 +36,7 @@
             outlined
             color="indigo"
             large
-            to="/splitscreen"
+            to="/onboarding"
           >
             Los geht's
           </v-btn>

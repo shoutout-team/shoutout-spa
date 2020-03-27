@@ -1,10 +1,8 @@
 <template>
-  <v-container>
+  <v-container class="edit-company">
     <v-row justify="center">
       <v-col>
         <v-form
-          action=""
-          method="post"
           name="register-form"
           class="validate"
           target="_blank"
@@ -76,14 +74,14 @@
                   class="mr-7 ml-3"
                 >
                   <template v-slot:badge>
-                    <v-avatar size="60">
+                    <v-avatar size="60" class="edit-company__profile-avatar">
                       <v-img :src="Icon" />
                     </v-avatar>
                   </template>
 
                   <v-avatar size="70">
-                    <v-img :alt="profilPhoto.alt" :src="profilPhoto.src">
-                      <input type="file" class="drop__input" @input="change($event, 'profilPhoto')">
+                    <v-img :alt="profileImage.alt" :src="profileImage.src">
+                      <input type="file" class="drop__input" @input="change($event, 'profileImage')">
                     </v-img>
                   </v-avatar>
                 </v-badge>
@@ -131,15 +129,12 @@
               <address-autocomplete @location="getAddressData" />
             </v-col>
             <v-col cols="12" sm="6" xl="5">
-              <v-combobox
+              <v-select
                 v-model="company.category"
-                :items="categories"
-                hide-selected
-                item-color="black"
+                class="edit-company__select"
+                :items="categoryKeys"
                 color="black"
                 label="Kategorie"
-                deletable-chips
-                small-chips
                 no-data-text="Kategorie"
                 outlined
               />
@@ -161,7 +156,7 @@
                 outlined
                 tile
                 color="#000"
-                label="Paypal"
+                label="Paypal Link"
                 class="required"
               />
             </v-col>
@@ -173,7 +168,7 @@
                 outlined
                 tile
                 color="#000"
-                label="GoFundMe"
+                label="GoFundMe Link"
                 class="required"
               />
             </v-col>
@@ -193,19 +188,19 @@
           <v-row justify="center" class="align-center">
             <v-col cols="12" sm="6" xl="5">
               <p class="caption font-weight-bold">
-                Profilbilder
+                Bild von deinem Unternehmen
               </p>
-              <v-img class="mx-auto" max-width="600px" width="100%" :alt="currentImage.alt" :src="currentImage.src">
-                <input ref="fileInput" type="file" class="drop__input" @input="change">
-                <v-avatar color="black" class="temp">
+              <v-img class="mx-auto edit-company__upload" max-width="600px" width="100%" :alt="companyImage.alt" :src="companyImage.src">
+                <input ref="fileInput" type="file" class="drop__input" @input="change($event, 'companyImage')">
+                <v-avatar color="black" class="edit-company__upload-icon">
                   <v-img :src="Icon" />
                 </v-avatar>
               </v-img>
-              <v-row class="align-center">
+              <!-- <v-row class="align-center">
                 <v-col v-for="(image, key) in images" :key="key" cols="3">
                   <v-img height="60px" :alt="image.alt" :src="image.src" @click="dropImage(key)" />
                 </v-col>
-              </v-row>
+              </v-row> -->
             </v-col>
             <v-col cols="12" sm="6" xl="5" class="mt-12">
               <h2 class="title font-weight-bold">
@@ -220,6 +215,11 @@
                 class="mt-6"
                 hint="Max. 500 Zeichen"
               />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12">
+              {{ failure }}
             </v-col>
           </v-row>
           <v-row class="align-baseline" justify="center">
@@ -276,19 +276,17 @@ export default {
     return {
       Icon: Image,
       mdiEye,
-      categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
+      failure: '',
       images: [],
-      profilPhoto: {
-        alt: 'user profilbild',
-        src: require('~/assets/shoutout-user-profilbild.png')
+      profileImage: {
+        alt: 'User Profilbild',
+        src: require('~/assets/shoutout-user-profilbild.png'),
+        id: ''
       },
-      defaultImage: {
-        alt: 'profilbild platzhalter',
-        src: require('~/assets/shoutout-profilbild-platzhalter.jpg')
-      },
-      currentImage: {
-        alt: 'profilbild platzhalter',
-        src: require('~/assets/shoutout-profilbild-platzhalter.jpg')
+      companyImage: {
+        alt: 'Profilbild',
+        src: require('~/assets/shoutout-profilbild-platzhalter.jpg'),
+        id: ''
       },
       user: {
         firstname: '',
@@ -308,6 +306,14 @@ export default {
       }
     }
   },
+  computed: {
+    categories () {
+      return this.$store.state.categories
+    },
+    categoryKeys () {
+      return Object.keys(this.categories)
+    }
+  },
   methods: {
     getAddressData (place) {
       const currentPlace = {
@@ -317,24 +323,64 @@ export default {
         }
       }
       this.$store.dispatch('setLocation', currentPlace)
+    },
+    updateInfo () {
+      try {
+        this.$store.dispatch('setCompany', {
+
+        })
+      } catch {
+
+      }
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-.temp {
-  left: 50%;
-  top: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
+<style lang="scss">
+.v-list-item__content {
+  text-transform: capitalize;
 }
 
-.drop {
-  &__input {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
+.drop__input {
+  cursor: pointer;
+}
+.edit-company {
+  &__select {
+    text-transform: capitalize;
+  }
+
+  &__upload {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .edit-company__upload-icon {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+  }
+
+  .v-badge__badge {
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+  &__upload-icon {
+    left: 50%;
+    top: 50%;
+    position: absolute !important;
+    transform: translate(-50%, -50%);
+    transition: transform 200ms ease;
+    pointer-events: none;
+  }
+
+  .drop {
+    &__input {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

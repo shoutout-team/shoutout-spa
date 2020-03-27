@@ -18,7 +18,8 @@ export default {
   */
 
   env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+    API_URL: process.env.API_URL
   },
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
@@ -32,11 +33,6 @@ export default {
       { rel: 'icon', href: '/favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap' }, // font-family: 'IBM Plex Sans', sans-serif;
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap' } // font-family: 'IBM Plex Mono', monospace;
-    ],
-    script: [
-      {
-        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`
-      }
     ]
   },
   /*
@@ -80,7 +76,7 @@ export default {
     prefix: '/api/v1/'
   },
   proxy: {
-    '/api/v1/': { target: 'https://savethekiez.herokuapp.com' }
+    '/api/v1/': { target: process.env.API_URL }
   },
   /*
   ** vuetify module configuration

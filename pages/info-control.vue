@@ -128,16 +128,7 @@
           </v-row>
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
-              <v-text-field
-                type="text"
-                :value="company.adresse"
-                hide-details="auto"
-                outlined
-                tile
-                color="#000"
-                label="Adresse"
-                class="required"
-              />
+              <address-autocomplete @location="getAddressData" />
             </v-col>
             <v-col cols="12" sm="6" xl="5">
               <v-combobox
@@ -211,8 +202,8 @@
                 </v-avatar>
               </v-img>
               <v-row class="align-center">
-                <v-col cols="3" v-for="(image, key) in images" :key="key">
-                  <v-img height="60px" @click="dropImage(key)" :alt="image.alt" :src="image.src" />
+                <v-col v-for="(image, key) in images" :key="key" cols="3">
+                  <v-img height="60px" :alt="image.alt" :src="image.src" @click="dropImage(key)" />
                 </v-col>
               </v-row>
             </v-col>
@@ -274,8 +265,12 @@
 import { mdiEye } from '@mdi/js'
 import imageControllerMixin from '@/mixins/imageController.js'
 import Image from '~/assets/shoutout-icon-upload.svg'
+import AddressAutocomplete from '@/components/AddressAutocomplete.vue'
 
 export default {
+  components: {
+    AddressAutocomplete
+  },
   mixins: [imageControllerMixin],
   data () {
     return {
@@ -311,6 +306,17 @@ export default {
           iban: ''
         }
       }
+    }
+  },
+  methods: {
+    getAddressData (place) {
+      const currentPlace = {
+        coords: {
+          latitude: place.latitude,
+          longitude: place.longitude
+        }
+      }
+      this.$store.dispatch('setLocation', currentPlace)
     }
   }
 }

@@ -1,6 +1,7 @@
 // import path from 'path'
 // import fs from 'fs'
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -19,7 +20,6 @@ export default {
   env: {
     GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
   },
-
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: 'Shoutout - Rette deine Lieblingsläden',
@@ -32,6 +32,11 @@ export default {
       { rel: 'icon', href: '/favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap' }, // font-family: 'IBM Plex Sans', sans-serif;
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap' } // font-family: 'IBM Plex Mono', monospace;
+    ],
+    script: [
+      {
+        src: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`
+      }
     ]
   },
   /*

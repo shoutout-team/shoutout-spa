@@ -154,6 +154,51 @@
               />
             </v-col>
           </v-row>
+          <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h2 class="title font-weight-bold mt-7">
+                Spenden Optionen
+              </h2>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="12" sm="4" xl="3">
+              <v-text-field
+                type="text"
+                value=""
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="Paypal"
+                class="required"
+              />
+            </v-col>
+            <v-col cols="12" sm="4" xl="3">
+              <v-text-field
+                type="text"
+                value=""
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="GoFundMe"
+                class="required"
+              />
+            </v-col>
+            <v-col cols="12" sm="4" xl="4">
+              <v-text-field
+                type="text"
+                value=""
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="IBAN"
+                class="required"
+              />
+            </v-col>
+          </v-row>
           <v-row justify="center" class="align-center">
             <v-col cols="12" sm="6" xl="5">
               <p class="caption font-weight-bold">
@@ -236,7 +281,7 @@ export default {
       Icon: Image,
       mdiEye,
       categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
-      selectedCategories: [],
+      selectedCategories: '',
       images: [],
       profilPhoto: {
         alt: 'user profilbild',

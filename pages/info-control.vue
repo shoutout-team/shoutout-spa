@@ -29,8 +29,8 @@
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
-                type="email"
-                value=""
+                type="text"
+                :value="user.firstname"
                 hide-details="auto"
                 outlined
                 tile
@@ -42,7 +42,7 @@
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
-                value=""
+                :value="user.lastname"
                 hide-details="auto"
                 outlined
                 tile
@@ -56,7 +56,7 @@
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
-                value=""
+                :value="user.email"
                 hide-details="auto"
                 outlined
                 tile
@@ -104,7 +104,7 @@
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.company_name"
                 hide-details="auto"
                 outlined
                 tile
@@ -116,7 +116,7 @@
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.company_registry_number"
                 hide-details="auto"
                 outlined
                 tile
@@ -130,7 +130,7 @@
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.adresse"
                 hide-details="auto"
                 outlined
                 tile
@@ -141,7 +141,7 @@
             </v-col>
             <v-col cols="12" sm="6" xl="5">
               <v-combobox
-                v-model="selectedCategories"
+                v-model="company.category"
                 :items="categories"
                 hide-selected
                 item-color="black"
@@ -165,7 +165,7 @@
             <v-col cols="12" sm="4" xl="3">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.payment.paypal"
                 hide-details="auto"
                 outlined
                 tile
@@ -177,7 +177,7 @@
             <v-col cols="12" sm="4" xl="3">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.payment.gofoundme"
                 hide-details="auto"
                 outlined
                 tile
@@ -189,7 +189,7 @@
             <v-col cols="12" sm="4" xl="4">
               <v-text-field
                 type="text"
-                value=""
+                :value="company.payment.iban"
                 hide-details="auto"
                 outlined
                 tile
@@ -223,6 +223,7 @@
               <v-textarea
                 auto-grow
                 outlined
+                :value="company.desc"
                 rows="7"
                 label="Dein Wort an die Community"
                 class="mt-6"
@@ -281,7 +282,6 @@ export default {
       Icon: Image,
       mdiEye,
       categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
-      selectedCategories: '',
       images: [],
       profilPhoto: {
         alt: 'user profilbild',
@@ -294,6 +294,22 @@ export default {
       currentImage: {
         alt: 'profilbild platzhalter',
         src: require('~/assets/shoutout-profilbild-platzhalter.jpg')
+      },
+      user: {
+        firstname: '',
+        lastname: '',
+        email: ''
+      },
+      company: {
+        company_name: '',
+        company_registry_number: '',
+        adresse: '',
+        category: '',
+        payment: {
+          paypal: '',
+          gofoundme: '',
+          iban: ''
+        }
       }
     }
   }

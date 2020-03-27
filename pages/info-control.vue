@@ -13,7 +13,7 @@
           <v-row justify="center">
             <v-col cols="12" xl="10">
               <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
-                <h1 class="display-1 font-weight-bold pt-3">
+                <h1 class="display-1 font-weight-black pt-3">
                   Dein Profil
                 </h1>
               </v-img>
@@ -77,7 +77,7 @@
                 >
                   <template v-slot:badge>
                     <v-avatar size="60">
-                      <v-img src="https://cdn.vuetifyjs.com/images/logos/v.png" />
+                      <v-img :src="Icon" />
                     </v-avatar>
                   </template>
 
@@ -147,7 +147,6 @@
                 item-color="black"
                 color="black"
                 label="Kategorie"
-                multiple
                 deletable-chips
                 small-chips
                 no-data-text="Kategorie"
@@ -163,9 +162,7 @@
               <v-img class="mx-auto" max-width="600px" width="100%" :alt="currentImage.alt" :src="currentImage.src">
                 <input ref="fileInput" type="file" class="drop__input" @input="change">
                 <v-avatar color="black" class="temp">
-                  <v-icon color="white" size="30px">
-                    {{ mdiUpload }}
-                  </v-icon>
+                  <v-img :src="Icon" />
                 </v-avatar>
               </v-img>
               <v-row class="align-center">
@@ -228,7 +225,8 @@
 </template>
 
 <script>
-import { mdiUpload, mdiEye } from '@mdi/js'
+import { mdiEye } from '@mdi/js'
+import Image from '~/assets/shoutout-icon-upload.svg'
 
 const readFile = (inputFile) => {
   const temporaryFileReader = new FileReader()
@@ -247,22 +245,22 @@ const readFile = (inputFile) => {
 export default {
   data () {
     return {
-      mdiUpload,
+      Icon: Image,
       mdiEye,
       categories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club'],
       selectedCategories: [],
       images: [],
       profilPhoto: {
-        alt: 'dummy image',
-        src: 'https://cdn.vuetifyjs.com/images/john.png'
+        alt: 'user profilbild',
+        src: require('~/assets/shoutout-user-profilbild.png')
       },
       defaultImage: {
-        alt: 'dummy image',
-        src: 'https://picsum.photos/550/300?random="asdasdas"'
+        alt: 'profilbild platzhalter',
+        src: require('~/assets/shoutout-profilbild-platzhalter.jpg')
       },
       currentImage: {
-        alt: 'dummy image',
-        src: 'https://picsum.photos/550/300?random="asdasdas"'
+        alt: 'profilbild platzhalter',
+        src: require('~/assets/shoutout-profilbild-platzhalter.jpg')
       }
     }
   },

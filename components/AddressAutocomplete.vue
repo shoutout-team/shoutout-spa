@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <v-text-field
-      id="starting_address"
-      :value="starting_address"
-      type="text"
-      hide-details="auto"
-      outlined
-      tile
-      placeholder=""
-      color="#000"
-      label="Adresse"
-    />
-  </div>
+  <v-text-field
+    id="starting_address"
+    :value="starting_address"
+    type="text"
+    hide-details="auto"
+    width="100%"
+    tile
+    placeholder=""
+    color="#000"
+    label="Adresse"
+    v-bind="extra"
+  />
 </template>
 
 <script>
@@ -27,6 +26,16 @@ export default {
        place
       }
     });
+  },
+  props: {
+    extra: {
+      type: Object,
+      default () {
+        return {
+          outlined: true
+        }
+      }
+    }
   },
   data () {
     return {

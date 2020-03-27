@@ -43,12 +43,22 @@ export default {
     }
   },
   mounted () {
-    console.log(this, window.google)
-    const startingAddressInput = document.getElementById('starting_address')
-    this.startingAddressAutocomplete = new window.google.maps.places.Autocomplete(startingAddressInput)
-    this.startingAddressAutocomplete.addListener('place_changed', this.placeChanged)
+    this.initalGoogleSetup()
   },
   methods: {
+    async initalGoogleSetup () {
+      if (process.client) {
+        await this.$gmapApiPromiseLazy({})
+        this.autocompleteService = new window.google.maps.places.AutocompleteService()
+        this.geocoderService = new window.google.maps.Geocoder()
+        this.addChangeListener()
+      }
+    },
+    addChangeListener () {
+      const startingAddressInput = document.getElementById('starting_address')
+      this.startingAddressAutocomplete = new window.google.maps.places.Autocomplete(startingAddressInput)
+      this.startingAddressAutocomplete.addListener('place_changed', this.placeChanged)
+    },
     placeChanged () {
       const place = this.startingAddressAutocomplete.getPlace()
       this.starting_address_obj = {

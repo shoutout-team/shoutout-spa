@@ -80,7 +80,7 @@ export default {
     prefix: '/api/v1/'
   },
   proxy: {
-    '/api/v1/': { target: 'https://savethekiez.herokuapp.com' }
+    '/api/v1/': { target: 'https://shoutout-app-api-preview.herokuapp.com' }
   },
   /*
   ** vuetify module configuration

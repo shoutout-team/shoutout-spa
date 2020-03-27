@@ -18,6 +18,7 @@
 import SelectionCard from '~/components/SelectionCard'
 
 export default {
+  Name: 'select',
   components: {
     SelectionCard
   },

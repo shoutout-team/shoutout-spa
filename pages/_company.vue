@@ -86,6 +86,13 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col class="mt-9">
+        <v-btn text color="#C3AA7D" nuxt to="/info-control" class="px-0 text-capitalize">
+          <v-icon class="mr-3" color="#C3AA7D">{{ mdiFileDocumentEditOutline }}</v-icon> Bearbeiten
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

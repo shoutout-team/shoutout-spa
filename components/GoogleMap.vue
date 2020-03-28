@@ -5,7 +5,7 @@
     </div>
     <gmap-map
       :center="center"
-      :zoom="15"
+      :zoom="zoom"
       style="width:100%;  height: 100vh;"
       :options="{
         zoomControl: true,
@@ -40,6 +40,17 @@ export default {
   components: {
     GeoInfoBox
   },
+  props: {
+    filterCategories: {
+      type: Array,
+      required: true
+    },
+    maxDistance: {
+      type: Number,
+      required: true,
+      default: 0
+    }
+  },
   data () {
     return {
       activeCompany: { id: null },
@@ -61,7 +72,8 @@ export default {
         food: require('~/assets/food-active.png'),
         coiffeur: require('~/assets/barber-active.png'),
         shop: require('~/assets/shop-active.png')
-      }
+      },
+      defaultZoom: 13
     }
   },
   computed: {
@@ -76,7 +88,7 @@ export default {
     },
     markers () {
       const markerArray = []
-      this.companies.forEach((el) => {
+      this.companies.filter(e => this.filterCategories.includes(e.category)).forEach((el) => {
         markerArray.push({
           id: el.id,
           icon: this.icons[el.category] || require('~/assets/bar-active.png'),
@@ -84,6 +96,11 @@ export default {
         })
       })
       return markerArray
+    },
+    zoom () {
+      let result = 0
+      this.maxDistance < 800 ? result = 5 * (1000 / 800) : result = 5 * (1000 / this.maxDistance)
+      return this.defaultZoom + result
     }
   },
   methods: {

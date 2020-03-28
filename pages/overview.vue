@@ -33,7 +33,7 @@
     />
     <v-row no-gutter justify="center">
       <v-col cols="12" xl="10">
-        <Google-Map v-if="!listView" />
+        <Google-Map v-if="!listView" :filter-categories="filterCategories" :max-distance="maxDistance" />
       </v-col>
     </v-row>
     <v-overlay :value="loading">

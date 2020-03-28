@@ -1,8 +1,20 @@
 <template>
   <v-container v-if="company" fluid>
-    <v-row justify="space-around" class="mb-10">
-      <v-col cols="12">
-        <v-img src="https://picsum.photos/1300/300" min-height="200" />
+    <v-row justify="center" class="mb-10">
+      <v-col cols="12" xl="10">
+        <div class="img">
+          <v-img
+            src="https://picsum.photos/1300/300"
+            contain
+            height="100%"
+            class="img__outside mr-4"
+          />
+          <v-img class="ml-auto img__inner" max-width="60%" max-height="60%" alt="tape" :src="require('@/assets/shoutout-tape.png')">
+            <p class="img__inner-text">
+              {{ company.category }}
+            </p>
+          </v-img>
+        </div>
       </v-col>
     </v-row>
     <v-dialog v-model="showPayment" content-class="company-dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -15,6 +27,8 @@
             cols="12"
             sm="5"
             md="4"
+            offset-md="1"
+            offset-lg="2"
           >
             <h1 class="display-1 mb-1 font-weight-black">
               {{ company.title }}
@@ -62,13 +76,6 @@
             <h3 class="title mb-2">
               Diese Seite teilen
             </h3>
-            <!-- <v-row>
-              <v-col>
-                <v-img max-width="500px" :src="require('@/assets/shoutout-tape.png')">
-                  <p class="image__text">Shoutout auf</p>
-                </v-img>
-              </v-col>
-            </v-row> -->
             <v-row>
               <v-col>
                 <a :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A//shoutout.jetzt${$route.fullPath}`" target="_blank">
@@ -89,9 +96,9 @@
     <v-row justify="center">
       <v-col cols="12" xl="10">
         <v-row justify="space-between">
-          <v-col cols="12" sm="5" md="4">
+          <v-col cols="12" sm="5" md="4" offset-md="1" offset-lg="2">
             <v-btn text color="#C3AA7D" nuxt to="/info-control" class="px-0 text-capitalize">
-              <v-icon class="mr-3" color="#C3AA7D">{{ mdiFileDocumentEditOutline }}</v-icon> Bearbeiten
+              <v-img :src="require('@/assets/icon-edit.svg')" class="mr-3" color="#C3AA7D">{{ mdiFileDocumentEditOutline }}</v-img> Bearbeiten
             </v-btn>
           </v-col>
           <v-col cols="12" sm="5" md="4">
@@ -142,11 +149,21 @@ export default {
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-.image {
-  &__text {
-    font-family: theRambler;
-    text-align: center;
-    font-size: 39px;
+.img {
+  position: relative;
+  &__outside {
+    position: relative;
+    top: 15px;
+  }
+  &__inner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    &-text {
+      font-family: theRambler;
+      text-align: center;
+      font-size: 8vw;
+    }
   }
 }
 </style>

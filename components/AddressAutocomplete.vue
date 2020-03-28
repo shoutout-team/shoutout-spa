@@ -35,7 +35,8 @@ export default {
   },
   watch: {
     starting_address_obj () {
-      const elements = ['administrative_area_level_2', 'route', 'postal_code', 'street_number']
+      console.log(this.starting_address_obj.place.address_components)
+      const elements = ['locality', 'route', 'postal_code', 'street_number']
       const geolocation = this.starting_address_obj.place.address_components.filter(e => elements.includes(e.types[0]))
       const location = {
         latitude: this.starting_address_obj.place.geometry.location.lat(),

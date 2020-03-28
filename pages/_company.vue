@@ -32,10 +32,19 @@
         <p class="title">
           {{ company.properties.description }}
         </p>
-        <p class="font-weight-regular body-2 mb-10">
-          {{ company.keeper_name }}<br>
-          <span class="grey--text text-uppercase">Inhaber/in</span>
-        </p>
+        <v-row>
+          <v-col class="d-flex align-center mb-5">
+            <v-avatar size="90" class="mr-5">
+              <v-img alt="profile photo" :src="require('~/assets/shoutout-user-profilbild.png')" />
+            </v-avatar>
+            <v-row>
+              <v-col>
+                <h2 class="title">{{ company.keeper__name }}</h2>
+                <p class="body-2">Inhaber</p>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
         <v-btn nuxt to="/overview">
           Zurück
         </v-btn>

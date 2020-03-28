@@ -117,25 +117,29 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row v-else justify="center">
-      <v-col
-        cols="12"
-        sm="12"
-        md="10"
-        lg="8"
-        xl="7"
-      >
-        <v-btn
-          color="black"
-          depressed
-          dark
-          nuxt
-          to="/info-control"
-          height="40px"
-          class="text-capitalize"
-        >
-          Zurück
-        </v-btn>
+    <v-row justify="center" v-else>
+      <v-col cols="12" xl="10">
+        <v-row>
+          <v-col
+            cols="12"
+            sm="10"
+            md="8"
+            offset-md="1"
+            offset-lg="2"
+          >
+            <v-btn
+              color="black"
+              depressed
+              dark
+              nuxt
+              to="/info-control"
+              height="40px"
+              class="text-capitalize"
+            >
+              Zurück
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>

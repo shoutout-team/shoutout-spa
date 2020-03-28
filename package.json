@@ -1,5 +1,5 @@
 {
-  "name": "SaveYourKiez-UI",
+  "name": "shoutout",
   "version": "1.0.0",
   "description": "A simple web app to support your local gastronomy",
   "author": "Leo Reuter",
@@ -16,6 +16,7 @@
     "@mdi/js": "^5.0.45",
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/sentry": "^4.0.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "nuxt": "^2.0.0",

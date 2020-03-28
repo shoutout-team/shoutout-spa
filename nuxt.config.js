@@ -68,9 +68,18 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/sentry'
   ],
 
+  sentry: {
+    dsn: process.env.SENTRY_AUTH_TOKEN,
+    config: {
+      debug: process.env.NODE_EV === 'development',
+      environment: process.env.NODE_EV,
+      release: 'shoutout@' + process.env.npm_package_version
+    }
+  },
   axios: {
     proxy: true,
     prefix: '/api/v1/'

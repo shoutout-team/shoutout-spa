@@ -23,7 +23,17 @@
       <v-col cols="12" xl="10">
         <h1 class="mb-4">Über uns</h1>
         <p>
-          Moin moin, grüß Gott und hallo. An dieser Stelle ein kleines Shoutout an uns selbst. Denn das diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht. Aber dann kam der #wirvsvirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell. 48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit. Von 10 Köpfen entwickelt, 10 Arbeitskollegen, 10 Freiwillige. Wir sind ein bunter Haufen aus Designern, Programmierern, Textern und Konzeptern und wollen den kleinen Läden in Deutschlands Vierteln eine Stimme geben. Nicht nur in der Krise, sondern auch danach. Dafür stecken wir schon jetzt unsere 10 Köpfe zusammen und planen den Ausbau dieser Plattform. Also stay tuend und supporte dein Viertel mit Shoutout.
+          Moin moin, grüß Gott und hallo. An dieser Stelle ein kleines Shoutout an uns selbst.
+        </p>
+        <p>
+          Denn das diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht.
+          Aber dann kam der #wirvsvirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell.
+        </p>
+        <p>
+          48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit. Von 10 Köpfen entwickelt, 10 Arbeitskollegen, 10 Freiwillige.
+        </p>
+        <p>
+          Wir sind ein bunter Haufen aus Designern, Programmierern, Textern und Konzeptern und wollen den kleinen Läden in Deutschlands Vierteln eine Stimme geben. Nicht nur in der Krise, sondern auch danach. Dafür stecken wir schon jetzt unsere 10 Köpfe zusammen und planen den Ausbau dieser Plattform. Also stay tuend und supporte dein Viertel mit Shoutout.
         </p>
       </v-col>
     </v-row>

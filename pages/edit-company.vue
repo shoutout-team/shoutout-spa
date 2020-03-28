@@ -338,6 +338,13 @@ export default {
       return 'approval' in this.$store.state.company ? this.$store.state.company.approval : true
     }
   },
+  watch: {
+    activeCompany () {
+      if (Object.keys(this.activeCompany).length) {
+        this.company = JSON.parse(JSON.stringify(this.activeCompany))
+      }
+    }
+  },
   created () {
     this.$store.dispatch('setCompany', { keeper_token: this.$store.state.user.gid })
   },

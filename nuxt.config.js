@@ -18,7 +18,8 @@ export default {
   */
 
   env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+    API_URL: process.env.API_URL
   },
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
@@ -75,7 +76,7 @@ export default {
     prefix: '/api/v1/'
   },
   proxy: {
-    '/api/v1/': { target: 'https://shoutout-app-api-preview.herokuapp.com' }
+    '/api/v1/': { target: process.env.API_URL }
   },
   /*
   ** vuetify module configuration

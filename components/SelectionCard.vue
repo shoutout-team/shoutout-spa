@@ -1,5 +1,5 @@
 <template>
-  <container>
+  <v-container>
     <v-row>
       <v-col>
         <v-img
@@ -34,7 +34,7 @@
         </v-btn>
       </v-col>
     </v-row>
-  </container>
+  </v-container>
 </template>
 
 <script>

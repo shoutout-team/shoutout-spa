@@ -3,7 +3,7 @@
     <v-dialog :value="!Object.keys(activeUser).length" fullscreen hide-overlay transition="dialog-bottom-transition">
       <Modal :title="fallBackModal.title" :message="fallBackModal.message" :link="fallBackModal.link.title" @link="toLogin" />
     </v-dialog>
-    <v-dialog :value="request === 'success'" fullscreen hide-overlay transition="dialog-bottom-transition">
+    <v-dialog :value="!approval" fullscreen hide-overlay transition="dialog-bottom-transition">
       <Modal :title="successModal.title" :message="successModal.message" :link="successModal.link.title" @link="toOverview" />
     </v-dialog>
     <v-container v-if="Object.keys(activeUser).length" class="edit-company">
@@ -18,7 +18,7 @@
           >
             <v-row justify="center">
               <v-col cols="12" xl="10">
-                <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
+                <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape-complete.png')">
                   <h1 class="edit-company__title font-weight-black pt-3">
                     Dein Profil
                   </h1>
@@ -203,6 +203,12 @@
               </v-col>
             </v-row>
             <v-row class="align-baseline" justify="center">
+              <v-col cols="12">
+                <p v-if="$store.state.company_edit_request === 'success'"> {{ editFeedback.success }}</p>
+                <p v-if="$store.state.company_edit_request === 'failed'"> {{ editFeedback.failed }}</p>
+              </v-col>
+            </v-row>
+            <v-row class="align-baseline" justify="center">
               <v-col cols="12" sm="6" xl="5">
                 <v-btn
                   nuxt
@@ -259,6 +265,7 @@ export default {
       Icon: Image,
       mdiEye,
       imageLoading: false,
+      change_picture: false,
       failure: '',
       uploadCompanyPicture: '',
       fallbackCompanyPicture: require('~/assets/shoutout-profilbild-platzhalter.jpg'),
@@ -305,8 +312,12 @@ export default {
       },
       successModal: {
         title: 'Vielen Dank',
-        message: 'Die Anmeldung für dein Unternehmen ist erfolgreich eingegangen. Wir überprüfen deine Angaben und schalten dein Eintrag anschließend frei.',
+        message: 'Die Anmeldung oder Änderung für dein Unternehmen ist erfolgreich eingegangen. Wir überprüfen deine Angaben und schalten deinen Eintrag anschließend frei.',
         link: { title: 'Zur Übersicht', url: '/overview' }
+      },
+      editFeedback: {
+        success: 'Deine Bearbeitung wurde erfolgreich gespeichert.',
+        failed: 'Es gab leider Probleme bei der Bearbeitung. Bitte versuche es erneut.'
       }
     }
   },
@@ -318,18 +329,21 @@ export default {
       return Object.keys(this.$store.state.categories)
     },
     activeCompany () {
-      return this.$store.state.companies.find(c => c.gid === this.$store.state.user.gid) || {}
+      return this.$store.state.company
     },
     activeUser () {
       return this.$store.state.user
     },
-    request () {
-      return this.$store.state.company_request
+    approval () {
+      return 'approval' in this.$store.state.company ? this.$store.state.company.approval : true
     }
   },
-  mounted () {
+  created () {
+    this.$store.dispatch('setCompany', { keeper_token: this.$store.state.user.gid })
+  },
+  beforeMount () {
     if (Object.keys(this.activeCompany).length) {
-      this.company = this.activeCompany
+      this.company = JSON.parse(JSON.stringify(this.activeCompany))
     }
   },
   methods: {
@@ -345,7 +359,8 @@ export default {
       this.$store.dispatch('postCompany', {
         ...this.company,
         title: this.company.name,
-        keeper_token: this.$store.state.user.gid
+        keeper_token: this.$store.state.user.gid,
+        change_picture: this.changePicture
       })
     },
     toLogin () {
@@ -387,6 +402,8 @@ export default {
       font-family: 'theRambler';
       position: absolute;
       font-size: 3.3rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 

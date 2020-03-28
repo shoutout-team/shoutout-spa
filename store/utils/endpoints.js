@@ -6,6 +6,7 @@ const endpoints = {
   LOGIN_ENDPOINT: 'members/login',
   SIGNUP_ENDPOINT: 'members/signup',
   AVATAR_ENDPOINT: 'assets/user/avatar',
-  PICTURE_ENDPOINT: 'assets/company/picture'
+  PICTURE_ENDPOINT: 'assets/company/picture',
+  COMPANY_FETCH_ENDPOINT: 'companies/fetch'
 }
 export default endpoints

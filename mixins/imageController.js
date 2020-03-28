@@ -18,6 +18,7 @@ export default {
           ...response
         }
         this.imageLoading = false
+        this.changePicture = true
       } catch {
         this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2mb beträgt.'
         this.imageLoading = false

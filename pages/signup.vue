@@ -65,6 +65,11 @@ export default {
       return this.status === 'new' ? 'Registrieren' : 'Melde dich an'
     }
   },
+  beforeMount () {
+    if (this.$store.state.user.gid) {
+      this.$router.replace('/edit-company')
+    }
+  },
   methods: {
     showModal () {
       window.scrollTo(0, 0)

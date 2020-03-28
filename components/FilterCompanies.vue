@@ -1,11 +1,11 @@
 <template>
-  <v-container>
-    <v-row justify="space-between">
+  <div>
+    <v-row justify="space-between" align="end" no-gutters class="mb-5">
       <v-col cols="12" sm="5" xl="4">
         <p class="body-1 text-left mb-0">
           Gib deinen Standort ein oder tippe die Postleitzahl ein.
         </p>
-        <v-row>
+        <v-row no-gutters class="mb-10 mb-sm-0">
           <v-col class="d-flex full-width align-center">
             <address-autocomplete :extra="{}" @location="getAddressData" />
             <v-btn
@@ -21,7 +21,7 @@
         </v-row>
       </v-col>
       <v-col cols="12" sm="6" xl="4" class="d-flex align-center">
-        <p class="mr-7">
+        <p class="mr-7 mb-3">
           Distanz
         </p>
         <v-slider
@@ -30,10 +30,11 @@
           max="50000"
           :thumb-size="48"
           :thumb-label="true"
-          class="slider mr-7 mt-5"
+          class="slider mr-7"
           color="black"
           thumb-color="black"
           track-color="black"
+          hide-details
         >
           <template v-slot:prepend>
             <p>0km</p>
@@ -47,12 +48,12 @@
         </v-slider>
       </v-col>
     </v-row>
-    <v-row justify="space-around" class="ml-0 checkbox__wrapper">
-      <v-col cols="12" xl="10" class="d-flex justify-space-around flex-wrap">
+    <v-row justify="start" no-gutters class="ml-0 checkbox__wrapper">
+      <v-col cols="12" xl="10" class="d-flex flex-wrap">
         <div
           v-for="(cat, index) in categories"
           :key="index"
-          class="mr-6 checkbox my-4 py-1 px-4"
+          class="mr-3 mr-md-6 checkbox my-4 py-1 py-md-2 px-3 px-md-4"
           :class="{'checkbox--active': activeCategories.includes(cat)}"
           @click="activateCategory(cat)"
         >
@@ -60,7 +61,7 @@
         </div>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>

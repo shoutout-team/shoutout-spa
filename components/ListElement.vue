@@ -1,62 +1,65 @@
 <template>
-  <v-col cols="12" md="6" xl="5" class="mb-12">
-    <v-flex
-      d-flex
-      flex-column
-      justify-space-around
-    >
-      <v-row justify="space-between">
-        <v-col class="pb-0">
-          <h1 class="$Plex-Sans-font-family">
-            {{ headline }}
-          </h1>
-        </v-col>
-        <v-col class="pb-0">
-          <div class="text-right body-2 font-weight-bold">
-            {{ distanceWithUnit }}
-          </div>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="py-0">
-          <p>{{ city }}, {{ street }} {{ hnr }}</p>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="pb-4">
-          <div class="img">
-            <v-img
-              :src="`https://picsum.photos/450/300?random=${headline}`"
-              contain
-              height="100%"
-              class="img__outside"
-            />
-            <v-img class="ml-auto img__inner" width="60%" alt="tape" :src="require('@/assets/shoutout-tape.png')" >
-              <p class="img__inner-text">
-                {{ category }}
-              </p>
-            </v-img>
-          </div>
-        </v-col>
-      </v-row>
-      <v-row no-gutters>
-        <v-col class="d-flex">
-          <v-btn
-            nuxt
-            text
-            :to="link"
-            small
-            dark
-            tile
-            color="black"
-            class="button mt-3 ml-auto px-0 text-lowercase"
-            depressed
-          >
-            jetzt supporten
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-flex>
+  <v-col cols="12" sm="11" md="6" xl="4" class="mb-12">
+    <nuxt-link :to="link" class="list-element">
+      <v-flex
+        d-flex
+        flex-column
+        justify-space-around
+        class="list-element__wrapper"
+      >
+        <v-row justify="space-between" no-gutters>
+          <v-col class="pb-0">
+            <h1 class="$Plex-Sans-font-family">
+              {{ headline }}
+            </h1>
+          </v-col>
+          <v-col class="pb-0">
+            <div class="text-right body-2 font-weight-bold">
+              {{ distanceWithUnit }}
+            </div>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col class="py-0">
+            <p>{{ city }}, {{ street }} {{ hnr }}</p>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="pb-4">
+            <div class="list-element__img">
+              <v-img
+                :src="`https://picsum.photos/450/300?random=${headline}`"
+                contain
+                height="100%"
+                class="list-element__img-outside"
+              />
+              <v-img class="ml-auto list-element__img-inner" width="60%" alt="tape" :src="require('@/assets/shoutout-tape.png')">
+                <p class="list-element__img-inner-text">
+                  {{ category }}
+                </p>
+              </v-img>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col class="d-flex">
+            <v-btn
+              nuxt
+              text
+              :to="link"
+              small
+              dark
+              tile
+              color="black"
+              class="button mt-3 ml-auto px-0 text-lowercase"
+              depressed
+            >
+              jetzt supporten
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-flex>
+    </nuxt-link>
   </v-col>
 </template>
 
@@ -101,22 +104,39 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.button {
-  max-width: 200px;
-  border-bottom: 1px solid black;
-}
+.list-element {
+  text-decoration: none;
 
-.img {
-  position: relative;
-  &__outside {
-    position: relative;
-    top: 15px;
-    right: 15px;
+  &:hover {
+    .list-element__wrapper {
+      transition: transform 200ms ease;
+      transform: scale(1.005);
+    }
+
+    .list-element__img-inner {
+      transform: rotate(3deg);
+    }
   }
-  &__inner {
+
+  &__wrapper {
+    transition: transform 200ms ease;
+  }
+
+  &__img {
+    position: relative;
+  }
+
+  &__img-outside {
+    position: relative;
+  }
+
+  &__img-inner {
+    text-transform: capitalize;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: -15px;
+    right: -15px;
+    transition: transform 200ms ease;
+
     &-text {
       font-family: theRambler;
       text-align: center;
@@ -124,4 +144,10 @@ export default {
     }
   }
 }
+
+.button {
+  max-width: 200px;
+  border-bottom: 1px solid black;
+}
+
 </style>

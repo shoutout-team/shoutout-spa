@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <v-container>
-      <v-row>
+      <v-row justify="center">
         <v-col cols="12" xl="10">
           <nuxt-link to="/">
             <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">

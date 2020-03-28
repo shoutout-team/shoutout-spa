@@ -33,7 +33,7 @@
                 height="100%"
                 class="list-element__img-outside"
               />
-              <v-img class="ml-auto list-element__img-inner" width="60%" alt="tape" :src="require('@/assets/shoutout-tape.png')">
+              <v-img class="ml-auto list-element__img-inner" width="60%" alt="tape" :src="randomTape">
                 <p class="list-element__img-inner-text">
                   {{ category }}
                 </p>
@@ -98,6 +98,9 @@ export default {
   computed: {
     distanceWithUnit () {
       return this.distance > 999 ? `${this.distance / 1000}km` : `${this.distance}m`
+    },
+    randomTape () {
+      return Math.round(Math.random()) ? require('@/assets/shoutout-tape.png') : require('@/assets/shoutout-tape-complete.png')
     }
   }
 }

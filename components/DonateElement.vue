@@ -25,7 +25,7 @@ export default {
       images: {
         paypal: require('~/assets/icon-paypal.png'),
         gofoundme: require('~/assets/icon-gofundme.png'),
-        bank: require('~/assets/icon-transaction.png')
+        bank: require('~/assets/icon-transaction.svg')
       },
       showIBAN: false
     }

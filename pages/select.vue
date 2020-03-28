@@ -1,14 +1,21 @@
 <template>
   <v-container>
-    <v-row justify="space-between">
+    <v-row justify="center">
       <v-col
-        v-for="(field, key) in selectionFields"
-        :key="key"
         cols="12"
-        sm="6"
-        md="5"
+        xl="10"
       >
-        <selection-card :selection-type="field" />
+        <v-row justify="space-between" align="end">
+          <v-col
+            v-for="(field, key) in selectionFields"
+            :key="key"
+            cols="12"
+            sm="6"
+            md="5"
+          >
+            <selection-card :selection-type="field" />
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>

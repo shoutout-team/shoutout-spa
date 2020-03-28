@@ -36,7 +36,7 @@
             outlined
             color="indigo"
             large
-            to="/onboarding"
+            to="/select"
           >
             Los geht's
           </v-btn>

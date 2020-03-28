@@ -27,8 +27,8 @@
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
+                v-model="user.firstname"
                 type="text"
-                :value="user.firstname"
                 hide-details="auto"
                 outlined
                 tile
@@ -39,8 +39,8 @@
             </v-col>
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
+                v-model="user.lastname"
                 type="text"
-                :value="user.lastname"
                 hide-details="auto"
                 outlined
                 tile
@@ -53,8 +53,8 @@
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
+                v-model="user.email"
                 type="text"
-                :value="user.email"
                 hide-details="auto"
                 outlined
                 tile
@@ -101,8 +101,8 @@
           <v-row justify="center">
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
+                v-model="company.name"
                 type="text"
-                :value="company.company_name"
                 hide-details="auto"
                 outlined
                 tile
@@ -113,8 +113,8 @@
             </v-col>
             <v-col cols="12" sm="6" xl="5">
               <v-text-field
+                v-model="company.crnumber"
                 type="text"
-                :value="company.company_registry_number"
                 hide-details="auto"
                 outlined
                 tile
@@ -148,10 +148,10 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="12" sm="4" xl="3">
+            <v-col cols="12" sm="4">
               <v-text-field
+                v-model="company.payment.paypal"
                 type="text"
-                :value="company.payment.paypal"
                 hide-details="auto"
                 outlined
                 tile
@@ -160,10 +160,10 @@
                 class="required"
               />
             </v-col>
-            <v-col cols="12" sm="4" xl="3">
+            <v-col cols="12" sm="4">
               <v-text-field
+                v-model="company.payment.gofoundme"
                 type="text"
-                :value="company.payment.gofoundme"
                 hide-details="auto"
                 outlined
                 tile
@@ -172,15 +172,60 @@
                 class="required"
               />
             </v-col>
-            <v-col cols="12" sm="4" xl="4">
+            <v-col cols="12" sm="4">
               <v-text-field
+                v-model="company.payment.iban"
                 type="text"
-                :value="company.payment.iban"
                 hide-details="auto"
                 outlined
                 tile
                 color="#000"
                 label="IBAN"
+                class="required"
+              />
+            </v-col>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="12" xl="10">
+              <h2 class="title font-weight-bold mt-10">
+                Social Media
+              </h2>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="12" sm="4">
+              <v-text-field
+                v-model="company.links.facebook"
+                type="text"
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="Facebook"
+                class="required"
+              />
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-text-field
+                v-model="company.links.instagram"
+                type="text"
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="Instagram"
+                class="required"
+              />
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-text-field
+                v-model="company.links.website"
+                type="text"
+                hide-details="auto"
+                outlined
+                tile
+                color="#000"
+                label="Website"
                 class="required"
               />
             </v-col>
@@ -207,11 +252,11 @@
                 Persönliches Anschreiben
               </h2>
               <v-textarea
+                v-model="company.notes"
                 auto-grow
                 outlined
-                :value="company.desc"
                 rows="7"
-                label="Dein Wort an die Community"
+                label="Deine Worte an die Community"
                 class="mt-6"
                 hint="Max. 500 Zeichen"
               />
@@ -281,12 +326,12 @@ export default {
       profileImage: {
         alt: 'User Profilbild',
         src: require('~/assets/shoutout-user-profilbild.png'),
-        id: ''
+        key: ''
       },
       companyImage: {
         alt: 'Profilbild',
         src: require('~/assets/shoutout-profilbild-platzhalter.jpg'),
-        id: ''
+        key: ''
       },
       user: {
         firstname: '',
@@ -294,14 +339,26 @@ export default {
         email: ''
       },
       company: {
-        company_name: '',
-        company_registry_number: '',
-        adresse: '',
+        name: '',
         category: '',
+        notes: '',
+        crnumber: '',
+        address: {
+          postcode: '',
+          city: '',
+          street: '',
+          streetnumber: ''
+        },
         payment: {
           paypal: '',
           gofoundme: '',
           iban: ''
+        },
+        links: {
+          website: '',
+          facebook: '',
+          twitter: '',
+          instagram: ''
         }
       }
     }
@@ -314,23 +371,57 @@ export default {
       return Object.keys(this.categories)
     }
   },
+  mounted () {
+    if (Object.keys(this.$store.state.company).length) {
+      this.company = this.$store.state.company
+    }
+  },
   methods: {
     getAddressData (place) {
-      const currentPlace = {
-        coords: {
-          latitude: place.latitude,
-          longitude: place.longitude
-        }
-      }
-      this.$store.dispatch('setLocation', currentPlace)
+      this.company.latitude = place.latitude
+      this.company.longitude = place.longitude
+      this.company.address.city = place.administrative_area_level_2
+      this.company.address.steet = place.route
+      this.company.address.postcode = place.postal_code
+      this.company.address.streetnumber = place.street_number
     },
     updateInfo () {
       try {
-        this.$store.dispatch('setCompany', {
-
+        this.$store.dispatch('setCompany', this.company)
+        this.$store.dispatch('postCompany', {
+          name: this.company.name,
+          title: this.company.name,
+          category: this.company.category,
+          postcode: this.company.address.postcode,
+          city: this.company.address.city,
+          street: this.company.address.street,
+          streetnumber: this.company.address.streetnumber,
+          latitude: this.company.latitude,
+          longitude: this.company.longitude,
+          picturekey: this.companyImage.key,
+          keepertoken: this.$store.state.user.gid,
+          properties: {
+            description: this.company.notes,
+            crnumber: this.company.crnumber,
+            notes: this.company.notes,
+            payment: {
+              paypal: this.company.payment.paypal,
+              gofoundme: this.company.payment.gofoundme,
+              bank: {
+                owner: `${this.user.firstname} ${this.user.lastname}`,
+                iban: this.company.payment.iban
+              }
+            },
+            links: {
+              website: this.company.links.website,
+              facebook: this.company.links.facebook,
+              twitter: this.company.links.twitter,
+              instagram: this.company.links.instagram
+            }
+          }
         })
       } catch {
-
+        this.failure = 'Es ist leider ein Fehler bei der Datenübertragung aufgreteten. Bitte überprüfe deine Eingaben sowie deine Internetverbindung.'
       }
     }
   }

@@ -71,14 +71,13 @@
 <script>
 
 import Donation from '~/components/Donation'
+import endpoints from '~/store/utils/endpoints.js'
 
 export default {
   async validate ({ params, store }) {
-    const { companies } = store.state
+    let { companies } = store.state
     if (companies.length === 0) {
-      const companies = await fetch('https://savethekiez.herokuapp.com/api/v1/companies.json')
-      const parsedCompanies = await companies.json()
-      return parsedCompanies.find(el => el.slug === params.company)
+      companies = await this.$axios.$get(endpoints.GET_COMPANIES_ENDPOINT)
     }
     return companies.find(el => el.slug === params.company)
   },

@@ -1,5 +1,6 @@
 const endpoints = {
   INITIAL_ENDPOINT: 'load.json',
+  GET_COMPANIES_ENDPOINT: 'companies.json',
   ADD_COMPANY_ENDPOINT: 'companies/add',
   EDIT_COMPANY_ENDPOINT: 'companies/edit',
   LOGIN_ENDPOINT: 'members/login',

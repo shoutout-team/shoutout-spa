@@ -12,7 +12,7 @@ export const state = () => ({
   companies: [],
   categories: {},
   user: {},
-  company_gid: '',
+  company: {},
   company_request: null,
   login_request: null
 })
@@ -40,10 +40,13 @@ export const mutations = {
     state.login_request = payload
   },
   setCompany (state, payload) {
-    state.company_gid = payload
+    state.company = { payload, gid: state.company.gid }
   },
   setCompanyRequest (state, payload) {
     state.company_request = payload
+  },
+  setCompanyGid (state, payload) {
+    state.company = { ...state.company, gid: payload }
   }
 }
 
@@ -73,20 +76,22 @@ export const actions = {
       commit('setLoginRequest', 'failed')
     }
   },
-
-  async setCompany ({ commit, state }, payload) {
+  setCompany ({ commit }, payload) {
+    commit('setCompany', payload)
+  },
+  async postCompany ({ commit, state }, payload) {
     commit('setCompanyRequest', 'pending')
     if (!Object.keys(this.state.company).length) {
       try {
-        const response = await this.$axios.$post(endpoints.ADD_COMPANY_ENDPOINT, { user: payload })
-        commit('setCompany', response.gid)
+        const response = await this.$axios.$post(endpoints.ADD_COMPANY_ENDPOINT, { company: payload })
+        commit('setCompanyGid', response.gid)
         commit('setCompanyRequest', 'success')
       } catch (err) {
         commit('setCompanyRequest', 'failed')
       }
     } else {
       try {
-        const response = await this.$axios.$post(endpoints.EDIT_COMPANY_ENDPOINT, { user: payload })
+        const response = await this.$axios.$post(endpoints.EDIT_COMPANY_ENDPOINT, { company: payload })
         commit('setCompany', response.gid)
         commit('setCompanyRequest', 'success')
       } catch (err) {

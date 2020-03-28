@@ -67,6 +67,9 @@ export default {
       return this.$store.state.loading
     }
   },
+  mounted () {
+    this.$store.dispatch('setLoading', false)
+  },
   methods: {
     setMaxDistance (payload) {
       this.maxDistance = payload

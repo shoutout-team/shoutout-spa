@@ -14,7 +14,7 @@ export default {
         this[key] = {
           ...this[key],
           src: content,
-          id: response
+          key: response
         }
       } catch {
         this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2mb beträgt.'

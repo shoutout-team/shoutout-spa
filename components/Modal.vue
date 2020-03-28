@@ -4,8 +4,8 @@
       <v-col cols="12" md="8">
         <div class="modal__bg">
           <div class="modal__image-wrapper">
-            <v-img :src="require('~/assets/shoutout-tape.png')" alt="Shoutout" />
-            <h1 class="modal__title display-2">
+            <v-img :src="require('~/assets/shoutout-tape-complete.png')" alt="Shoutout" />
+            <h1 class="modal__title">
               {{ title }}
             </h1>
           </div>
@@ -66,13 +66,16 @@ export default {
   }
 
   &__title {
+    font-family: 'theRambler';
     position: absolute;
-    top: 5px;
-    right: 30px;
+    font-size: 3.3rem;
+    top: -3px;
+    left: 65px;
   }
 
   &__link {
     text-decoration: underline;
+    cursor: pointer;
   }
 }
 </style>

@@ -19,7 +19,7 @@
             <v-row justify="center">
               <v-col cols="12" xl="10">
                 <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
-                  <h1 class="display-1 font-weight-black pt-3">
+                  <h1 class="edit-company__title font-weight-black pt-3">
                     Dein Profil
                   </h1>
                 </v-img>
@@ -379,6 +379,14 @@ export default {
       .edit-company__upload-icon {
         transform: translate(-50%, -50%) scale(1.1);
       }
+    }
+  }
+
+  .edit-company {
+    &__title {
+      font-family: 'theRambler';
+      position: absolute;
+      font-size: 3.3rem;
     }
   }
 

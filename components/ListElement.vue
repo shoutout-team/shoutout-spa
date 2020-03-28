@@ -117,7 +117,6 @@ export default {
   &:hover {
     .list-element__wrapper {
       transition: transform 200ms ease;
-      transform: scale(1.005);
     }
 
     .list-element__img-inner {

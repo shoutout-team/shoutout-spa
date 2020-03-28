@@ -1,18 +1,22 @@
 <template>
   <v-container>
-    <v-row align="end">
-      <ListElement
-        v-for="company in sortedCompanys"
-        :key="company.id"
-        class="mb-2"
-        :headline="company.title"
-        :category="company.category"
-        :street="company.street"
-        :city="company.city"
-        :hnr="company.street_number"
-        :distance="company.distance"
-        :link="company.slug"
-      />
+    <v-row justify="center" no-gutters>
+      <v-col cols="12" xl="10">
+        <v-row justify="start" align="end">
+          <ListElement
+            v-for="company in sortedCompanys"
+            :key="company.id"
+            class="mb-2"
+            :headline="company.title"
+            :category="company.category"
+            :street="company.street"
+            :city="company.city"
+            :hnr="company.street_number"
+            :distance="company.distance"
+            :link="company.slug"
+          />
+        </v-row>
+      </v-col>
     </v-row>
   </v-container>
 </template>

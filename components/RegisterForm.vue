@@ -73,37 +73,33 @@
           />
         </v-col>
       </v-row>
-      <v-row justify="center">
-        <v-col cols="12" xl="10">
-          <h2 class="title font-weight-bold mt-7">
-            Infos zum Unternehmen
-          </h2>
-        </v-col>
-      </v-row>
-      <v-row justify="center">
+      <v-row justify="start">
         <v-col cols="12" sm="6" xl="5">
-          <v-text-field
-            v-model="user.company_name"
-            type="text"
-            hide-details="auto"
-            outlined
-            tile
-            color="#000"
-            label="Name des Unternehmens"
-            class="required"
-          />
-        </v-col>
-        <v-col cols="12" sm="6" xl="5">
-          <v-text-field
-            v-model="user.company_registry_number"
-            type="text"
-            hide-details="auto"
-            outlined
-            tile
-            color="#000"
-            label="Handsregisternummer"
-            class="required"
-          />
+          <v-row d-flex class="align-baseline">
+            <v-badge
+              avatar
+              overlap
+              bottom
+              offset-x="25"
+              offset-y="25"
+              class="mr-7 ml-3"
+            >
+              <template v-slot:badge>
+                <v-avatar size="60" class="edit-company__profile-avatar">
+                  <v-img :src="Icon" />
+                </v-avatar>
+              </template>
+
+              <v-avatar size="70">
+                <v-img :src="avatarPicture">
+                  <input type="file" class="drop__input" @input="change($event, 'uploadAvatarPicture', 'user')">
+                </v-img>
+              </v-avatar>
+            </v-badge>
+            <p class="body-2 font-weight-bold">
+              Lade ein Portrait<br> von dir hoch
+            </p>
+          </v-row>
         </v-col>
       </v-row>
       <v-row justify="center" class="mt-6">
@@ -130,12 +126,18 @@
 </template>
 
 <script>
+import imageControllerMixin from '@/mixins/imageController.js'
 import endpoints from '@/store/utils/endpoints.js'
+import Image from '~/assets/shoutout-icon-upload.svg'
 export default {
+  mixins: [imageControllerMixin],
   data () {
     return {
+      Icon: Image,
       valid: false,
       failure: false,
+      fallbackAvatarPicture: require('~/assets/shoutout-user-profilbild.png'),
+      uploadAvatarPicture: '',
       user: {
         status: '',
         firstname: '',
@@ -168,6 +170,9 @@ export default {
           password: this.user.password
         }
       }
+    },
+    avatarPicture () {
+      return this.uploadAvatarPicture || this.$store.state.user.avatar_url || this.fallbackAvatarPicture
     }
   },
   methods: {
@@ -183,3 +188,12 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.drop {
+  &__input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>

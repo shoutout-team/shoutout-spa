@@ -47,7 +47,7 @@ export default {
 .modal {
   margin-top: 120px;
   background-color: #fff;
-  height: 100vh;
+  height: calc(100vh - 120px);
 
   &__bg {
     position: relative;
@@ -55,6 +55,7 @@ export default {
     padding: 80px 30px;
     margin-bottom: 50px;
     margin-right: -10px;
+
   }
 
   &__image-wrapper {

@@ -88,7 +88,7 @@ export default {
   watch: {
     loginRequest (value) {
       if (value === 'success') {
-        this.$router.push({ path: '/overview' })
+        this.$router.push({ path: '/edit-company' })
       }
     }
   },

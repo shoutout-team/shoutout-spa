@@ -93,7 +93,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row justify="center">
+    <v-row v-if="isCompanyPreview" justify="center">
       <v-col cols="12" xl="10">
         <v-row justify="space-between">
           <v-col cols="12" sm="5" md="4" offset-md="1" offset-lg="2">
@@ -117,6 +117,27 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-row v-else justify="center">
+      <v-col
+        cols="12"
+        sm="12"
+        md="10"
+        lg="8"
+        xl="7"
+      >
+        <v-btn
+          color="black"
+          depressed
+          dark
+          nuxt
+          to="/info-control"
+          height="40px"
+          class="text-capitalize"
+        >
+          Zurück
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -133,6 +154,11 @@ export default {
     company: {
       type: Object,
       required: true
+    },
+    isCompanyPreview: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {

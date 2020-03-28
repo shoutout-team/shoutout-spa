@@ -1,10 +1,14 @@
 <template>
-  <v-container class="pa-3">
-    <h2 class="headline mb-3">
+  <v-container class="infobox pa-5">
+    <h2 class="infobox__title">
       {{ company.name }}
     </h2>
-    <p>{{ cutDesc }}</p>
-    <v-btn nuxt :to="`/${company.slug}`">
+    <p class="infobox__category subtitle-1">{{ company.category }}</p>
+    <p class="infobox__address">
+      {{ company.street }} {{ company.street_number }} <br>
+      {{ company.postcode }} {{ company.city }}
+    </p>
+    <v-btn color="#000" dark outlined nuxt :to="`/${company.slug}`">
       Zum Profil
     </v-btn>
   </v-container>
@@ -18,11 +22,27 @@ export default {
       type: Object,
       default: () => {}
     }
-  },
-  computed: {
-    cutDesc () {
-      return `${this.company.properties.description.substring(1, 200)}...`
-    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.infobox {
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin-bottom: 0px;
+    font-family: "IBM Plex Mono", "monospace";
+  }
+
+  &__category {
+    text-transform: capitalize;
+    margin-bottom: 12px;
+  }
+
+  &__address {
+    line-height: 1.3;
+  }
+}
+
+</style>

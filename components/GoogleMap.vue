@@ -6,7 +6,7 @@
     <gmap-map
       :center="center"
       :zoom="zoom"
-      style="width:100%;  height: 100vh;"
+      style="width:100%;  height: 60vh;"
       :options="{
         zoomControl: true,
         mapTypeControl: true,
@@ -18,7 +18,7 @@
       }"
     >
       <gmap-info-window :options="infoWindow.infoOptions" :position="infoWindow.infoWindowPosition" :opened="infoWindow.infoWindowOpenStatus" @closeclick="infoWindow.infoWindowOpenStatus=false">
-        <geo-info-box v-if="activeCompany.id" :company="activeCompany" />
+        <geo-info-box v-if="activeCompany.gid" :company="activeCompany" />
       </gmap-info-window>
       <gmap-marker
         v-for="(marker, index) in markers"
@@ -53,7 +53,7 @@ export default {
   },
   data () {
     return {
-      activeCompany: { id: null },
+      activeCompany: { gid: null },
       places: [],
       infoWindow: {
         infoOptions: {
@@ -90,7 +90,7 @@ export default {
       const markerArray = []
       this.companies.filter(e => this.filterCategories.includes(e.category)).forEach((el) => {
         markerArray.push({
-          id: el.id,
+          gid: el.gid,
           icon: this.icons[el.category] || require('~/assets/bar-active.png'),
           position: { lat: Number(el.latitude), lng: Number(el.longitude) }
         })
@@ -119,11 +119,11 @@ export default {
     },
     toggleInfoWindow (marker) {
       this.infoWindow.infoWindowPosition = marker.position
-      if (this.activeCompany.id === marker.id) {
+      if (this.activeCompany.gid === marker.gid) {
         this.infoWindow.infoWindowOpenStatus = !this.infoWindow.infoWindowOpenStatus
       } else {
         this.infoWindow.infoWindowOpenStatus = true
-        const newActive = this.companies.find(el => el.id === marker.id)
+        const newActive = this.companies.find(el => el.gid === marker.gid)
         this.activeCompany = newActive
       }
     }

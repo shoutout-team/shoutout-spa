@@ -3,7 +3,7 @@
     <v-form
       v-model="valid"
       name="register-form"
-      class="validate"
+      class="validate register"
       novalidate
       @submit.prevent="signUp"
     >
@@ -84,15 +84,16 @@
               offset-y="25"
               class="mr-7 ml-3"
             >
-              <template v-slot:badge>
-                <v-avatar size="60" class="edit-company__profile-avatar">
+              <template v-slot:badge class="register__profile-avatar">
+                <v-avatar size="60">
                   <v-img :src="Icon" />
                 </v-avatar>
               </template>
 
               <v-avatar size="70">
-                <v-img :src="avatarPicture">
-                  <input type="file" class="drop__input" @input="change($event, 'uploadAvatarPicture', 'user')">
+                <v-img :src="avatarPicture" class="register__img">
+                  <input type="file" class="register__drop-input" @input="change($event, 'uploadAvatarPicture', 'user')">
+                  <v-progress-circular v-if="imageLoading" class="register__img-loader" indeterminate size="64" />
                 </v-img>
               </v-avatar>
             </v-badge>
@@ -135,6 +136,7 @@ export default {
     return {
       Icon: Image,
       valid: false,
+      imageLoading: false,
       failure: false,
       fallbackAvatarPicture: require('~/assets/shoutout-user-profilbild.png'),
       uploadAvatarPicture: '',
@@ -144,8 +146,7 @@ export default {
         lastname: '',
         email: '',
         password: '',
-        company_name: '',
-        company_registry_number: ''
+        avatar_key: ''
       },
       passwordRules: [
         v => !!v || 'Pflichtfeld',
@@ -167,7 +168,8 @@ export default {
         user: {
           name: `${this.user.firstname} ${this.user.lastname}`,
           email: this.user.email,
-          password: this.user.password
+          password: this.user.password,
+          avatar_key: this.user.avatar_key
         }
       }
     },
@@ -189,11 +191,29 @@ export default {
 }
 </script>
 <style lang="scss">
-.drop {
-  &__input {
+.register {
+  &__drop-input {
     opacity: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
+  }
+
+  &__img {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__img-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .v-badge__badge {
+    pointer-events: none;
+    cursor: pointer;
   }
 }
 </style>

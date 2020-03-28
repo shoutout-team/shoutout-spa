@@ -1,6 +1,11 @@
 <template>
-  <a>
-    <v-img width="100%" class="image" :alt="payment.type" :src="images[payment.type]" />
+  <a
+    v-bind="link"
+    @click="toggleIBAN"
+  >
+    <v-img v-if="!showIBAN" class="button" width="100%" :alt="payment.type" :src="images[payment.type]" />
+    <p v-if="payment.type === 'bank' && showIBAN" class="title">Name: {{ payment.paymentInfo.holder }}</p>
+    <p v-if="payment.type === 'bank' && showIBAN" class="title">IBAN: {{ payment.paymentInfo.iban }}</p>
   </a>
 </template>
 
@@ -14,15 +19,26 @@ export default {
       default: () => {}
     }
   },
-  mounted () {
-    console.log(this.payment)
-  },
   data () {
     return {
       mdiArrowRightThick,
       images: {
         paypal: require('~/assets/icon-paypal.png'),
-        gofoundme: require('~/assets/icon-gofundme.png')
+        gofoundme: require('~/assets/icon-gofundme.png'),
+        bank: require('~/assets/icon-gofundme.png')
+      },
+      showIBAN: false
+    }
+  },
+  computed: {
+    link () {
+      return this.payment.type !== 'bank' ? { href: this.payment.paymentInfo } : { disabled: true }
+    }
+  },
+  methods: {
+    toggleIBAN () {
+      if (this.payment.type === 'bank') {
+        this.showIBAN = !this.showIBAN
       }
     }
   }
@@ -30,7 +46,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.image {
-  width: 50%;
+.button {
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(0%, -25%) scale(1.2);
+  }
 }
 </style>

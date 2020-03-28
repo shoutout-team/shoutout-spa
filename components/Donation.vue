@@ -14,7 +14,7 @@
         </h1>
       </v-col>
     </v-row>
-    <v-row justify="center" v-for="(payment, key) in paymentsArray" :key="key" class="my-9">
+    <v-row justify="center" v-for="(payment, key) in paymentsArray" :key="key" class="py-7 my-3 payment__wrapper">
       <v-col cols="4" sm="3" md="2" lg="3" xl="2">
         <Donate-Element :payment="payment" />
       </v-col>
@@ -64,12 +64,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.donation {
-  position: relative;
 
-  &__list {
-    height: 100vh;
-  }
+.payment__wrapper {
+  background-color: #F6F6F6;
 }
 
 .donation-icon {

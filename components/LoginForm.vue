@@ -36,11 +36,6 @@
           />
         </v-col>
       </v-row>
-      <v-row no-gutters>
-        <v-col>
-          <v-btn text nuxt to="resetpassword" color="#C3AA7D" class="px-0 text-none body-2">Password vergessen</v-btn>
-        </v-col>
-      </v-row>
       <v-row justify="center" class="mt-6">
         <v-col cols="12" xl="10">
           <p v-if="loginRequest === 'failed'">

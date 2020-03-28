@@ -28,7 +28,7 @@
           <v-col class="pb-4">
             <div class="list-element__img">
               <v-img
-                :src="`https://picsum.photos/450/300?random=${headline}`"
+                :src="image || `https://picsum.photos/450/300?random=${headline}`"
                 contain
                 height="100%"
                 class="list-element__img-outside"
@@ -93,6 +93,10 @@ export default {
     link: {
       type: String,
       default: '/'
+    },
+    image: {
+      type: String,
+      default: ''
     }
   },
   computed: {

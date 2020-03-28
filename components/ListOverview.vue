@@ -13,6 +13,7 @@
             :city="company.city"
             :hnr="company.street_number"
             :distance="company.distance"
+            :image="company.picture_url"
             :link="company.slug"
           />
         </v-row>
@@ -37,14 +38,21 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      limit: 24
+    }
+  },
   computed: {
     companysWithDistance () {
       const companysWithDistance = []
-      this.$store.state.companies.forEach((el) => {
-        companysWithDistance.push({
-          ...el,
-          distance: this.distance(el)
-        })
+      this.$store.state.companies.forEach((el, i) => {
+        if (!el.approved) {
+          companysWithDistance.push({
+            ...el,
+            distance: this.distance(el)
+          })
+        }
       })
       return companysWithDistance.filter((el) => {
         return el.distance < this.maxDistance &&
@@ -53,7 +61,7 @@ export default {
     },
     sortedCompanys () {
       const sorted = this.sortArrayByKey(this.companysWithDistance, 'distance')
-      return sorted
+      return sorted.slice(0, this.limit)
     }
   },
   methods: {

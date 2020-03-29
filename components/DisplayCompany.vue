@@ -154,7 +154,6 @@ export default {
   computed: {
     image () { return this.company.picture_url || 'https://picsum.photos/1300/300' },
     avatar () {
-      console.log(this.company.avatar_key)
       const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.company.keeper_avatar_key)
       if (!keeper) { return null }
       return keeper.avatar_url

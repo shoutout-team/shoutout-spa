@@ -9,7 +9,7 @@
       <v-row class="mb-12">
         <v-col cols="12" sm="4" lg="3">
           <p class="faq__headline">{{ headlineSupporter }}</p>
-          <v-img class="faq__image" :src="require('~/assets/faq-strich-helfer.png')" width="80%" />
+          <v-img class="faq__image" :src="require('~/assets/faq-strich-helfer.png')" width="270px" />
         </v-col>
         <v-col cols="12" sm="8" lg="8">
           <Accordion
@@ -23,7 +23,7 @@
       <v-row class="mb-12">
         <v-col cols="12" sm="4" lg="3">
           <p class="faq__headline">{{ headlineCompanys }}</p>
-          <v-img class="faq__image" :src="require('~/assets/faq-strich-unternehmen.png')" width="80%" />
+          <v-img class="faq__image" :src="require('~/assets/faq-strich-unternehmen.png')" width="310px" />
         </v-col>
         <v-col cols="12" sm="8" lg="8">
           <Accordion

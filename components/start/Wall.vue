@@ -1,11 +1,8 @@
 <template>
   <v-container class="wall__wrapper">
     <div class="wall">
-      <div
-        v-for="(cart, key) in content"
-        :key="key"
-      >
-        <slot :content="cart" />
+      <div>
+        <slot />
       </div>
     </div>
   </v-container>
@@ -13,12 +10,6 @@
 
 <script>
 export default {
-  props: {
-    content: {
-      type: Array,
-      required: true
-    }
-  }
 }
 </script>
 

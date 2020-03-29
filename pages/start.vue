@@ -1,17 +1,26 @@
 <template>
   <v-container>
     <forward-section />
-    <wall :content="cards">
-      <card />
+    <wall>
+      <card
+        v-for="(card, key) in cards"
+        :key="key"
+        :content="card"
+      />
     </wall>
-    <wall :content="socialCards">
-      <social-card />
+    <wall>
+      <social-card
+        v-for="(card, key) in socialCards"
+        :key="key"
+        :content="card"
+      />
     </wall>
     <Faq />
   </v-container>
 </template>
 
 <script>
+import ForwardSection from '@/components/start/ForwardSection.vue'
 import Wall from '@/components/start/Wall.vue'
 import Card from '@/components/start/card.vue'
 import SocialCard from '@/components/start/SocialCard.vue'
@@ -23,6 +32,7 @@ export default {
     Wall,
     Card,
     SocialCard,
+    ForwardSection,
     Faq
   },
   data () {
@@ -36,17 +46,17 @@ export default {
         {
           introductionStep: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
           headline: 'Registrieren',
-          number: 1
+          number: 2
         },
         {
           introductionStep: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
           headline: 'Registrieren',
-          number: 1
+          number: 3
         },
         {
           introductionStep: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
           headline: 'Registrieren',
-          number: 1
+          number: 4
         }
       ],
       socialCards: [

@@ -5,7 +5,9 @@ export default () => {
   Vue.use(VueGoogleMaps, {
     load: {
       key: process.env.GOOGLE_API_KEY,
-      libraries: 'places' // This is required if you use the Autocomplete plugin
+      libraries: 'places', // This is required if you use the Autocomplete plugin
+      region: 'DE',
+      language: 'DE'
       // OR: libraries: 'places,drawing'
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)

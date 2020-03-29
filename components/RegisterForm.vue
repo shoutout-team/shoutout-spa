@@ -73,8 +73,8 @@
           />
         </v-col>
       </v-row>
-      <v-row justify="start">
-        <v-col cols="12" sm="6" xl="5">
+      <v-row justify="center">
+        <v-col cols="12" xl="10">
           <v-row d-flex class="align-baseline">
             <v-badge
               avatar

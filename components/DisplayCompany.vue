@@ -44,8 +44,8 @@
                 <img v-if="index !== 'website'" :src="`/${index}.png`" height="14px" class="mr-5">
               </a>
             </div>
-            <p class="title">
-              {{ company.properties.notes }}
+            <p class="title notes">
+              {{ trimString(company.properties.notes) }}
             </p>
             <v-row>
               <v-col class="d-flex align-center mb-5">
@@ -117,7 +117,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row justify="center" v-else>
+    <v-row v-else justify="center">
       <v-col cols="12" xl="10">
         <v-row>
           <v-col
@@ -173,6 +173,11 @@ export default {
   },
   computed: {
     image () { return this.company.picture_url || 'https://picsum.photos/1300/300' }
+  },
+  methods: {
+    trimString (x) {
+      return x.replace(/^\s+|\s+$/gm, '')
+    }
   }
 }
 </script>
@@ -198,5 +203,9 @@ export default {
       font-size: 8vw;
     }
   }
+}
+
+.notes {
+  white-space: pre-line;
 }
 </style>

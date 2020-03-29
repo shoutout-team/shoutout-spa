@@ -1,11 +1,19 @@
 <template>
   <v-app light>
     <v-container>
-      <v-row justify="center">
+      <navigation-bar :status-nav="statusNav" toggle-nav="toggleStatus" />
+      <v-row>
         <v-col cols="12" xl="10">
-          <nuxt-link to="/">
-            <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
-          </nuxt-link>
+          <v-row align="center">
+            <v-col cols="6">
+              <nuxt-link to="/">
+                <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
+              </nuxt-link>
+            </v-col>
+            <v-col cols="6" class="d-flex justify-end">
+              <v-icon x-large @click="test">{{ mdiViewSequential }}</v-icon>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -31,9 +39,17 @@
 </template>
 
 <script>
+import { mdiViewSequential } from '@mdi/js'
+import NavigationBar from '@/components/NavigationBar'
+
 export default {
+  components: {
+    NavigationBar
+  },
   data () {
     return {
+      statusNav: false,
+      mdiViewSequential,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -67,6 +83,15 @@ export default {
   },
   mounted () {
     this.$store.dispatch('initialFetch')
+    this.$sentry.captureException(new Error('example'))
+  },
+  methods: {
+    test () {
+      this.statusNav = !this.statusNav
+    },
+    toggleStatus (value) {
+      this.statusNav = value
+    }
   }
 }
 </script>

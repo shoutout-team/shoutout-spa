@@ -3,7 +3,7 @@
     <v-form
       v-model="valid"
       name="register-form"
-      class="validate"
+      class="validate register"
       novalidate
       @submit.prevent="signUp"
     >
@@ -75,35 +75,32 @@
       </v-row>
       <v-row justify="center">
         <v-col cols="12" xl="10">
-          <h2 class="title font-weight-bold mt-7">
-            Infos zum Unternehmen
-          </h2>
-        </v-col>
-      </v-row>
-      <v-row justify="center">
-        <v-col cols="12" sm="6" xl="5">
-          <v-text-field
-            v-model="user.company_name"
-            type="text"
-            hide-details="auto"
-            outlined
-            tile
-            color="#000"
-            label="Name des Unternehmens"
-            class="required"
-          />
-        </v-col>
-        <v-col cols="12" sm="6" xl="5">
-          <v-text-field
-            v-model="user.company_registry_number"
-            type="text"
-            hide-details="auto"
-            outlined
-            tile
-            color="#000"
-            label="Handsregisternummer"
-            class="required"
-          />
+          <v-row d-flex class="align-baseline">
+            <v-badge
+              avatar
+              overlap
+              bottom
+              offset-x="25"
+              offset-y="25"
+              class="mr-7 ml-3"
+            >
+              <template v-slot:badge class="register__profile-avatar">
+                <v-avatar size="60">
+                  <v-img :src="Icon" />
+                </v-avatar>
+              </template>
+
+              <v-avatar size="70">
+                <v-img :src="avatarPicture" class="register__img">
+                  <input type="file" class="register__drop-input" @input="change($event, 'uploadAvatarPicture', 'user')">
+                  <v-progress-circular v-if="imageLoading" class="register__img-loader" indeterminate size="64" />
+                </v-img>
+              </v-avatar>
+            </v-badge>
+            <p class="body-2 font-weight-bold">
+              Lade ein Portrait<br> von dir hoch
+            </p>
+          </v-row>
         </v-col>
       </v-row>
       <v-row justify="center" class="mt-6">
@@ -130,20 +127,26 @@
 </template>
 
 <script>
+import imageControllerMixin from '@/mixins/imageController.js'
 import endpoints from '@/store/utils/endpoints.js'
+import Image from '~/assets/shoutout-icon-upload.svg'
 export default {
+  mixins: [imageControllerMixin],
   data () {
     return {
+      Icon: Image,
       valid: false,
+      imageLoading: false,
       failure: false,
+      fallbackAvatarPicture: require('~/assets/shoutout-user-profilbild.png'),
+      uploadAvatarPicture: '',
       user: {
         status: '',
         firstname: '',
         lastname: '',
         email: '',
         password: '',
-        company_name: '',
-        company_registry_number: ''
+        avatar_key: ''
       },
       passwordRules: [
         v => !!v || 'Pflichtfeld',
@@ -165,9 +168,13 @@ export default {
         user: {
           name: `${this.user.firstname} ${this.user.lastname}`,
           email: this.user.email,
-          password: this.user.password
+          password: this.user.password,
+          avatar_key: this.user.avatar_key
         }
       }
+    },
+    avatarPicture () {
+      return this.uploadAvatarPicture || this.$store.state.user.avatar_url || this.fallbackAvatarPicture
     }
   },
   methods: {
@@ -183,3 +190,30 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.register {
+  &__drop-input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__img {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__img-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .v-badge__badge {
+    pointer-events: none;
+    cursor: pointer;
+  }
+}
+</style>

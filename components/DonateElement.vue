@@ -1,20 +1,13 @@
 <template>
-  <v-flex class="justify-center my-12">
-    <v-btn
-      v-if="paymentType !== 'bank'"
-      icon
-      width="100%"
-      link
-      :href="paymentInfo[paymentType]"
-      target="_blank"
-    >
-      <v-img class="image" :alt="paymentType" :src="images[paymentType]" />
-    </v-btn>
-    <p v-if="paymentType === 'bank'" class="pt-7 text-center">
-      Name: <nobr>Max Mustermann</nobr> <br>
-      IBAN: <nobr>0011 1111 3333 3322</nobr>
-    </p>
-  </v-flex>
+  <a
+    v-bind="link"
+    target="_blank"
+    @click="toggleIBAN"
+  >
+    <v-img v-if="!showIBAN" class="button" width="100%" :alt="payment.type" :src="images[payment.type]" />
+    <p v-if="payment.type === 'bank' && showIBAN" class="title">Name: {{ payment.paymentInfo.holder }}</p>
+    <p v-if="payment.type === 'bank' && showIBAN" class="title">IBAN: {{ payment.paymentInfo.iban }}</p>
+  </a>
 </template>
 
 <script>
@@ -22,39 +15,43 @@ import { mdiArrowRightThick } from '@mdi/js'
 
 export default {
   props: {
-    paymentInfo: {
+    payment: {
       type: Object,
       default: () => {}
-    },
-    paymentType: {
-      type: String,
-      default: ''
     }
   },
   data () {
     return {
       mdiArrowRightThick,
-      paymentHeadlines: {
-        paypal: 'PayPal',
-        gofoundme: 'GoFundMe',
-        bank: 'Banküberweisung'
-      },
       images: {
         paypal: require('~/assets/icon-paypal.png'),
-        gofoundme: require('~/assets/icon-gofundme.png')
-      }
+        gofoundme: require('~/assets/icon-gofundme.png'),
+        bank: require('~/assets/icon-transaction.svg')
+      },
+      showIBAN: false
     }
   },
   computed: {
-    distanceWithUnit () {
-      return this.distance > 999 ? `${this.distance / 1000}km` : `${this.distance}m`
+    link () {
+      return this.payment.type !== 'bank' ? { href: this.payment.paymentInfo } : { disabled: true }
+    }
+  },
+  methods: {
+    toggleIBAN () {
+      if (this.payment.type === 'bank') {
+        this.showIBAN = !this.showIBAN
+      }
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.image {
-  width: 50%;
+.button {
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(0%, -25%) scale(1.2);
+  }
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <v-row cols="12" xl="10" class="mb-7">
-      <v-col>
-        <h1 class="display-2 font-weight-black mt-5" color="black">Welches Viertel darf es sein?</h1>
+    <v-row justify="center" class="mb-10">
+      <v-col cols="12" xl="10">
+        <h1 class="display-2 font-weight-black" color="black">Welches Viertel darf es sein?</h1>
       </v-col>
     </v-row>
-    <v-row cols="12" xl="10">
-      <v-col>
+    <v-row justify="center" class="mb-0">
+      <v-col cols="12" xl="10">
         <Filter-Companies
           @location="useLocation"
           @max-distance="setMaxDistance"
@@ -14,7 +14,7 @@
         />
       </v-col>
     </v-row>
-    <v-row>
+    <v-row justify="center">
       <v-col cols="12" xl="10" class="d-flex align-center">
         <v-btn class="mx-2 mt-4 mb-4" fab dark color="black" @click="listView = !listView">
           <v-icon color="white">
@@ -31,7 +31,11 @@
       :max-distance="maxDistance"
       :filter-categories="filterCategories"
     />
-    <Google-Map v-if="!listView" />
+    <v-row no-gutter justify="center">
+      <v-col cols="12" xl="10">
+        <Google-Map v-if="!listView" :filter-categories="filterCategories" :max-distance="maxDistance" />
+      </v-col>
+    </v-row>
     <v-overlay :value="loading">
       <v-progress-circular indeterminate size="64" />
     </v-overlay>
@@ -66,6 +70,9 @@ export default {
     loading () {
       return this.$store.state.loading
     }
+  },
+  mounted () {
+    this.$store.dispatch('setLoading', false)
   },
   methods: {
     setMaxDistance (payload) {

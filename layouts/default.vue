@@ -1,23 +1,28 @@
 <template>
   <v-app light>
     <v-container>
-      <v-row>
-        <v-col cols="12" xl="10">
+      <v-row justify="center" align="center">
+        <v-col cols="5" sm="3" xl="5">
           <nuxt-link to="/">
             <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
           </nuxt-link>
+        </v-col>
+        <v-col cols="7" sm="9" xl="5" class="text-right">
+          <v-btn class="font-weight-bold" text nuxt to="/overview">Übersicht</v-btn>
+          <v-btn class="font-weight-bold" text nuxt to="/signup">Für Unternehmen</v-btn>
+          <v-btn class="font-weight-bold" text nuxt to="/about-us">Über uns</v-btn>
         </v-col>
       </v-row>
     </v-container>
     <nuxt />
     <v-container>
-      <v-row no-gutters justify="center">
-        <v-col cols="1" lg="2" xl="1">
+      <v-row justify="center">
+        <v-col cols="6" xl="5">
           <a href="https://www.instagram.com/shoutout.jetzt/" target="_blank">
             <img src="/instagram.png" alt="facebook" class="share mr-8">
           </a>
         </v-col>
-        <v-col cols="11" lg="10" xl="9" class="text-right">
+        <v-col cols="6" xl="5" class="text-right">
           <v-btn text class="button" nuxt to="/impressum">
             Impressum
           </v-btn>
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -67,10 +73,19 @@ export default {
   },
   mounted () {
     this.$store.dispatch('initialFetch')
+    this.$sentry.captureException(new Error('example'))
+  },
+  methods: {
+    test () {
+      this.statusNav = !this.statusNav
+    },
+    toggleStatus (value) {
+      this.statusNav = value
+    }
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 .ly-header {
   max-height: 100px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="signup">
     <v-row justify="center">
       <v-col>
         <v-dialog v-model="modal" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -8,7 +8,7 @@
         <v-row justify="center">
           <v-col cols="12" xl="10">
             <v-img alt="shoutout tape" max-width="300px" :src="require('~/assets/shoutout-tape.png')">
-              <h1 class="display-1 font-weight-bold pt-3">
+              <h1 class="signup__title pt-3">
                 {{ headline }}
               </h1>
             </v-img>
@@ -65,6 +65,11 @@ export default {
       return this.status === 'new' ? 'Registrieren' : 'Melde dich an'
     }
   },
+  beforeMount () {
+    if (this.$store.state.user.gid) {
+      this.$router.replace('/edit-company')
+    }
+  },
   methods: {
     showModal () {
       window.scrollTo(0, 0)
@@ -77,3 +82,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.signup {
+  &__title {
+    font-family: 'theRambler';
+    font-weight: 500;
+    font-size: 4rem;
+    padding-left: 26px;
+    margin-top: -10px;
+  }
+}
+</style>

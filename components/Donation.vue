@@ -1,27 +1,25 @@
 <template>
-  <v-layout
-    justify-center
-    align-center
-    class="donation"
-  >
-    <v-icon color="#000" width="60" large class="donation-icon" @click="$emit('close')">
-      {{ mdiClose }}
-    </v-icon>
-    <v-flex class="donation__list mt-12">
-      <h1 class="text-center display-2 font-weight-bold">So kannst du spenden:</h1>
-      <v-flex
-        class="mt-6"
-        d-flex
-        flex-column
-        justify-space-around
-        align-center
-      >
-        <Donate-Element :payment-info="payments" payment-type="paypal" />
-        <Donate-Element :payment-info="payments" payment-type="gofoundme" />
-        <Donate-Element :payment-info="payments" payment-type="bank" />
-      </v-flex>
-    </v-flex>
-  </v-layout>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-icon color="#000" width="60" large class="donation-icon" @click="$emit('close')">
+          {{ mdiClose }}
+        </v-icon>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <h1 class="text-center display-2 font-weight-bold my-9">
+          So kannst du spenden:
+        </h1>
+      </v-col>
+    </v-row>
+    <v-row v-for="(payment, key) in paymentsArray" :key="key" justify="center" class="py-7 my-3 payment__wrapper">
+      <v-col cols="4" sm="3" md="2" lg="3" xl="2">
+        <Donate-Element :payment="payment" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -35,24 +33,40 @@ export default {
   props: {
     payments: {
       type: Object,
-      default: () => {}
+      required: true
     }
   },
   data () {
     return {
       mdiClose
     }
+  },
+  computed: {
+    paymentsArray () {
+      const tempArray = []
+      Object.keys(this.payments).forEach((e, index) => {
+        if (e === 'bank') {
+          tempArray.push({
+            type: e,
+            paymentInfo: this.payments[e]
+          })
+        } else {
+          tempArray.unshift({
+            type: e,
+            paymentInfo: this.payments[e]
+          })
+        }
+      })
+      return tempArray
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.donation {
-  position: relative;
 
-  &__list {
-    height: 100vh;
-  }
+.payment__wrapper {
+  background-color: #F6F6F6;
 }
 
 .donation-icon {

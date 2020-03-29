@@ -3,21 +3,25 @@ import endpoints from '~/store/utils/endpoints.js'
 export default {
   methods: {
     // upload Image
-    async change (e, key) {
+    async change (e, imageKey, objectKey) {
+      this.imageLoading = true
       const file = e.target.files[0]
+      const filename = file.name
       if (!file) { return }
       const content = await readFile(file)
       try {
-        const ep = key === 'companyImage' ? 'PICTURE_ENDPOINT' : 'AVATAR_ENDPOINT'
-        const response = await this.$axios.$post(endpoints[ep], { asset: content })
-        console.log(response)
-        this[key] = {
-          ...this[key],
-          src: content,
-          id: response
+        const ep = objectKey === 'company' ? 'PICTURE_ENDPOINT' : 'AVATAR_ENDPOINT'
+        const response = await this.$axios.$post(endpoints[ep], { asset: content, filename })
+        this[imageKey] = content
+        this[objectKey] = {
+          ...this[objectKey],
+          ...response
         }
+        this.imageLoading = false
+        this.changePicture = true
       } catch {
         this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2mb beträgt.'
+        this.imageLoading = false
       }
 
       // if (Array.isArray(this[storePlace])) {

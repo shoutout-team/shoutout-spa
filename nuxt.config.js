@@ -4,6 +4,9 @@ import colors from 'vuetify/es5/util/colors'
 require('dotenv').config()
 
 export default {
+  serverMiddleware: [
+    'redirect-ssl'
+  ],
   mode: 'universal',
 
   // server: {
@@ -22,12 +25,12 @@ export default {
     API_URL: process.env.API_URL
   },
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: 'Shoutout - Rette deine Lieblingsläden',
+    titleTemplate: 'Shoutout: Unterstütze kleine Geschäfte in deinem Viertel',
+    title: 'Shoutout: Unterstütze kleine Geschäfte in deinem Viertel',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'Shoutout bringt kleine Geschäfte und Unterstützer zusammen, um die Vielfalt in deinem Viertel zu bewahren. Finde Läden in deiner Nähe, die auf deinen Support angewiesen sind!' }
     ],
     link: [
       { rel: 'icon', href: '/favicon.png' },
@@ -68,15 +71,24 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/sentry'
   ],
 
+  sentry: {
+    dsn: process.env.SENTRY_AUTH_TOKEN,
+    config: {
+      debug: process.env.NODE_EV === 'development',
+      environment: process.env.NODE_EV,
+      release: 'shoutout@' + process.env.npm_package_version
+    }
+  },
   axios: {
     proxy: true,
     prefix: '/api/v1/'
   },
   proxy: {
-    '/api/v1/': { target: process.env.API_URL }
+    '/api/v1/': { target: process.env.API_URL || 'https://shoutout-app-api-preview.herokuapp.com' }
   },
   /*
   ** vuetify module configuration

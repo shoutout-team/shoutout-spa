@@ -206,6 +206,7 @@
               <v-col cols="12">
                 <p v-if="$store.state.company_edit_request === 'success'"> {{ editFeedback.success }}</p>
                 <p v-if="$store.state.company_edit_request === 'failed'"> {{ editFeedback.failed }}</p>
+                <nuxt-link v-if="$store.state.company_edit_request === 'success'" :to="`/${activeCompany.slug}`">Zu deiner Unternehmensseite</nuxt-link>
               </v-col>
             </v-row>
             <v-row class="align-baseline" justify="center">
@@ -340,18 +341,11 @@ export default {
   },
   watch: {
     activeCompany () {
-      if (Object.keys(this.activeCompany).length) {
-        this.company = JSON.parse(JSON.stringify(this.activeCompany))
-      }
+      this.setCompany()
     }
   },
-  created () {
-    this.$store.dispatch('setCompany', { keeper_token: this.$store.state.user.gid })
-  },
-  beforeMount () {
-    if (Object.keys(this.activeCompany).length) {
-      this.company = JSON.parse(JSON.stringify(this.activeCompany))
-    }
+  mounted () {
+    this.setCompany()
   },
   methods: {
     getAddressData (place) {
@@ -361,6 +355,11 @@ export default {
       this.company.street = place.route
       this.company.postcode = place.postal_code
       this.company.street_number = place.street_number
+    },
+    setCompany () {
+      if (Object.keys(this.activeCompany).length) {
+        this.company = JSON.parse(JSON.stringify(this.activeCompany))
+      }
     },
     updateInfo () {
       this.$store.dispatch('postCompany', {

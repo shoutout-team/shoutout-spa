@@ -96,10 +96,10 @@ export const actions = {
       }
     } else {
       try {
-        await this.$axios.$post(endpoints.EDIT_COMPANY_ENDPOINT, { company: payload })
-        dispatch('initialFetch')
+        const response = await this.$axios.$post(endpoints.EDIT_COMPANY_ENDPOINT, { company: payload })
         commit('setCompanyEditRequest', 'success')
-        dispatch('setCompany', { keeper_token: state.user.gid })
+        commit('setCompany', response.result)
+        dispatch('initialFetch')
       } catch (err) {
         commit('setCompanyEditRequest', 'failed')
       }

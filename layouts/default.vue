@@ -28,13 +28,13 @@
     </v-container>
     <nuxt />
     <v-container>
-      <v-row no-gutters justify="center">
-        <v-col cols="1" lg="2" xl="1">
+      <v-row justify="center">
+        <v-col cols="6" xl="5">
           <a href="https://www.instagram.com/shoutout.jetzt/" target="_blank">
             <img src="/instagram.png" alt="facebook" class="share mr-8">
           </a>
         </v-col>
-        <v-col cols="11" lg="10" xl="9" class="text-right">
+        <v-col cols="6" xl="5" class="text-right">
           <v-btn text class="button" nuxt to="/impressum">
             Impressum
           </v-btn>

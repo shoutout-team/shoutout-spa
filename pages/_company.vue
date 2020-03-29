@@ -12,7 +12,7 @@ export default {
   },
   async validate ({ params, store }) {
     let { companies } = store.state
-    if (companies.length === 0) {
+    if (!Object.keys(companies).length) {
       companies = await this.$axios.$get(endpoints.GET_COMPANIES_ENDPOINT)
     }
     return companies.find(el => el.slug === params.company)

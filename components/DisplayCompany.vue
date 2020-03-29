@@ -54,8 +54,8 @@
                 </v-avatar>
                 <v-row>
                   <v-col>
-                    <h2 class="title">{{ company.keeper__name }}</h2>
-                    <p class="body-2">Inhaber</p>
+                    <h2 class="title">{{ company.keeper_name }}</h2>
+                    <p class="body-2">Inhaber/in</p>
                   </v-col>
                 </v-row>
               </v-col>

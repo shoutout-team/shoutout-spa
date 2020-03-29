@@ -138,6 +138,7 @@ export default {
 
 <style scoped lang="scss">
 .faq {
+  margin-top: 120px;
   background-color: #eeede9;
 
   &__title {

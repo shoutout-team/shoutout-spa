@@ -27,7 +27,7 @@
           to="/overview"
           class="pa-7"
         >
-          Jetzt unterstützen
+          Jetzt supporten
         </v-btn>
       </v-col>
     </v-row>
@@ -45,7 +45,7 @@ export default {
     return {
       headline: 'Für Vierteilfreunde und Viertelhelden',
       subline: 'Shoutout ist die Plattform, die kleine Läden und Unterstützer zusammenbringt. Registriere dein Unternehmen oder supporte deinen Lieblingsladen.',
-      desc: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
+      desc: 'Du bist Bücherwurm, Bohnengourmet oder Hopfenkönig? Dann supporte jetzt dein Viertel. Suche deine Lieblingsläden und unterstütze was dir am Herzen liegt. Mit Spenden, mit Einfällen oder Reichweite.',
       img: {
         alt: 'fuer viertel freunde',
         src: require('~/assets/shoutout-splitscreen-2.jpg')

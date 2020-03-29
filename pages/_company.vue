@@ -11,9 +11,24 @@ export default {
   components: {
     DisplayCompany
   },
+  async asyncData ({ $axios, params, error }) {
+    const apiUrl = process.env.API_URL
+    const response = await $axios.$get(`${apiUrl}/api/v1/companies.json`)
+    const res = response.find(el => el.slug === params.company)
+    if (res) { return { company: res } } else {
+      error({ statusCode: 404, message: 'Seite nicht gefunden' })
+    }
+  },
   computed: {
-    company () {
-      return this.$store.state.companies.find(el => el.slug === this.$route.params.company)
+    initialFetchCompleted () {
+      return this.$store.state.initialFetchCompleted
+    }
+  },
+  watch: {
+    initialFetchCompleted (state) {
+      if (state && !this.company) {
+
+      }
     }
   }
 }

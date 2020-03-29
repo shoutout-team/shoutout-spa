@@ -87,6 +87,11 @@ export default {
   axios: {
     proxy: true,
     prefix: '/api/v1/'
+    // headers: {
+    //   common: {
+    //     'api-key': process.env.API_KEY
+    //   }
+    // }
   },
   proxy: {
     '/api/v1/': { target: process.env.API_URL || 'https://shoutout-app-api-preview.herokuapp.com' }

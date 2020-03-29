@@ -69,6 +69,10 @@ export default {
     if (this.$store.state.user.gid) {
       this.$router.replace('/edit-company')
     }
+
+    if (this.$route.params.status === 'login') {
+      this.status = 'recurring'
+    }
   },
   methods: {
     showModal () {

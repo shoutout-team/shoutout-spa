@@ -7,7 +7,13 @@
         </a>
       </v-col>
       <v-col cols="6" xl="5" class="text-right">
-        <v-btn v-if="!user" text class="footer__button" nuxt to="/signup">
+        <v-btn
+          v-if="!user"
+          text
+          class="footer__button"
+          nuxt
+          :to="{name: 'signup', params: { status: 'login' } }"
+        >
           Login
         </v-btn>
         <v-btn v-else text class="footer__button" @click="logout">

@@ -13,6 +13,7 @@ export const state = () => ({
   company: {},
   categories: {},
   user: {},
+  initialFetchCompleted: false,
   company_request: null,
   login_request: null,
   company_edit_request: null
@@ -48,6 +49,9 @@ export const mutations = {
   },
   setCompany (state, payload) {
     state.company = payload
+  },
+  initialFetchCompleted (state, payload) {
+    state.initialFetchCompleted = true
   }
 }
 
@@ -74,6 +78,7 @@ export const actions = {
     commit('setCompanies', response.companies)
     commit('setCategories', response.categories)
     commit('setKeepers', response.keepers)
+    commit('initialFetchCompleted', true)
   },
   async login ({ commit, dispatch }, payload) {
     commit('setLoginRequest', 'pending')

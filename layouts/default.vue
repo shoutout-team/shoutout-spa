@@ -1,8 +1,7 @@
 <template>
   <v-app light>
     <v-container>
-      <navigation-bar :status-nav="statusNav" toggle-nav="toggleStatus" />
-      <v-row>
+      <v-row justify="center">
         <v-col cols="12" xl="10">
           <v-row align="center">
             <v-col cols="6">
@@ -11,7 +10,17 @@
               </nuxt-link>
             </v-col>
             <v-col cols="6" class="d-flex justify-end">
-              <v-icon x-large @click="test">{{ mdiViewSequential }}</v-icon>
+              <v-row class="flex-column flex-sm-row">
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/overview">Übersicht</v-btn>
+                </v-col>
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/signup">Für Unternehmen</v-btn>
+                </v-col>
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/about-us">Über uns</v-btn>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-col>
@@ -39,17 +48,10 @@
 </template>
 
 <script>
-import { mdiViewSequential } from '@mdi/js'
-import NavigationBar from '@/components/NavigationBar'
 
 export default {
-  components: {
-    NavigationBar
-  },
   data () {
     return {
-      statusNav: false,
-      mdiViewSequential,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -95,7 +97,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 .ly-header {
   max-height: 100px;
 }

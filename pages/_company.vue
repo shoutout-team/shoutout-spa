@@ -12,10 +12,12 @@ export default {
   },
   async validate ({ params, store }) {
     let { companies } = store.state
-    if (!Object.keys(companies).length) {
+    if (!companies.length) {
       companies = await this.$axios.$get(endpoints.GET_COMPANIES_ENDPOINT)
+      return companies.find(el => el.slug === params.company)
+    } else {
+      return companies.find(el => el.slug === params.company)
     }
-    return companies.find(el => el.slug === params.company)
   },
   computed: {
     company () {

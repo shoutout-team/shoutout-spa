@@ -1,6 +1,7 @@
 <template>
   <a
     v-bind="link"
+    target="_blank"
     @click="toggleIBAN"
   >
     <v-img v-if="!showIBAN" class="button" width="100%" :alt="payment.type" :src="images[payment.type]" />

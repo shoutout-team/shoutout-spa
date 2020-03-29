@@ -1,23 +1,15 @@
 <template>
-  <display-company :company="company" />
+  <div>
+    <display-company v-if="company" :company="company" />
+  </div>
 </template>
 
 <script>
-import endpoints from '~/store/utils/endpoints.js'
 import DisplayCompany from '@/components/DisplayCompany.vue'
 
 export default {
   components: {
     DisplayCompany
-  },
-  async validate ({ params, store }) {
-    let { companies } = store.state
-    if (!companies.length) {
-      companies = await this.$axios.$get(endpoints.GET_COMPANIES_ENDPOINT)
-      return companies.find(el => el.slug === params.company)
-    } else {
-      return companies.find(el => el.slug === params.company)
-    }
   },
   computed: {
     company () {

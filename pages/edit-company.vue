@@ -82,7 +82,7 @@
               </v-col>
             </v-row>
             <v-row justify="center">
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
                   type="text"
@@ -94,7 +94,7 @@
                   class="required"
                 />
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.payment.gofoundme"
                   type="text"
@@ -106,7 +106,7 @@
                   class="required"
                 />
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="4">
                 <v-text-field
                   v-model="company.properties.payment.bank.iban"
                   type="text"
@@ -127,7 +127,7 @@
               </v-col>
             </v-row>
             <v-row justify="center">
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.links.facebook"
                   type="text"
@@ -139,7 +139,7 @@
                   class="required"
                 />
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.links.instagram"
                   type="text"
@@ -151,7 +151,7 @@
                   class="required"
                 />
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" xl="4">
                 <v-text-field
                   v-model="company.properties.links.website"
                   type="text"
@@ -203,7 +203,7 @@
               </v-col>
             </v-row>
             <v-row class="align-baseline" justify="center">
-              <v-col cols="12">
+              <v-col cols="12" xl="10">
                 <p v-if="$store.state.company_edit_request === 'success'"> {{ editFeedback.success }}</p>
                 <p v-if="$store.state.company_edit_request === 'failed'"> {{ editFeedback.failed }}</p>
                 <nuxt-link v-if="$store.state.company_edit_request === 'success'" :to="`/${activeCompany.slug}`">Zu deiner Unternehmensseite</nuxt-link>

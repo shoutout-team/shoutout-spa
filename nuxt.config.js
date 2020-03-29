@@ -35,7 +35,7 @@ export default {
     ],
     link: [
       { rel: 'icon', href: '/favicon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap' }, // font-family: 'IBM Plex Sans', sans-serif;
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,700&isplay=swap' }, // font-family: 'IBM Plex Sans', sans-serif;
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap' } // font-family: 'IBM Plex Mono', monospace;
     ]
   },

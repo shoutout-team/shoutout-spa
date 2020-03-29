@@ -55,8 +55,8 @@
               </p>
               <v-row>
                 <v-col class="d-flex align-center mb-5">
-                  <v-avatar size="90" class="mr-5">
-                    <v-img alt="profile photo" :src="require('~/assets/shoutout-user-profilbild.png')" />
+                  <v-avatar v-if="avatar" size="90" class="mr-5">
+                    <v-img alt="profile photo" :src="avatar" />
                   </v-avatar>
                   <v-row>
                     <v-col>
@@ -152,7 +152,13 @@ export default {
     }
   },
   computed: {
-    image () { return this.company.picture_url || 'https://picsum.photos/1300/300' }
+    image () { return this.company.picture_url || 'https://picsum.photos/1300/300' },
+    avatar () {
+      console.log(this.company.avatar_key)
+      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.company.keeper_avatar_key)
+      if (!keeper) { return null }
+      return keeper.avatar_url
+    }
   },
   mounted () {
     this.scrollTopTop()

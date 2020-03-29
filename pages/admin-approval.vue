@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'Start',
+  name: 'AdminApproval',
   data () {
     return {
       gid: ''

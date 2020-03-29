@@ -4,9 +4,9 @@
       <v-col cols="12" xl="10">
         <div class="img">
           <v-img
-            src="https://picsum.photos/1300/300"
+            :src="image"
             contain
-            height="100%"
+            height="300px"
             class="img__outside mr-4"
           />
           <v-img class="ml-auto img__inner" max-width="60%" max-height="60%" alt="tape" :src="require('@/assets/shoutout-tape.png')">
@@ -170,6 +170,9 @@ export default {
       showPayment: false,
       mdiFileDocumentEditOutline
     }
+  },
+  computed: {
+    image () { return this.company.picture_url || 'https://picsum.photos/1300/300' }
   }
 }
 </script>

@@ -133,7 +133,7 @@
                 depressed
                 dark
                 nuxt
-                to="/info-control"
+                to="/overview"
                 height="40px"
                 class="text-capitalize"
               >

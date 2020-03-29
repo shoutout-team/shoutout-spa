@@ -1,19 +1,6 @@
 <template>
   <v-app light>
-    <v-container>
-      <v-row justify="center" align="center">
-        <v-col cols="5" sm="3" xl="5">
-          <nuxt-link to="/">
-            <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
-          </nuxt-link>
-        </v-col>
-        <v-col cols="7" sm="9" xl="5" class="text-right">
-          <v-btn class="font-weight-bold" text nuxt to="/overview">Übersicht</v-btn>
-          <v-btn class="font-weight-bold" text nuxt to="/signup">Für Unternehmen</v-btn>
-          <v-btn class="font-weight-bold" text nuxt to="/about-us">Über uns</v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
+    <Header />
     <nuxt />
     <v-container>
       <v-row justify="center">
@@ -36,8 +23,9 @@
 </template>
 
 <script>
-
+import Header from '~/components/header.vue'
 export default {
+  components: { Header },
   data () {
     return {
       clipped: false,
@@ -86,12 +74,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.ly-header {
-  max-height: 100px;
-}
-.ly-logo {
-  width: 120px;
-}
 
 .ly-footer {
   margin-top: 50px;

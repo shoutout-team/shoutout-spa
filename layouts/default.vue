@@ -1,28 +1,16 @@
 <template>
   <v-app light>
     <v-container>
-      <v-row justify="center">
-        <v-col cols="12" xl="10">
-          <v-row align="center">
-            <v-col cols="6">
-              <nuxt-link to="/">
-                <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
-              </nuxt-link>
-            </v-col>
-            <v-col cols="6" class="d-flex justify-end">
-              <v-row class="flex-column flex-sm-row">
-                <v-col class="d-flex justify-end justify-sm-center">
-                  <v-btn class="font-weight-bold" depressed nuxt to="/overview">Übersicht</v-btn>
-                </v-col>
-                <v-col class="d-flex justify-end justify-sm-center">
-                  <v-btn class="font-weight-bold" depressed nuxt to="/signup">Für Unternehmen</v-btn>
-                </v-col>
-                <v-col class="d-flex justify-end justify-sm-center">
-                  <v-btn class="font-weight-bold" depressed nuxt to="/about-us">Über uns</v-btn>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
+      <v-row justify="center" align="center">
+        <v-col cols="5" sm="3" xl="5">
+          <nuxt-link to="/">
+            <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
+          </nuxt-link>
+        </v-col>
+        <v-col cols="7" sm="9" xl="5" class="text-right">
+          <v-btn class="font-weight-bold" text nuxt to="/overview">Übersicht</v-btn>
+          <v-btn class="font-weight-bold" text nuxt to="/signup">Für Unternehmen</v-btn>
+          <v-btn class="font-weight-bold" text nuxt to="/about-us">Über uns</v-btn>
         </v-col>
       </v-row>
     </v-container>

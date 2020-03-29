@@ -1,31 +1,36 @@
 <template>
-  <v-container class="modal pa-3">
-    <v-row justify="center">
-      <v-col cols="12" md="8">
-        <div class="modal__bg">
-          <div class="modal__image-wrapper">
-            <v-img :src="require('~/assets/shoutout-tape-complete.png')" alt="Shoutout" />
-            <h1 class="modal__title">
-              {{ title }}
-            </h1>
+  <div>
+    <Header />
+    <v-container class="modal pa-3">
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <div class="modal__bg">
+            <div class="modal__image-wrapper">
+              <v-img :src="require('~/assets/shoutout-tape-complete.png')" alt="Shoutout" />
+              <h1 class="modal__title">
+                {{ title }}
+              </h1>
+            </div>
+            <p class="display-2 modal__message font-weight-black">
+              {{ message }}
+            </p>
           </div>
-          <p class="display-2 modal__message font-weight-black">
-            {{ message }}
-          </p>
-        </div>
-        <div class="text-center">
-          <p class="modal__link title" @click="$emit('link')">
-            {{ link }}
-          </p>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+          <div class="text-center">
+            <p class="modal__link title" @click="$emit('link')">
+              {{ link }}
+            </p>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
+import Header from '~/components/header.vue'
 export default {
   name: 'Modal',
+  components: { Header },
   props: {
     title: {
       type: String,
@@ -45,9 +50,8 @@ export default {
 
 <style lang="scss">
 .modal {
-  margin-top: 120px;
   background-color: #fff;
-  height: calc(100vh - 120px);
+  height: 100vh;
 
   &__bg {
     position: relative;

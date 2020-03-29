@@ -336,7 +336,7 @@ export default {
       return this.$store.state.user
     },
     approval () {
-      return 'approval' in this.$store.state.company ? this.$store.state.company.approval : true
+      return 'approved' in this.$store.state.company ? this.$store.state.company.approved : true
     }
   },
   watch: {

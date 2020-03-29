@@ -98,7 +98,7 @@ export const actions = {
       try {
         const response = await this.$axios.$post(endpoints.EDIT_COMPANY_ENDPOINT, { company: payload })
         commit('setCompanyEditRequest', 'success')
-        commit('setCompany', response.result)
+        await commit('setCompany', response.result)
         dispatch('initialFetch')
       } catch (err) {
         commit('setCompanyEditRequest', 'failed')

@@ -62,8 +62,12 @@ export const actions = {
     commit('setCompanies', payload)
   },
   async setCompany ({ commit }, payload) {
-    const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
-    commit('setCompany', response.result)
+    try {
+      const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
+      commit('setCompany', response.result)
+    } catch {
+      console.log('User has no company')
+    }
   },
   async initialFetch ({ commit, dispatch }) {
     const response = await this.$axios.$get(endpoints.INITIAL_ENDPOINT)
@@ -81,6 +85,10 @@ export const actions = {
     } catch (err) {
       commit('setLoginRequest', 'failed')
     }
+  },
+  logout ({ commit }) {
+    commit('setUser', {})
+    commit('setCompany', {})
   },
   async postCompany ({ commit, state, dispatch }, payload) {
     commit('setCompanyRequest', 'pending')

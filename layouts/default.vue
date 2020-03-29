@@ -2,30 +2,15 @@
   <v-app light>
     <Header />
     <nuxt />
-    <v-container>
-      <v-row justify="center">
-        <v-col cols="6" xl="5">
-          <a href="https://www.instagram.com/shoutout.jetzt/" target="_blank">
-            <img src="/instagram.png" alt="facebook" class="share mr-8">
-          </a>
-        </v-col>
-        <v-col cols="6" xl="5" class="text-right">
-          <v-btn text class="button" nuxt to="/impressum">
-            Impressum
-          </v-btn>
-          <v-btn text class="button" nuxt to="/datenschutz">
-            Datenschutz
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Header from '~/components/header.vue'
+import Footer from '~/components/footer.vue'
 export default {
-  components: { Header },
+  components: { Header, Footer },
   data () {
     return {
       clipped: false,
@@ -64,22 +49,9 @@ export default {
     this.$sentry.captureException(new Error('example'))
   },
   methods: {
-    test () {
-      this.statusNav = !this.statusNav
-    },
     toggleStatus (value) {
       this.statusNav = value
     }
   }
 }
 </script>
-<style lang="scss" scoped>
-
-.ly-footer {
-  margin-top: 50px;
-  height: 50px;
-}
-.button {
-  color: black;
-}
-</style>

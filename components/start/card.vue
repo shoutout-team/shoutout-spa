@@ -2,11 +2,11 @@
   <v-container>
     <div class="card__wrapper px-3 my-5">
       <v-img width="50px" class="text-center card__img" alt="circle" :src="require('@/assets/circle.png')">
-        <p class="card__text">{{ number }}</p>
+        <p class="card__text">{{ content.number }}</p>
       </v-img>
-      <p class="mt-7 body-1 font-weight-black">{{ introductionStep }}</p>
-      <v-img class="mt-12 text-center card__img--bottom" width="100%" alt="stripe" :src="require('@/assets/shoutout-tape-complete.png')">
-        <p class="card__text card__text--theRambler">{{ headline }}</p>
+      <p class="mt-7 mb-0 body-1 font-weight-black">{{ content.ntroductionStep }}</p>
+      <v-img class="text-center card__img--bottom" width="100%" alt="stripe" :src="require('@/assets/shoutout-tape-complete.png')">
+        <p class="card__text card__text--theRambler">{{ content.headline }}</p>
       </v-img>
     </div>
   </v-container>
@@ -14,11 +14,10 @@
 
 <script>
 export default {
-  data () {
-    return {
-      introductionStep: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
-      headline: 'Registrieren',
-      number: 1
+  props: {
+    content: {
+      type: Object,
+      default: () => {}
     }
   }
 }
@@ -27,6 +26,7 @@ export default {
 <style scoped lang="scss">
 .card__wrapper {
   background-color: rgba($color: #ebebeb, $alpha: 1.0);
+  width: 330px;
 }
 
 .card {

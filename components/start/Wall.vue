@@ -1,26 +1,34 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col
-        v-for="(card, key) in 5"
+  <v-container class="wall__wrapper">
+    <div class="wall">
+      <div
+        v-for="(cart, key) in content"
         :key="key"
-        cols="12"
-        sm="6"
-        md="6"
-        lg="4"
       >
-        <card />
-      </v-col>
-    </v-row>
+        <slot :content="cart" />
+      </div>
+    </div>
   </v-container>
 </template>
 
 <script>
-import Card from '@/components/start/card.vue'
-
 export default {
-  components: {
-    Card
+  props: {
+    content: {
+      type: Array,
+      required: true
+    }
   }
 }
 </script>
+
+<style scoped>
+.wall__wrapper {
+  overflow: scroll;
+}
+.wall {
+  display: flex;
+  flex-wrap: unset;
+  width: 100%;
+}
+</style>

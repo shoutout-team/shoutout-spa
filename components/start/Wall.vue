@@ -1,9 +1,7 @@
 <template>
   <v-container class="wall__wrapper">
     <div class="wall">
-      <div>
-        <slot />
-      </div>
+      <slot />
     </div>
   </v-container>
 </template>

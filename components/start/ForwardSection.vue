@@ -44,7 +44,7 @@ export default {
   data () {
     return {
       headline: 'Für Vierteilfreunde und Viertelhelden',
-      subline: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und ',
+      subline: 'Shoutout ist die Plattform, die kleine Läden und Unterstützer zusammenbringt. Registriere dein Unternehmen oder supporte deinen Lieblingsladen.',
       desc: 'dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden dummy dummy dummy Für Vierteilfreunde und Viertelhelden',
       img: {
         alt: 'fuer viertel freunde',

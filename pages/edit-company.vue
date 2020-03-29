@@ -3,6 +3,9 @@
     <v-dialog :value="!Object.keys(activeUser).length" fullscreen hide-overlay transition="dialog-bottom-transition">
       <Modal :title="fallBackModal.title" :message="fallBackModal.message" :link="fallBackModal.link.title" @link="toLogin" />
     </v-dialog>
+    <v-dialog :value="preview" fullscreen hide-overlay transition="dialog-bottom-transition">
+      <DisplayCompany :company="previewCompany" :is-company-preview="true" @close="preview = false" />
+    </v-dialog>
     <v-dialog :value="!approval" fullscreen hide-overlay transition="dialog-bottom-transition">
       <Modal :title="successModal.title" :message="successModal.message" :link="successModal.link.title" @link="toOverview" />
     </v-dialog>
@@ -23,6 +26,13 @@
                     Dein Profil
                   </h1>
                 </v-img>
+              </v-col>
+            </v-row>
+            <v-row class="align-baseline" justify="center">
+              <v-col v-if="$store.state.company_edit_request" cols="12" xl="10" class="edit-company__feedback">
+                <p v-if="$store.state.company_edit_request === 'success'"> {{ editFeedback.success }}</p>
+                <p v-if="$store.state.company_edit_request === 'failed'"> {{ editFeedback.failed }}</p>
+                <nuxt-link v-if="$store.state.company_edit_request === 'success'" :to="`/${activeCompany.slug}`">Zu deiner Unternehmensseite</nuxt-link>
               </v-col>
             </v-row>
             <v-row justify="center">
@@ -202,22 +212,10 @@
                 {{ failure }}
               </v-col>
             </v-row>
-            <v-row class="align-baseline" justify="center">
-              <v-col cols="12" xl="10">
-                <p v-if="$store.state.company_edit_request === 'success'"> {{ editFeedback.success }}</p>
-                <p v-if="$store.state.company_edit_request === 'failed'"> {{ editFeedback.failed }}</p>
-                <nuxt-link v-if="$store.state.company_edit_request === 'success'" :to="`/${activeCompany.slug}`">Zu deiner Unternehmensseite</nuxt-link>
-              </v-col>
-            </v-row>
-            <v-row class="align-baseline" justify="center">
+            <v-row class="align-center" justify="center">
               <v-col cols="12" sm="6" xl="5">
-                <v-btn
-                  nuxt
-                  to="/"
-                  depressed
-                  width="100%"
-                >
-                  <v-avatar color="black" size="70" class="mr-5">
+                <div class="edit-company__preview-button d-flex" @click="openPreview">
+                  <v-avatar color="black" size="60" class="mr-5">
                     <v-icon size="40" color="white">
                       {{ mdiEye }}
                     </v-icon>
@@ -225,7 +223,7 @@
                   <p class="body-2 font-weight-bold">
                     Vorschau deiner Unternehmensseite
                   </p>
-                </v-btn>
+                </div>
               </v-col>
               <v-col cols="12" sm="6" xl="5" class="my-12">
                 <v-btn
@@ -254,15 +252,18 @@ import Modal from '~/components/Modal.vue'
 import imageControllerMixin from '@/mixins/imageController.js'
 import Image from '~/assets/shoutout-icon-upload.svg'
 import AddressAutocomplete from '@/components/AddressAutocomplete.vue'
+import DisplayCompany from '@/components/DisplayCompany.vue'
 
 export default {
   components: {
     AddressAutocomplete,
-    Modal
+    Modal,
+    DisplayCompany
   },
   mixins: [imageControllerMixin],
   data () {
     return {
+      preview: false,
       Icon: Image,
       mdiEye,
       imageLoading: false,
@@ -337,6 +338,12 @@ export default {
     },
     approval () {
       return 'approved' in this.$store.state.company ? this.$store.state.company.approved : true
+    },
+    previewCompany () {
+      return {
+        ...this.company,
+        picture_url: this.companyPicture
+      }
     }
   },
   watch: {
@@ -344,8 +351,13 @@ export default {
       this.setCompany()
     }
   },
-  mounted () {
+  beforeMount () {
+    this.$store.commit('setCompanyRequest', null)
+    this.$store.commit('setCompanyEditRequest', null)
     this.setCompany()
+    if (this.activeUser.gid) {
+      this.$store.dispatch('setCompany', { keeper_token: this.activeUser.gid })
+    }
   },
   methods: {
     getAddressData (place) {
@@ -362,12 +374,18 @@ export default {
       }
     },
     updateInfo () {
+      if (process.client) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
       this.$store.dispatch('postCompany', {
         ...this.company,
         title: this.company.name,
         keeper_token: this.$store.state.user.gid,
         change_picture: this.changePicture
       })
+    },
+    openPreview () {
+      this.preview = true
     },
     toLogin () {
       this.$router.push({ path: this.fallBackModal.link.url })
@@ -390,6 +408,15 @@ export default {
 .edit-company {
   &__select {
     text-transform: capitalize;
+  }
+
+  &__feedback {
+    margin: 20px 0;
+    background-color: #000;
+    color: #fff;
+    a {
+      color: #fff;
+    }
   }
 
   &__upload {
@@ -425,6 +452,15 @@ export default {
     transform: translate(-50%, -50%);
     transition: transform 200ms ease;
     pointer-events: none;
+  }
+
+  &__preview-button {
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      margin: 0
+    }
   }
 
   &__upload-loader {

@@ -13,6 +13,7 @@ export const state = () => ({
   company: {},
   categories: {},
   user: {},
+  initialFetchCompleted: false,
   company_request: null,
   login_request: null,
   company_edit_request: null
@@ -48,6 +49,9 @@ export const mutations = {
   },
   setCompany (state, payload) {
     state.company = payload
+  },
+  initialFetchCompleted (state, payload) {
+    state.initialFetchCompleted = true
   }
 }
 
@@ -62,14 +66,19 @@ export const actions = {
     commit('setCompanies', payload)
   },
   async setCompany ({ commit }, payload) {
-    const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
-    commit('setCompany', response.result)
+    try {
+      const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
+      commit('setCompany', response.result)
+    } catch {
+      console.log('User has no company')
+    }
   },
   async initialFetch ({ commit, dispatch }) {
     const response = await this.$axios.$get(endpoints.INITIAL_ENDPOINT)
     commit('setCompanies', response.companies)
     commit('setCategories', response.categories)
     commit('setKeepers', response.keepers)
+    commit('initialFetchCompleted', true)
   },
   async login ({ commit, dispatch }, payload) {
     commit('setLoginRequest', 'pending')
@@ -81,6 +90,10 @@ export const actions = {
     } catch (err) {
       commit('setLoginRequest', 'failed')
     }
+  },
+  logout ({ commit }) {
+    commit('setUser', {})
+    commit('setCompany', {})
   },
   async postCompany ({ commit, state, dispatch }, payload) {
     commit('setCompanyRequest', 'pending')

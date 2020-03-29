@@ -8,7 +8,7 @@
       </v-col>
       <v-col cols="7" sm="9" xl="5" class="text-right">
         <v-btn class="font-weight-bold" text nuxt to="/overview">Übersicht</v-btn>
-        <v-btn class="font-weight-bold" text nuxt to="/signup">Für Unternehmen</v-btn>
+        <v-btn class="font-weight-bold" text nuxt :to="user ? '/edit-company' : 'signup'"> {{ user ? 'Mein Profil' : 'Für Unternehmen' }}</v-btn>
         <v-btn class="font-weight-bold" text nuxt to="/about-us">Über uns</v-btn>
       </v-col>
     </v-row>
@@ -17,7 +17,12 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    user () {
+      return this.$store.state.user.gid
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

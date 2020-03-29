@@ -1,6 +1,9 @@
 <template>
-  <v-container v-if="company" fluid>
-    <div class="display-company">
+  <div v-if="company" class="display-company">
+    <v-container v-if="company" fluid>
+      <v-dialog v-model="showPayment" content-class="company-dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <Donation :payments="company.properties.payment" @close="showPayment = false" />
+      </v-dialog>
       <v-row justify="center" class="mb-10">
         <v-col cols="12" xl="10">
           <div class="img">
@@ -18,18 +21,15 @@
           </div>
         </v-col>
       </v-row>
-      <v-dialog v-model="showPayment" content-class="company-dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-        <Donation :payments="company.properties.payment" @close="showPayment = false" />
-      </v-dialog>
+    </v-container>
+    <v-container>
       <v-row justify="center">
         <v-col cols="12" xl="10">
           <v-row justify="space-between">
             <v-col
               cols="12"
-              sm="5"
-              md="4"
-              offset-md="1"
-              offset-lg="2"
+              sm="8"
+              md="9"
             >
               <h1 class="display-1 mb-1 font-weight-black">
                 {{ company.title }}
@@ -37,21 +37,26 @@
 
               <p>{{ company.city }}, {{ company.street }} {{ company.street_number }}</p>
               <div class="mb-10">
-                <a
-                  v-for="(link, index) in company.properties.links"
+                <span
+                  v-for="(url, index) in company.properties.links"
                   :key="index"
-                  :href="link"
                 >
-                  <img v-if="index !== 'website'" :src="`/${index}.png`" height="14px" class="mr-5">
-                </a>
+                  <a
+                    v-if="url"
+                    :href="getLink(url)"
+                    target="_blank"
+                  >
+                    <img :src="`/${index}.png`" height="14px" class="mr-5">
+                  </a>
+                </span>
               </div>
               <p class="title notes">
-                {{ trimString(company.properties.notes) }}
+                {{ company.properties.notes }}
               </p>
               <v-row>
                 <v-col class="d-flex align-center mb-5">
-                  <v-avatar size="90" class="mr-5">
-                    <v-img alt="profile photo" :src="require('~/assets/shoutout-user-profilbild.png')" />
+                  <v-avatar v-if="avatar" size="90" class="mr-5">
+                    <v-img alt="profile photo" :src="avatar" />
                   </v-avatar>
                   <v-row>
                     <v-col>
@@ -64,8 +69,9 @@
             </v-col>
             <v-col
               cols="12"
-              sm="5"
-              md="4"
+              sm="4"
+              md="3"
+              class="text-right"
             >
               <v-row>
                 <v-col>
@@ -96,55 +102,28 @@
       </v-row>
       <v-row v-if="isCompanyPreview" justify="center">
         <v-col cols="12" xl="10">
-          <v-row justify="space-between">
-            <v-col cols="12" sm="5" md="4" offset-md="1" offset-lg="2">
-              <v-btn text color="#C3AA7D" nuxt to="/info-control" class="px-0 text-capitalize">
-                <v-img :src="require('@/assets/icon-edit.svg')" class="mr-3" color="#C3AA7D">{{ mdiFileDocumentEditOutline }}</v-img> Bearbeiten
-              </v-btn>
-            </v-col>
-            <v-col cols="12" sm="5" md="4">
-              <v-btn
-                color="black"
-                depressed
-                dark
-                nuxt
-                to="/info-control"
-                height="40px"
-                class="text-capitalize"
-              >
-                Jetzt live stellen
-              </v-btn>
-            </v-col>
-          </v-row>
+          <v-btn color="#000" dark @click="$emit('close')">
+            Vorschau schließen
+          </v-btn>
         </v-col>
       </v-row>
-      <v-row v-else justify="center">
+      <v-row v-else justify="start">
         <v-col cols="12" xl="10">
-          <v-row>
-            <v-col
-              cols="12"
-              sm="10"
-              md="8"
-              offset-md="1"
-              offset-lg="2"
-            >
-              <v-btn
-                color="black"
-                depressed
-                dark
-                nuxt
-                to="/overview"
-                height="40px"
-                class="text-capitalize"
-              >
-                Zurück
-              </v-btn>
-            </v-col>
-          </v-row>
+          <v-btn
+            color="black"
+            depressed
+            dark
+            nuxt
+            to="/overview"
+            height="40px"
+            class="text-capitalize"
+          >
+            Zurück
+          </v-btn>
         </v-col>
       </v-row>
-    </div>
-  </v-container>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -163,7 +142,6 @@ export default {
     },
     isCompanyPreview: {
       type: Boolean,
-      required: false,
       default: false
     }
   },
@@ -174,11 +152,28 @@ export default {
     }
   },
   computed: {
-    image () { return this.company.picture_url || 'https://picsum.photos/1300/300' }
+    image () { return this.company.picture_url || 'https://picsum.photos/1300/300' },
+    avatar () {
+      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.company.keeper_avatar_key)
+      if (!keeper) { return null }
+      return keeper.avatar_url
+    }
+  },
+  mounted () {
+    this.scrollTopTop()
   },
   methods: {
+    scrollTopTop () {
+      if (process.client) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    },
     trimString (x) {
       return x.replace(/^\s+|\s+$/gm, '')
+    },
+    getLink (url) {
+      if (url.startsWith('http')) { return url }
+      return `https://${url}`
     }
   }
 }
@@ -191,7 +186,7 @@ export default {
 }
 
 .display-company {
-
+  background: #fff;
   .img {
     position: relative;
     &__outside {
@@ -212,6 +207,6 @@ export default {
 
   .notes {
     white-space: pre-line;
-    }
   }
+}
 </style>

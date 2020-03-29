@@ -3,9 +3,26 @@
     <v-container>
       <v-row justify="center">
         <v-col cols="12" xl="10">
-          <nuxt-link to="/">
-            <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
-          </nuxt-link>
+          <v-row align="center">
+            <v-col cols="6">
+              <nuxt-link to="/">
+                <img src="~/assets/logo.png" alt="Shoutout!" class="ly-logo">
+              </nuxt-link>
+            </v-col>
+            <v-col cols="6" class="d-flex justify-end">
+              <v-row class="flex-column flex-sm-row">
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/overview">Übersicht</v-btn>
+                </v-col>
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/signup">Für Unternehmen</v-btn>
+                </v-col>
+                <v-col class="d-flex justify-end justify-sm-center">
+                  <v-btn class="font-weight-bold" depressed nuxt to="/about-us">Über uns</v-btn>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -31,6 +48,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -67,10 +85,19 @@ export default {
   },
   mounted () {
     this.$store.dispatch('initialFetch')
+    this.$sentry.captureException(new Error('example'))
+  },
+  methods: {
+    test () {
+      this.statusNav = !this.statusNav
+    },
+    toggleStatus (value) {
+      this.statusNav = value
+    }
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 .ly-header {
   max-height: 100px;
 }

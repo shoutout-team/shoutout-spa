@@ -45,6 +45,7 @@ export default {
 <style scoped lang="scss">
 .accordion {
   border-bottom: 1px solid #000;
+  margin-bottom: 20px;
 
   &__title {
     position: relative;

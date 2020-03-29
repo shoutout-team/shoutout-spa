@@ -45,7 +45,7 @@
               </a>
             </div>
             <p class="title">
-              {{ company.properties.description }}
+              {{ company.properties.notes }}
             </p>
             <v-row>
               <v-col class="d-flex align-center mb-5">

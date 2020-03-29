@@ -47,7 +47,7 @@ export default {
     companysWithDistance () {
       const companysWithDistance = []
       this.$store.state.companies.forEach((el, i) => {
-        if (!el.approved) {
+        if (el.approved) {
           companysWithDistance.push({
             ...el,
             distance: this.distance(el)

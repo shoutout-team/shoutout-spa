@@ -5,7 +5,7 @@
         <div class="img">
           <v-img
             :src="image"
-            contain
+            cover
             height="300px"
             class="img__outside mr-4"
           />

@@ -1,11 +1,11 @@
-<template>
+<template class="forward">
   <v-container>
     <v-row justify="center" class="mb-0">
       <v-col cols="12" xl="10" class="mb-9">
-        <h2>
+        <h2 class="forward__headline mb-4">
           {{ headline }}
         </h2>
-        <p>
+        <p class="forward__subtitle">
           {{ subline }}
         </p>
       </v-col>
@@ -16,10 +16,17 @@
         />
       </v-col>
       <v-col cols="12" sm="6" xl="5" class="pb-0">
-        <p>
+        <p class="mb-8">
           {{ desc }}
         </p>
-        <v-btn outlined depressed tile nuxt to="/select">
+        <v-btn
+          outlined
+          depressed
+          tile
+          nuxt
+          to="/overview"
+          class="pa-7"
+        >
           Jetzt unterstützen
         </v-btn>
       </v-col>
@@ -49,6 +56,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.forward {
+  &__headline {
+    font-family: "IBM Plex Sans", "sans-serif";
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  &__subtitle {
+    font-family: "IBM Plex Sans", "sans-serif";
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+}
 .img__wrapper {
   position: relative
 }

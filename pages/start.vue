@@ -7,22 +7,23 @@
     <wall :content="socialCards">
       <social-card />
     </wall>
+    <Faq />
   </v-container>
 </template>
 
 <script>
-import ForwardSection from '@/components/start/ForwardSection.vue'
 import Wall from '@/components/start/Wall.vue'
 import Card from '@/components/start/card.vue'
 import SocialCard from '@/components/start/SocialCard.vue'
+import Faq from '@/components/start/faq.vue'
 
 export default {
   name: 'Start',
   components: {
-    ForwardSection,
     Wall,
     Card,
-    SocialCard
+    SocialCard,
+    Faq
   },
   data () {
     return {

@@ -78,7 +78,6 @@ export default {
 
 .footer {
   font-family: "IBM Plex Sans", "sans-serif" !important;
-  margin-top: 50px;
   padding-bottom: 60px;
   background-color: #eeede8;
   font-size: 15px;

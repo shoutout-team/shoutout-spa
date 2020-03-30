@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Stage />
     <v-container>
       <forward-section class="mb-10" />
       <wall :title="instructionTitle" class="mb-12">
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import Stage from '@/components/start/stage'
 import ForwardSection from '@/components/start/ForwardSection.vue'
 import Wall from '@/components/start/Wall.vue'
 import Card from '@/components/start/card.vue'
@@ -33,6 +35,7 @@ import Faq from '@/components/start/faq.vue'
 export default {
   name: 'Start',
   components: {
+    Stage,
     Wall,
     Card,
     SocialCard,

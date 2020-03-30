@@ -27,7 +27,7 @@
         </v-col>
         <v-col cols="12" sm="8" lg="8">
           <Accordion
-            v-for="(item, i) in faqsSupporter"
+            v-for="(item, i) in faqsCompanys"
             :key="i"
             :title="item.title"
             :body="item.body"
@@ -67,26 +67,6 @@ export default {
         {
           title: 'Wie kann ich meinen Kunden von Shoutout erzählen?',
           body: 'Am besten, in dem du von uns erzählst. Du könntest uns z. B. auf deiner Seite verlinken uns auf Instagram oder Facebook folgen oder auch einen ein Aushang im Schaufenster machen. '
-        },
-        {
-          title: '',
-          body: ''
-        },
-        {
-          title: '',
-          body: ''
-        },
-        {
-          title: '',
-          body: ''
-        },
-        {
-          title: '',
-          body: ''
-        },
-        {
-          title: '',
-          body: ''
         }
       ],
       faqsSupporter: [

@@ -49,7 +49,7 @@ import ListOverview from '~/components/ListOverview'
 import GoogleMap from '~/components/GoogleMap'
 import FilterCompanies from '~/components/FilterCompanies'
 import EmptyOverviewPage from '~/components/empty-overview-page.vue'
-import DistanceCalculator from '~/mixins/DistanceCalculator.js'
+import DistanceCalculator from '~/mixins/distanceCalculator.js'
 
 export default {
   components: {

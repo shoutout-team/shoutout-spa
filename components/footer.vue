@@ -3,7 +3,7 @@
     <v-container>
       <v-row justify="center">
         <v-col cols="12" xl="10">
-          <v-row justify="space-between mb-3">
+          <v-row justify="space-between">
             <v-col cols="12" sm="5" md="5" lg="4">
               <v-img :src="require('~/assets/logo.png')" alt="Shoutout!" width="60" class="footer__logo mb-4" />
               <p class="">{{ about }}</p>
@@ -78,7 +78,6 @@ export default {
 
 .footer {
   font-family: "IBM Plex Sans", "sans-serif" !important;
-  margin-top: 50px;
   padding-bottom: 60px;
   background-color: #eeede8;
   font-size: 15px;

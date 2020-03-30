@@ -1,22 +1,85 @@
 <template>
-  <v-container>
-    <v-row justify="space-between">
-      <v-col cols="12" md="8" push-md="2">
-        <h1 class="mb-6">Impressum</h1>
-        <h2 class="mb-5 mt-5">Angaben gemäß § 5 TMG</h2>
-        <p class="mb-3">Dominik Criado Rankestraße 10 50935 Köln</p>
-        <h2 class="mb-5 mt-5">Angaben gemäß § 5 TMG</h2>
-        <p class="mb-3">Telefon: 00491703190894<br>E-Mail: hallo@shoutout.jetzt</p>
-        <h2 class="mb-5 mt-5">Haftung für Inhalte</h2>
-        <p class="mb-3">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-        <p class="mb-3">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-        <h2 class="mb-5 mt-5">Haftung für Links</h2>
-        <p class="mb-3">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
-        <p class="mb-3">Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-        <h2 class="mb-5 mt-5">Urheberrecht</h2>
-        <p class="mb-3">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
-        <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" xl="10">
+          <h1 class="impressum__headline">Impressum</h1>
+          <text-block v-for="(block, key) in contact" :key="key" :content="block" />
+        </v-col>
+      </v-row>
+    </v-container>
+    <div class="wrapper pb-12">
+      <v-container>
+        <v-row justify="center">
+          <v-col cols="12" xl="10">
+            <text-block v-for="(block, key) in moreInfos" :key="key" :content="block" />
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col cols="12" xl="10">
+            <a target="_blank" href="https://datenschutz-generator.de/?l=de" class="font-weight-bold">
+              Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke
+            </a>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+  </div>
 </template>
+
+<script>
+import TextBlock from '@/components/textBlock.vue'
+
+export default {
+  components: {
+    TextBlock
+  },
+  data () {
+    return {
+      contact: [
+        {
+          headline: 'Diensteanbieter',
+          text: 'shoutouto.jetzt GbR<br>Dominik Criado<br>Rankestraße 10<br>50935 Köln'
+        },
+        {
+          headline: 'Kontaktmöglichkeiten',
+          text: 'E-Mail-Adresse: hallo@shoutout.jetzt<br>Telefon: 00491703190894'
+        }
+      ],
+      moreInfos: [
+        {
+          headline: 'Vertretungsberechtigte',
+          text: '<span class="font-weight-bold">Vertretungsberechtigt:</span> Dominik Criado (Konzept), Tabea Sabolowitsch (Text), Jessica Willius (Design & Social Media), Olga Liamina (Design), Johannes Zimmer (Design), Lena Overkamp (Design), Leo Reuter (Frontend), Michael Ajwani (Backend), Henry Steinhauer (Frontend), Maria Friedländer (Projektmanagement)'
+        },
+        {
+          headline: 'Social Media und andere Onlinepräsenzen',
+          text: 'Dieses Impressum gilt auch für die folgenden Social-Media-Präsenzen und Onlineprofile:<br><a target="_blank" href="https://www.instagram.com/shoutout.jetzt/">https://www.instagram.com/shoutout.jetzt/</a>'
+        },
+        {
+          headline: 'Haftungs- und Urheberrechtshinweise',
+          text: '<span class="font-weight-bold">Haftungsausschluss:</span> Die Inhalte dieses Onlineangebotes wurden sorgfältig und nach unserem aktuellen Kenntnisstand erstellt, dienen jedoch nur der Information und entfalten keine rechtlich bindende Wirkung, sofern es sich nicht um gesetzlich verpflichtende Informationen (z.B. das Impressum, die Datenschutzerklärung, AGB oder verpflichtende Belehrungen von Verbrauchern) handelt. Wir behalten uns vor, die Inhalte vollständig oder teilweise zu ändern oder zu löschen, soweit vertragliche Verpflichtungen unberührt bleiben. Alle Angebote sind freibleibend und unverbindlich.'
+        },
+        {
+          text: '<span class="font-weight-bold">Links auf fremde Webseiten:</span> Inhalte fremder Webseiten, auf die wir direkt oder indirekt verweisen, liegen außerhalb unseres Verantwortungsbereiches und machen wir uns nicht zu Eigen. Für alle Inhalte und insbesondere für Schäden, die aus der Nutzung der in den verlinkten Webseiten aufrufbaren Informationen entstehen, haftet allein der Anbieter der verlinkten Webseiten.'
+        },
+        {
+          text: '<span class="font-weight-bold">Urheberrechte und Markenrechte:</span> Alle auf dieser Website dargestellten Inhalte, wie Texte, Fotografien, Grafiken, Marken und Warenzeichen sind durch die jeweiligen Schutzrechte (Urheberrechte, Markenrechte) geschützt. Die Verwendung, Vervielfältigung usw. unterliegen unseren Rechten oder den Rechten der jeweiligen Urheber bzw. Rechteverwalter. Hinweise auf Rechtsverstöße: Sollten Sie innerhalb unseres Internetauftritts Rechtsverstöße bemerken, bitten wir Sie uns auf diese hinzuweisen. Wir werden rechtswidrige Inhalte und Links nach Kenntnisnahme unverzüglich entfernen.'
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.wrapper {
+  background-color: #eeede8;
+}
+
+.impressum {
+  &__headline {
+    font-family: 'theRambler';
+    font-size: 120px;
+  }
+}
+</style>

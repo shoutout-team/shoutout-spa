@@ -35,7 +35,6 @@ export default {
   },
   watch: {
     starting_address_obj () {
-      console.log(this.starting_address_obj.place.address_components)
       const elements = ['locality', 'route', 'postal_code', 'street_number']
       const geolocation = this.starting_address_obj.place.address_components.filter(e => elements.includes(e.types[0]))
       const location = {

@@ -46,7 +46,6 @@ export default {
   },
   mounted () {
     this.$store.dispatch('initialFetch')
-    this.$sentry.captureException(new Error('example'))
   },
   methods: {
     toggleStatus (value) {

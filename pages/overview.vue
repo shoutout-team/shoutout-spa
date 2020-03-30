@@ -14,7 +14,7 @@
         />
       </v-col>
     </v-row>
-    <v-row justify="center">
+    <v-row v-if="sortedCompanys.length > 0" justify="center">
       <v-col cols="12" xl="10" class="d-flex align-center">
         <v-btn class="mx-2 mt-4 mb-4" fab dark color="black" @click="listView = !listView">
           <v-icon color="white">
@@ -26,14 +26,14 @@
         </p>
       </v-col>
     </v-row>
+    <empty-overview-page v-if="sortedCompanys.length === 0" />
     <ListOverview
-      v-if="listView"
-      :max-distance="maxDistance"
-      :filter-categories="filterCategories"
+      v-if="listView && sortedCompanys.length > 0"
+      :sorted-companys="sortedCompanys"
     />
     <v-row no-gutter justify="center">
       <v-col cols="12" xl="10">
-        <Google-Map v-if="!listView" :filter-categories="filterCategories" :max-distance="maxDistance" />
+        <Google-Map v-if="!listView && companies.length > 0" :filter-categories="filterCategories" :max-distance="maxDistance" />
       </v-col>
     </v-row>
     <v-overlay :value="loading">
@@ -48,13 +48,17 @@ import getPosition from '~/plugins/geolocation'
 import ListOverview from '~/components/ListOverview'
 import GoogleMap from '~/components/GoogleMap'
 import FilterCompanies from '~/components/FilterCompanies'
+import EmptyOverviewPage from '~/components/empty-overview-page.vue'
+import DistanceCalculator from '~/mixins/DistanceCalculator.js'
 
 export default {
   components: {
     ListOverview,
     FilterCompanies,
-    GoogleMap
+    GoogleMap,
+    EmptyOverviewPage
   },
+  mixins: [DistanceCalculator],
   data () {
     return {
       maxDistance: 0,
@@ -64,6 +68,9 @@ export default {
     }
   },
   computed: {
+    companies () {
+      return this.$store.state.companies
+    },
     location () {
       return this.$store.state.location
     },

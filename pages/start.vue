@@ -1,74 +1,101 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <v-col cols="12">
-        <v-carousel
-          show-arrows
-          hide-delimiter-background
-          hide-delimiters
-          dark
-          height="none"
-          progress
-          progress-color="#1E88E5"
-        >
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-          >
-            <v-img :src="item.src" :alt="item.alt" />
-            <div class="pb-12">
-              <h2 class="ma-4">
-                {{ item.header }}
-              </h2>
-              <blockquote class="text-left ma-4">
-                {{ item.text }}
-              </blockquote>
-            </div>
-          </v-carousel-item>
-        </v-carousel>
-      </v-col>
-      <v-col cols="12" class="text-right">
-        <div class="button">
-          <v-btn
-            exact
-            nuxt
-            depressed
-            outlined
-            color="indigo"
-            large
-            to="/select"
-          >
-            Los geht's
-          </v-btn>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <Stage />
+    <forward-section class="mb-10" />
+    <wall :title="instructionTitle" class="mb-12">
+      <card
+        v-for="(card, key) in cards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
+    <Faq class="mb-10" />
+    <wall :title="socialTitle">
+      <social-card
+        v-for="(card, key) in socialCards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
+  </div>
 </template>
 
 <script>
+import Stage from '@/components/start/stage'
+import ForwardSection from '@/components/start/ForwardSection.vue'
+import Wall from '@/components/start/Wall.vue'
+import Card from '@/components/start/card.vue'
+import SocialCard from '@/components/start/SocialCard.vue'
+import Faq from '@/components/start/faq.vue'
+
 export default {
   name: 'Start',
+  components: {
+    Stage,
+    Wall,
+    Card,
+    SocialCard,
+    ForwardSection,
+    Faq
+  },
   data () {
     return {
-      items: [
+      instructionTitle: 'So funktioniert’s',
+      socialTitle: 'Wir bei Instagram',
+      cards: [
         {
-          alt: 'Jetzt ma’ Tacheles',
-          src: require('~/assets/shoutout-slider-1.jpg'),
-          header: 'Jetzt ma’ Tacheles',
-          text: 'Jeder hat Sie, jeder kennt sie, jeder liebt sie – die kleinen Läden, die das Viertel besonders machen. Das Café um’s Eck, die Kneipe nebenan oder der Buchladen ne Straße weiter.'
+          introductionStep: 'Um bei uns als Unternehmen gelistet zu werden musst du dich registrieren. Das ist super einfach und absolut kostenlos. Wir brauchen nur ein paar Kerndaten von dir und eine kurze Beschreibung, wie dir dein Viertel am besten helfen kann.',
+          headline: 'Registrieren',
+          number: 1
         },
         {
-          alt: 'Ohne Moos, nix los',
-          src: require('~/assets/shoutout-slider-2.jpg'),
-          header: 'Ohne Moos, nix los',
-          text: 'Diese Läden sind auf Kundschaft angewiesen und müssen in Krisenzeiten besonders hart kämpfen. Deswegen brauchen sie ein Shoutout, eine Plattform, die ihnen eine Stimme gibt.'
+          introductionStep: 'Mithilfe unserer Suchfunktion findest du deine Lieblingsläden in Nu. Teile mit uns deinen Standort oder gib die Postleitzahl des Viertels ein. Anschließend werden dir alle aktuell bei uns gelisteten Läden angezeigt.',
+          headline: 'Suchen',
+          number: 2
         },
         {
-          alt: 'Nimm dir ’ne Minute',
-          src: require('~/assets/shoutout-slider-3.jpg'),
-          header: 'Nimm dir ’ne Minute',
-          text: 'Unterstütze was dir lieb ist oder sag ganz offen, was dir am liebsten wäre. Shoutout ist für alle, für Nachbarn und Unternehmer, für Unterstützer und Arbeitgeber. Shoutout ist für dein Viertel.'
+          introductionStep: 'Hast du dein Lieblingslokal gefunden, wählst du es aus und erfährst über die  Profilseite wie du es am besten unterstützen kannst. So bekommt jedes Unternehmen die Hilfe, die es wirklich braucht.',
+          headline: 'Helfen',
+          number: 3
+        },
+        {
+          introductionStep: 'Du findest Shoutout ist ne gute Sache? Dann sag es der Welt. Erzähl andern Läden von uns. Teile unsere Seite auf deinen Social Media Kanälen, schreib nen Song oder mal ein Bild. Ganz egal wie, hilf uns Deutschlands Viertel zu vernetze.',
+          headline: 'Weitersagen',
+          number: 4
+        }
+      ],
+      socialCards: [
+        {
+          headline: 'Platzhalter',
+          subline: 'Stell dir vor: In einigen Monaten fahren wir den ganzen Laden wieder hoch. Nur eine Sache fehlt plötzlich. Dein Friseur, der dir immer den coolen Undercut geschnitten, dein Lieblings-Döner für Samstagnacht, das süße Café mit dem langsamen WLAN... Alle weg, dein Viertel nicht mehr dasselbe. Lasst uns etwas dagegen machen, lasst uns dem Virus etwas entgegenstellen. Stay home, but stay loud.',
+          img: {
+            alt: 'Instragram 1',
+            src: require('@/assets/shoutout-instagram-1.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Liebe Betreiber von kleinen Läden: We hear you! Und wir möchten euch nicht missen. Ihr macht unser Viertel zu dem, was es ist. Deswegen möchten wir euch eine Plattform für einen kräftigen Shoutout an alle willigen Unterstützer bieten. Stay home, but stay loud.',
+          img: {
+            alt: 'Instagram 2',
+            src: require('@/assets/shoutout-instagram-2.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Es ist Zeit für einen 🗣Shoutout, damit dein Viertel auch nach dem Virus bunt und lebendig bleibt! Wir bieten kleinen Läden in deinem Viertel eine Plattform. Eine Stimme, damit ihre Probleme gehört werden. Auf einer übersichtlichen Karte findest du deine Eisdiele ums Eck oder den Buchhandel deines Vertrauens und kannst sie sinnvoll unterstützen. Setzen wir dem Virus gemeinsam etwas entgegen. Stay home, but stay loud.',
+          img: {
+            alt: 'Instagram 3',
+            src: require('@/assets/shoutout-instagram-3.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Shoutout! Jetzt! Unser Interview bei WDR COSMO: Dominik – unser Denker & Schreiber und nun auch unser Sprecher 💬 – hat ein Interview bei #wdrcosmo  gegeben. Hört gerne mal rein.',
+          img: {
+            alt: 'Instagram 4',
+            src: require('@/assets/shoutout-instagram-4.jpg')
+          }
         }
       ]
     }

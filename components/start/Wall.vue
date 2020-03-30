@@ -1,10 +1,22 @@
 <template>
-  <v-container class="wall__wrapper">
-    <h2 class="wall__title mb-8 mb-md-10">{{ title }}</h2>
-    <div class="wall">
-      <slot />
-    </div>
-  </v-container>
+  <div>
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" xl="10">
+          <h2 class="wall__title">{{ title }}</h2>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="wall__wrapper">
+      <v-row justify="center">
+        <v-col cols="12" xl="10">
+          <div class="wall">
+            <slot />
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>

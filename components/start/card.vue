@@ -1,10 +1,10 @@
 <template>
   <div class="card__wrapper px-3 my-11">
-    <v-img width="70px" class="text-center card__img" alt="circle" :src="require('@/assets/circle.png')">
+    <v-img width="70px" class="text-center card__img" alt="circle" :src="circles[content.number - 1]">
       <p class="card__text">{{ content.number }}</p>
     </v-img>
     <p class="mt-7 mb-0 body-1 font-weight-black">{{ content.introductionStep }}</p>
-    <v-img class="text-center card__img-bottom" width="80%" alt="stripe" :src="require('@/assets/shoutout-tape-complete.png')">
+    <v-img class="text-center card__img-bottom" height="auto" width="80%" alt="stripe" :src="require('@/assets/shoutout-tape-complete.png')">
       <p class="card__text card__text--theRambler">{{ content.headline }}</p>
     </v-img>
   </div>
@@ -17,15 +17,27 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  data () {
+    return {
+      circles: [
+        require('@/assets/circle1.png'),
+        require('@/assets/circle2.png'),
+        require('@/assets/circle3.png'),
+        require('@/assets/circle4.png')
+      ]
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
 .card__wrapper {
+  position: relative;
   background-color: rgba($color: #eeede9, $alpha: 1.0);
   min-width: 330px;
   margin-right: 40px;
+  padding-bottom: 60px;
 
   @media (min-width: 768px) {
     width: calc(50% - 20px);
@@ -54,17 +66,19 @@ export default {
   }
 
   &__img-bottom {
-    position: relative;
-    top: 50px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(50%) translateX(-50%);
+    width: 70%;
   }
+
   &__text {
     top: 50%;
     position: relative;
     transform: translateY(-50%);
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 
     &--theRambler {
       font-family: 'theRambler';

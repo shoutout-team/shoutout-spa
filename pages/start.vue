@@ -1,26 +1,22 @@
 <template>
   <div>
     <Stage />
-    <v-container>
-      <forward-section class="mb-10" />
-      <wall :title="instructionTitle" class="mb-12">
-        <card
-          v-for="(card, key) in cards"
-          :key="key"
-          :content="card"
-        />
-      </wall>
-    </v-container>
+    <forward-section class="mb-10" />
+    <wall :title="instructionTitle" class="mb-12">
+      <card
+        v-for="(card, key) in cards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
     <Faq class="mb-10" />
-    <v-container>
-      <wall :title="socialTitle">
-        <social-card
-          v-for="(card, key) in socialCards"
-          :key="key"
-          :content="card"
-        />
-      </wall>
-    </v-container>
+    <wall :title="socialTitle">
+      <social-card
+        v-for="(card, key) in socialCards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
   </div>
 </template>
 

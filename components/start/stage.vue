@@ -12,6 +12,7 @@
               xl="6"
               order-md="2"
             >
+              <v-img :src="imageLine" class="start-stage__line" />
               <v-img :src="image" />
             </v-col>
             <v-col cols="12" md="6" xl="5" order-md="1">
@@ -38,10 +39,11 @@
 export default {
   data () {
     return {
+      imageLine: require('~/assets/strich-unter-bild2.png'),
       title: 'Rette deinen Laden',
       paragraph: 'Du bist Bücherwurm, Bohnengourmet oder Hopfenkönig? Dann supporte jetzt dein Viertel. Suche deine Lieblingsläden und unterstütze was dir am Herzen liegt – mit Spenden, mit Einfällen oder Reichweite.',
       cta: 'Jetzt registierien',
-      image: require('~/assets/rette-dein-viertel-shoutout__start.png')
+      image: require('~/assets/shoutout-stage.png')
     }
   }
 }
@@ -49,6 +51,7 @@ export default {
 
 <style scoped lang="scss">
 .start-stage {
+  position: relative;
   background-color: #eeede9;
 
   @media (min-width: 1980px) {
@@ -72,6 +75,20 @@ export default {
 
     @media (min-width: 1200px) {
       font-size: 3.4rem;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
+    left: 20%;
+    z-index: 2;
+
+    @media (min-width: 960px) {
+      top: 20px;
+      left: 0;
+      bottom: auto;
     }
   }
 

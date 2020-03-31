@@ -37,7 +37,7 @@
               </v-col>
               <v-col cols="12" md="4" order-md="1">
                 <div>
-                  <carousel :per-page="1" :pagination-enabled="false">
+                  <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000">
                     <slide
                       v-for="(img, i) in members"
                       :key="i"
@@ -62,12 +62,12 @@ export default {
       topline: 'Moin Moin, Grüß Gott und Hallo.',
       title: ['An dieser Stelle ein kleines ', 'Shoutout ', 'an uns selbst.'],
       line: require('~/assets/strich-unter-bild2.png'),
-      copyTop: 'Denn das diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht. Aber dann kam der #wirvsvirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell. 48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit.',
+      copyTop: 'Denn dass diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht. Aber dann kam der #wirvsvirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell. 48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit.',
       copyBottom: 'Von insgesamt 10 Köpfen entwickelt, 10 Arbeitskollegen, 10 Freiwillige. Wir sind ein bunter Haufen aus Designern, Programmierern, Textern und Konzeptern und wollen den kleinen Läden in Deutschlands Vierteln eine Stimme geben. Nicht nur in der Krise, sondern auch danach. Dafür stecken wir schon jetzt unsere 10 Köpfe zusammen und planen den Ausbau dieser Plattform. Also stay tuend und supporte dein Viertel mit Shoutout.',
       members: [
         {
-          src: require('@/assets/ueber-uns-leo-shoutout.png'),
-          alt: 'Leo'
+          src: require('@/assets/ueber-uns-dominik-shoutout.png'),
+          alt: 'Dominik'
         },
         {
           src: require('@/assets/ueber-uns-olga-shoutout.png'),
@@ -90,8 +90,8 @@ export default {
           alt: 'Tabea'
         },
         {
-          src: require('@/assets/ueber-uns-dominik-shoutout.png'),
-          alt: 'Dominik'
+          src: require('@/assets/ueber-uns-leo-shoutout.png'),
+          alt: 'Leo'
         },
         {
           src: require('@/assets/ueber-uns-lena-shoutout.png'),
@@ -154,7 +154,7 @@ export default {
   }
 
   &__paragraph {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     line-height: 1.6;
   }
 

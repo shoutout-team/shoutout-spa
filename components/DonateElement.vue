@@ -5,7 +5,7 @@
     @click="toggleIBAN"
   >
     <v-img v-if="!showIBAN" class="button" width="100%" :alt="payment.type" :src="images[payment.type]" />
-    <p v-if="payment.type === 'bank' && showIBAN" class="title">Name: {{ payment.paymentInfo.holder }}</p>
+    <p v-if="payment.type === 'bank' && showIBAN" class="title">Name: {{ payment.paymentInfo.owner }}</p>
     <p v-if="payment.type === 'bank' && showIBAN" class="title">IBAN: {{ payment.paymentInfo.iban }}</p>
   </a>
 </template>

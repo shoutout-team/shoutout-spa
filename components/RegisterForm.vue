@@ -52,6 +52,7 @@
             tile
             color="#000"
             label="E-Mail Adresse"
+            :validate-on-blur="true"
             :rules="emailRules"
             class="required"
           />
@@ -69,7 +70,7 @@
             color="#000"
             label="Password"
             class="required"
-            @click="show = !show"
+            @click:append="show = !show"
           />
         </v-col>
       </v-row>

@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       instructionTitle: 'So funktioniert’s',
-      socialTitle: 'Wir bei Instagram',
+      socialTitle: 'Viral statt Virus – Was geht auf Insta?',
       cards: [
         {
           introductionStep: 'Um bei Shoutout als Unternehmen gelistet zu werden, musst du dich registrieren. Das ist super einfach und absolut kostenlos. Wir brauchen nur ein paar Kerndaten von dir und eine kurze Beschreibung, wie dir dein Viertel am besten helfen kann.',

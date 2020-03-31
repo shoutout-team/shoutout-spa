@@ -37,7 +37,12 @@ export default {
     link: [
       { rel: 'icon', href: '/favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,700&isplay=swap' }, // font-family: 'IBM Plex Sans', sans-serif;
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,700&display=swap' } // font-family: 'IBM Plex Mono', monospace;
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,700&display=swap' }, // font-family: 'IBM Plex Mono', monospace;
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/180x180.png' },
+      { rel: 'apple-touch-icon', sizes: '152x152', href: '/152x152.png' },
+      { rel: 'apple-touch-icon', sizes: '120x120', href: '/120x120.png' },
+      { rel: 'apple-touch-icon', sizes: '76x76', href: '/76x76.png' },
+      { rel: 'apple-touch-icon', sizes: '57x57', href: '/57x57.png' }
     ]
   },
   /*

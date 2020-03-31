@@ -119,7 +119,7 @@
           >
             Jetzt registrieren
           </v-btn>
-          <p class="mt-3" v-if="errorMessage.length > 0">
+          <p v-if="errorMessage.length > 0" class="mt-3">
             {{ errorMessage }}
           </p>
         </v-col>
@@ -197,7 +197,7 @@ export default {
     validateUserInput (e, toValidate) {
       switch (e) {
         case 'password':
-          return toValidate.length > 8
+          return toValidate.length > 7
         case 'firstname':
           return toValidate.length > 1
         case 'lastname':
@@ -210,8 +210,8 @@ export default {
       const validateKeys = ['avatar_key', 'status']
       const ErrorTypeMap = {
         password: 'Passwort',
-        firstname: 'Vornahme',
-        lastname: 'Nachnahme',
+        firstname: 'Vorname',
+        lastname: 'Nachname',
         email: 'E-Mail'
       }
       const errorArray = []

@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <Header />
-    <nuxt />
+    <nuxt class="content__bottom" />
     <Footer />
   </v-app>
 </template>
@@ -54,3 +54,17 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.content__bottom {
+  margin-bottom: 540px;
+
+  @media screen and (min-width: 340px) {
+    margin-bottom: 493px;
+  }
+
+  @media screen and (min-width: 600px) {
+    margin-bottom: 394px;
+  }
+}
+</style>

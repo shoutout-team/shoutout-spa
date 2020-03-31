@@ -35,7 +35,7 @@
                   {{ copyBottom }}
                 </p>
               </v-col>
-              <v-col cols="12" md="4" order-md="1">
+              <v-col cols="12" sm="8" md="4" order-md="1">
                 <div>
                   <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000">
                     <slide

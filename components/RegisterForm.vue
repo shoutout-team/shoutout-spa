@@ -122,6 +122,13 @@
           <p v-if="errorMessage.length > 0" class="mt-3">
             {{ errorMessage }}
           </p>
+          <p
+            v-for="(err, i) in failureMessages"
+            :key="i"
+            class="failure"
+          >
+            {{ i }}: {{ err[0] }}
+          </p>
         </v-col>
       </v-row>
     </v-form>
@@ -150,6 +157,7 @@ export default {
         password: '',
         avatar_key: ''
       },
+      failureMessages: {},
       passwordRules: [
         v => !!v || 'Pflichtfeld',
         v => v.length >= 8 || 'Passwort muss aus mindestens 8 Zeichen bestehen'
@@ -186,8 +194,9 @@ export default {
         this.failure = false
         await this.$axios.$post(endpoints.SIGNUP_ENDPOINT, this.formattedUser)
         this.$emit('success')
-      } catch {
+      } catch (err) {
         this.failure = true
+        this.failureMessages = err.response.data
       }
     },
     validateEmail (email) {
@@ -254,6 +263,13 @@ export default {
   .v-badge__badge {
     pointer-events: none;
     cursor: pointer;
+  }
+
+  .failure {
+    margin-top: 20px;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 </style>

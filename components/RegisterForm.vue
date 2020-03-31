@@ -115,11 +115,12 @@
             width="100%"
             max-width="426"
             type="submit"
+            @click="ValidateOnSubmit"
           >
             Jetzt registrieren
           </v-btn>
-          <p v-if="failure">
-            Ein Fehler ist aufgetreten. Bitte überprüfe deine Daten und deine Internetverbindung.
+          <p class="mt-3" v-if="errorMessage.length > 0">
+            {{ errorMessage }}
           </p>
         </v-col>
       </v-row>
@@ -160,7 +161,8 @@ export default {
       nameRules: [
         v => !!v || 'Pflichtfeld'
       ],
-      show: false
+      show: false,
+      errorMessage: ''
     }
   },
   computed: {
@@ -186,6 +188,43 @@ export default {
         this.$emit('success')
       } catch {
         this.failure = true
+      }
+    },
+    validateEmail (email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    },
+    validateUserInput (e, toValidate) {
+      switch (e) {
+        case 'password':
+          return toValidate.length > 8
+        case 'firstname':
+          return toValidate.length > 1
+        case 'lastname':
+          return toValidate.length > 1
+        case 'email':
+          return this.validateEmail(toValidate)
+      }
+    },
+    ValidateOnSubmit (e) {
+      const validateKeys = ['avatar_key', 'status']
+      const ErrorTypeMap = {
+        password: 'Passwort',
+        firstname: 'Vornahme',
+        lastname: 'Nachnahme',
+        email: 'E-Mail'
+      }
+      const errorArray = []
+      Object.keys(this.user).filter(e => !validateKeys.includes(e)).forEach((e) => {
+        if (!this.validateUserInput(e, this.user[e])) { errorArray.push(ErrorTypeMap[e]) }
+      })
+      if (errorArray.length > 0) {
+        e.preventDefault()
+        this.errorMessage = `Bitte prüfe folgende Daten nochmal: ${errorArray.join(', ')}`
+      } else if (this.failure) {
+        this.errorMessage = 'Bitte überprüfe deine Daten und deine Internetverbindung.'
+      } else {
+        this.errorMessage = ''
       }
     }
   }

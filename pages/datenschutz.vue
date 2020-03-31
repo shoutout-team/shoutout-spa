@@ -65,11 +65,11 @@ export default {
           text: 'Welche personenbezogenen Daten werden für welchen Zweck erhoben und verarbeitet?'
         },
         {
-          headline: 'A. Viertelfreunde/potentielle Spender',
+          headline: 'A. Viertelfreunde / potentielle Spender',
           text: 'Diejenigen, die Läden in dem gewünschten Viertel suchen, können per Postleitzahl ihren Standort eingeben und finden die Läden in ihrer Nähe. Eine separate Speicherung und Verarbeitung dieser Daten erfolgt nicht.'
         },
         {
-          headline: 'B. Viertelhelden/Ladenbetreiber',
+          headline: 'B. Viertelhelden / Ladenbetreiber',
           text: 'Diejenigen, die als Inhaber eines Ladens ihr Profil auf die Website einstellen möchten, müssen zur Umsetzung der Benennung des Ladens auf dieser Plattform die Pflichtangaben zu dem Laden hinterlegen. Diese sind Vorname, Name, E-Mailadresse, Unternehmensname, Handelsregisternummer, Adresse des Ladens, Geschäfts-Kategorie des Ladens. Rechtsgrundlage für die Speicherung der Pflichtangaben ist Art. 6 Abs. 1b DS-GVO.'
         },
         {
@@ -208,6 +208,107 @@ export default {
           <li><span class="font-weight-bold">Rechtsgrundlagen:</span> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO).</li>
           </ul>
           `
+        },
+        {
+          headline: 'Eingesetzte Dienste und Dienstanbieter:',
+          text: `<ul>
+          <li><span class="font-weight-bold">Google Fonts:</span> Wir binden die Schriftarten ("Google Fonts") des Anbieters Google ein, wobei die Daten der Nutzer allein zu Zwecken der Darstellung der Schriftarten im Browser der Nutzer verwendet werden. Die Einbindung erfolgt auf Grundlage unserer berechtigten Interessen an einer technisch sicheren, wartungsfreien und effizienten Nutzung von Schriftarten, deren einheitlicher Darstellung sowie unter Berücksichtigung möglicher lizenzrechtlicher Restriktionen für deren Einbindung. Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; ebsite: <a target="_blank" href="https://fonts.google.com/">https://fonts.google.com/</a>; Datenschutzerklärung: <a target="_blank" href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA):<br>
+          <a target="_blank" href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active">https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a></li>
+          <li>
+          <span class="font-weight-bold">Google Maps:</span> Wir binden die Landkarten des Dienstes “Google Maps” des Anbieters Google ein. Zu den verarbeiteten Daten können insbesondere IP-Adressen und Standortdaten der Nutzer gehören, die jedoch nicht ohne deren Einwilligung (im Regelfall im Rahmen der Einstellungen ihrer Mobilgeräte vollzogen), erhoben werden; Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; Website: <a target="_blank" href="https://cloud.google.com/maps-platform">https://cloud.google.com/maps-platform</a>; Datenschutzerklärung: <a target="_blank" href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): https://www.privacyshield.gov/participant?id=a2zt0000000TRkEAAW&status=Active; Widerspruchsmöglichkeit (Opt-Out): Opt-Out-Plugin: <a target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=de">https://tools.google.com/dlpage/gaoptout?hl=de</a>, Einstellungen für die Darstellung von Werbeeinblendungen: <a target="_blank" href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a>.
+          </li>
+          <li>
+          <span class="font-weight-bold">YouTube-Videos:</span> Videoinhalte; Dienstanbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, Mutterunternehmen: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; Website: <a target="_blank" href="https://www.youtube.com">https://www.youtube.com</a>; Datenschutzerklärung: <a target="_blank" href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): <a target="_blank" href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active">https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active;</a> Widerspruchsmöglichkeit (Opt-Out): Opt-Out-Plugin: <a target="_blank" href="https://tools.google.com/dlpage/gaoptout?hl=de">https://tools.google.com/dlpage/gaoptout?hl=de</a>, Einstellungen für die Darstellung von Werbeeinblendungen: <a target="_blank" href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a>.
+          </li>
+          <li>
+          <span class="font-weight-bold">Google Analytics:</span> Wir setzen auf Grundlage unserer berechtigten Interessen (d.h. Interesse an der Analyse, Optimierung und wirtschaftlichem Betrieb unseres Onlineangebotes im Sinne des Art. 6 Abs. 1 lit. f. DSGVO) Google Analytics, einen Webanalysedienst der Google LLC („Google“) ein. Google verwendet Cookies. Die durch das Cookie erzeugten Informationen über Benutzung des Onlineangebotes durch die Nutzer werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Google ist unter dem Privacy-Shield-Abkommen zertifiziert und bietet hierdurch eine Garantie, das europäische Datenschutzrecht einzuhalten (<a target="_blank" href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active">https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a>). Google wird diese Informationen in unserem Auftrag benutzen, um die Nutzung unseres Onlineangebotes durch die Nutzer auszuwerten, um Reports über die Aktivitäten innerhalb dieses Onlineangebotes zusammenzustellen und um weitere, mit der Nutzung dieses Onlineangebotes und der Internetnutzung verbundene Dienstleistungen, uns gegenüber zu erbringen. Dabei können aus den verarbeiteten Daten pseudonyme Nutzungsprofile der Nutzer erstellt werden. Wir setzen Google Analytics nur mit aktivierter IP-Anonymisierung ein. Das bedeutet, die IP-Adresse der Nutzer wird von Google innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die von dem Browser des Nutzers übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Die Nutzer können die Speicherung der Cookies durch eine entsprechende Einstellung ihrer Browser-Software verhindern; die Nutzer können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf ihre Nutzung des Onlineangebotes bezogenen Daten an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter folgendem Link verfügbare Browser-Plugin herunterladen und installieren: <a target="_blank" href="http://tools.google.com/dlpage/gaoptout?hl=de">http://tools.google.com/dlpage/gaoptout?hl=de</a>. Weitere Informationen zur Datennutzung durch Google, Einstellungs- und Widerspruchsmöglichkeiten, erfahren Sie in der Datenschutzerklärung von Google (<a target="_blank" href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a>) sowie in den Einstellungen für die Darstellung von Werbeeinblendungen durch Google (<a target="_blank" href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a>). Die personenbezogenen Daten der Nutzer werden nach 14 Monaten gelöscht oder anonymisiert.
+          </li>
+          </ul>`
+        },
+        {
+          headline: '14. Löschung von Daten',
+          text: 'Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen Vorgaben gelöscht, sobald deren zur Verarbeitung erlaubten Einwilligungen widerrufen werden oder sonstige Erlaubnisse entfallen (z.B., wenn der Zweck der Verarbeitung dieser Daten entfallen ist oder sie für den Zweck nicht erforderlich sind).<br>Sofern die Daten nicht gelöscht werden, weil sie für andere und gesetzlich zulässige Zwecke erforderlich sind, wird deren Verarbeitung auf diese Zwecke beschränkt. D.h., die Daten werden gesperrt und nicht für andere Zwecke verarbeitet. Das gilt z.B. für Daten, die aus handels- oder steuerrechtlichen Gründen aufbewahrt werden müssen oder deren Speicherung zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person erforderlich ist.<br>Weitere Hinweise zu der Löschung von personenbezogenen Daten können ferner im Rahmen der einzelnen Datenschutzhinweise dieser Datenschutzerklärung erfolgen.'
+        },
+        {
+          headline: '15. Änderung und Aktualisierung der Datenschutzerklärung',
+          text: 'Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen. Wir informieren Sie, sobald durch die Änderungen eine Mitwirkungshandlung Ihrerseits (z.B. Einwilligung) oder eine sonstige individuelle Benachrichtigung erforderlich wird.<br>Sofern wir in dieser Datenschutzerklärung Adressen und Kontaktinformationen von Unternehmen und Organisationen angeben, bitten wir zu beachten, dass die Adressen sich über die Zeit ändern können und bitten die Angaben vor Kontaktaufnahme zu prüfen.'
+        },
+        {
+          headline: '15: Rechte der betroffenen Personen',
+          text: `Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die sich insbesondere aus Art. 15 bis 18 und 21 DSGVO ergeben:
+          <ul>
+          <li>
+          <span class="font-weight-bold">Widerspruchsrecht:</span> Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling. Werden die Sie betreffenden personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten zum Zwecke derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht.
+          </li>
+          <li>
+          <span class="font-weight-bold">Widerrufsrecht bei Einwilligungen:</span> Sie haben das Recht, erteilte Einwilligungen jederzeit zu widerrufen.
+          </li>
+          <li>
+          <span class="font-weight-bold">Auskunftsrecht:</span> Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob betreffende Daten verarbeitet werden und auf Auskunft über diese Daten sowie auf weitere Informationen und Kopie der Daten entsprechend den gesetzlichen Vorgaben.
+          </li>
+          <li>
+          <span class="font-weight-bold">Recht auf Berichtigung:</span> Sie haben entsprechend den gesetzlichen Vorgaben das Recht, die Vervollständigung der Sie betreffenden Daten oder die Berichtigung der Sie betreffenden unrichtigen Daten zu verlangen.
+          </li>
+          <li>
+          <span class="font-weight-bold">Recht auf Löschung und Einschränkung der Verarbeitung:</span> Sie haben nach Maßgabe der gesetzlichen Vorgaben das Recht, zu verlangen, dass Sie betreffende Daten unverzüglich gelöscht werden, bzw. alternativ nach Maßgabe der gesetzlichen Vorgaben eine Einschränkung der Verarbeitung der Daten zu verlangen.
+          </li>
+          <li>
+          <span class="font-weight-bold">Recht auf Datenübertragbarkeit:</span> Sie haben das Recht, Sie betreffende Daten, die Sie uns bereitgestellt haben, nach Maßgabe der gesetzlichen Vorgaben in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder deren Übermittlung an einen anderen Verantwortlichen zu fordern.
+          </li>
+          <li>
+          <span class="font-weight-bold">Beschwerde bei Aufsichtsbehörde:</span> Sie haben ferner nach Maßgabe der gesetzlichen Vorgaben das Recht, bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes Beschwerde einzulegen, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt.
+          </li>
+          </ul>`
+        },
+        {
+          headline: '17. Begriffsdefinitionen',
+          text: `In diesem Abschnitt erhalten Sie eine Übersicht über die in dieser Datenschutzerklärung verwendeten Begrifflichkeiten. Viele der Begriffe sind dem Gesetz entnommen und vor allem im Art. 4 DSGVO definiert. Die gesetzlichen Definitionen sind verbindlich. Die nachfolgenden Erläuterungen sollen dagegen vor allem dem Verständnis dienen. Die Begriffe sind alphabetisch sortiert.
+          <ul>
+          <li>
+          <span class="font-weight-bold">Affiliate-Nachverfolgung:</span> Im Rahmen der Affiliate-Nachverfolgung werden Links, mit deren Hilfe die verlinkenden Webseiten Nutzer zu Webseiten mit Produkt- oder sonstigen Angeboten verweisen, protokolliert. Die Betreiber der jeweils verlinkenden Webseiten können eine Provision erhalten, wenn Nutzer diesen sogenannten Affiliate-Links folgen und anschließend die Angebote wahrnehmen (z.B. Waren kaufen oder Dienstleistungen in Anspruch nehmen). Hierzu ist es erforderlich, dass die Anbieter nachverfolgen können, ob Nutzer, die sich für bestimmte Angebote interessieren, diese anschließend auf die Veranlassung der Affiliate-Links wahrnehmen. Daher ist es für die Funktionsfähigkeit von Affiliate-Links erforderlich, dass sie um bestimmte Werte ergänzt werden, die ein Bestandteil des Links werden oder anderweitig, z.B. in einem Cookie, gespeichert werden. Zu den Werten gehören insbesondere die Ausgangswebseite (Referrer), der Zeitpunkt, eine Online-Kennung der Betreiber der Webseite, auf der sich der Affiliate-Link befand, eine Online-Kennung des jeweiligen Angebotes, eine Online-Kennung des Nutzers als auch nachverfolgungsspezifische Werte, wie, z.B. Werbemittel-ID, Partner-ID und Kategorisierungen.
+          </li>
+          <li><span class="font-weight-bold">Besuchsaktionsauswertung:</span> "Besuchsaktionsauswertung" (englisch "Conversion Tracking") bezeichnet ein Verfahren, mit dem die Wirksamkeit von Marketingmaßnahmen festgestellt werden kann. Dazu wird im Regelfall ein Cookie auf den Geräten der Nutzer innerhalb der Webseiten, auf denen die Marketingmaßnahmen erfolgen, gespeichert und dann erneut auf der Zielwebseite abgerufen. Beispielsweise können wir so nachvollziehen, ob die von uns auf anderen Webseiten geschalteten Anzeigen erfolgreich waren).</li>
+          <li>
+          <span class="font-weight-bold">Content Delivery Network (CDN):</span> Ein "Content Delivery Network" (CDN) ist ein Dienst, mit dessen Hilfe Inhalte eines Onlineangebotes, insbesondere große Mediendateien, wie Grafiken oder Programm-Skripte mit Hilfe regional verteilter und über das Internet verbundener Server, schneller und sicherer ausgeliefert werden können.
+          </li>
+          <li>
+          <span class="font-weight-bold">Cross-Device Tracking:</span> Das Cross-Device Tracking ist eine Form des Trackings, bei der Verhaltens- und Interessensinformationen der Nutzer geräteübergreifend in sogenannten Profilen erfasst werden, indem den Nutzern eine Onlinekennung zugeordnet wird. Hierdurch können die Nutzerinformationen unabhängig von verwendeten Browsern oder Geräten (z.B. Mobiltelefonen oder Desktopcomputern) im Regelfall für Marketingzwecke analysiert werden. Die Onlinekennung ist bei den meisten Anbietern nicht mit Klardaten, wie Namen, Postadressen oder E-Mail-Adressen, verknüpft.
+          </li>
+          <li>
+          <span class="font-weight-bold">IP-Masking:</span> Als "IP-Masking” wird eine Methode bezeichnet, bei der das letzte Oktett, d.h., die letzten beiden Zahlen einer IP-Adresse, gelöscht wird, damit die IP-Adresse nicht mehr der eindeutigen Identifizierung einer Person dienen kann. Daher ist das IP-Masking ein Mittel zur Pseudonymisierung von Verarbeitungsverfahren, insbesondere im Onlinemarketing
+          </li>
+          <li>
+          <span class="font-weight-bold">Interessenbasiertes und verhaltensbezogenes Marketing:</span> Von interessens- und/oder verhaltensbezogenem Marketing spricht man, wenn potentielle Interessen von Nutzern an Anzeigen und sonstigen Inhalten möglichst genau vorbestimmt werden. Dies geschieht anhand von Angaben zu deren Vorverhalten (z.B. Aufsuchen von bestimmten Webseiten und Verweilen auf diesen, Kaufverhaltens oder Interaktion mit anderen Nutzern), die in einem sogenannten Profil gespeichert werden. Zu diesen Zwecken werden im Regelfall Cookies eingesetzt.
+          </li>
+          <li>
+          <span class="font-weight-bold">Personenbezogene Daten:</span> "Personenbezogene Daten“ sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden "betroffene Person“) beziehen; als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung (z.B. Cookie) oder zu einem oder mehreren besonderen Merkmalen identifiziert werden kann, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind.
+          </li>
+          <li>
+          <span class="font-weight-bold">Profiling:</span> Als "Profiling“ wird jede Art der automatisierten Verarbeitung personenbezogener Daten bezeichnet, die darin besteht, dass diese personenbezogenen Daten verwendet werden, um bestimmte persönliche Aspekte, die sich auf eine natürliche Person beziehen (je nach Art des Profilings gehören dazu Informationen betreffend das Alter, das Geschlecht, Standortdaten und Bewegungsdaten, Interaktion mit Webseiten und deren Inhalten, Einkaufsverhalten, soziale Interaktionen mit anderen Menschen) zu analysieren, zu bewerten oder, um sie vorherzusagen (z.B. die Interessen an bestimmten Inhalten oder Produkten, das Klickverhalten auf einer Webseite oder den Aufenthaltsort). Zu Zwecken des Profilings werden häufig Cookies und Web-Beacons eingesetzt.
+          </li>
+          <li>
+          <span class="font-weight-bold">Reichweitenmessung:</span> Die Reichweitenmessung (auch als Web Analytics bezeichnet) dient der Auswertung der Besucherströme eines Onlineangebotes und kann das Verhalten oder Interessen der Besucher an bestimmten Informationen, wie z.B. Inhalten von Webseiten, umfassen. Mit Hilfe der Reichweitenanalyse können Webseiteninhaber z.B. erkennen, zu welcher Zeit Besucher ihre Webseite besuchen und für welche Inhalte sie sich interessieren. Dadurch können sie z.B. die Inhalte der Webseite besser an die Bedürfnisse ihrer Besucher anpassen. Zu Zwecken der Reichweitenanalyse werden häufig pseudonyme Cookies und Web-Beacons eingesetzt, um wiederkehrende Besucher zu erkennen und so genauere Analysen zur Nutzung eines Onlineangebotes zu erhalten.
+          </li>
+          <li>
+          <span class="font-weight-bold">Remarketing:</span> Vom "Remarketing“ bzw. "Retargeting“ spricht man, wenn z.B. zu Werbezwecken vermerkt wird, für welche Produkte sich ein Nutzer auf einer Webseite interessiert hat, um den Nutzer auf anderen Webseiten an diese Produkte, z.B. in Werbeanzeigen, zu erinnern.
+          </li>
+          <li>
+          <span class="font-weight-bold">Servermonitoring und Fehlererkennung:</span> Mit Hilfe des Servermonitorings und der Fehlererkennung stellen wir die Verfügbarkeit und Integrität unseres Onlineangebotes sicher und verwenden die verarbeiteten Daten, um unser Onlineangebot technisch zu optimieren. Verarbeitet werden Leistungs-, Auslastungs- und vergleichbare technische Werte, welche Auskunft über die Stabilität und etwaige Auffälligkeiten unseres Onlineangebotes geben. Im Fall von Fehlern und Auffälligkeit werden einzelne Anfragen der Nutzer unseres Onlineangebotes erfasst, um Problemquellen zu identifizieren und zu beheben.
+          </li>
+          <li>
+          <span class="font-weight-bold">Tracking:</span> Vom "Tracking“ spricht man, wenn das Verhalten von Nutzern über mehrere Onlineangebote hinweg nachvollzogen werden kann. Im Regelfall werden im Hinblick auf die genutzten Onlineangebote Verhaltens- und Interessensinformationen in Cookies oder auf Servern der Anbieter der Trackingtechnologien gespeichert (sogenanntes Profiling). Diese Informationen können anschließend z.B. eingesetzt werden, um den Nutzern Werbeanzeigen anzuzeigen, die voraussichtlich deren Interessen entsprechen.
+          </li>
+          <li>
+          <span class="font-weight-bold">Verantwortlicher:</span> Als "Verantwortlicher“ wird die natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet, bezeichnet.
+          </li>
+          <li>
+          <span class="font-weight-bold">Verarbeitung:</span> "Verarbeitung" ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten. Der Begriff reicht weit und umfasst praktisch jeden Umgang mit Daten, sei es das Erheben, das Auswerten, das Speichern, das Übermitteln oder das Löschen.
+          </li>
+          <li>
+          <span class="font-weight-bold">Zielgruppenbildung:</span> Von Zielgruppenbildung (bzw. "Custom Audiences“) spricht man, wenn Zielgruppen für Werbezwecke, z.B. Einblendung von Werbeanzeigen, bestimmt werden. So kann z.B. anhand des Interesses eines Nutzers an bestimmten Produkten oder Themen im Internet geschlussfolgert werden, dass dieser Nutzer sich für Werbeanzeigen für ähnliche Produkte oder den Onlineshop, in dem er die Produkte betrachtet hat, interessiert. Von "Lookalike Audiences“ (bzw. ähnlichen Zielgruppen) spricht man wiederum, wenn die als geeignet eingeschätzten Inhalte Nutzern angezeigt werden, deren Profile bzw. Interessen mutmaßlich den Nutzern, zu denen die Profile gebildet wurden, entsprechen. Zu Zwecken der Bildung von Custom Audiences und Lookalike Audiences werden im Regelfall Cookies und Web-Beacons eingesetzt.
+          </li>
+          </ul>
+          `
         }
       ]
     }
@@ -223,7 +324,7 @@ export default {
 .impressum {
   &__headline {
     font-family: 'theRambler';
-    font-size: 120px;
+    font-size: 106px;
   }
 }
 </style>

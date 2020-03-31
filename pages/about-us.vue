@@ -35,9 +35,9 @@
                   {{ copyBottom }}
                 </p>
               </v-col>
-              <v-col cols="12" md="4" order-md="1">
+              <v-col cols="12" sm="8" md="4" order-md="1">
                 <div>
-                  <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000">
+                  <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000" :loop="true">
                     <slide
                       v-for="(img, i) in members"
                       :key="i"
@@ -100,6 +100,10 @@ export default {
         {
           src: require('@/assets/ueber-uns-johannes-shoutout.png'),
           alt: 'Johannes'
+        },
+        {
+          src: require('@/assets/ueber-uns-maria-shoutout.png'),
+          alt: 'Maria'
         }
       ]
     }

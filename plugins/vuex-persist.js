@@ -4,7 +4,7 @@ export default ({ store }) => {
   window.onNuxtReady(() => {
     new VuexPersistence({
       storage: window.localStorage,
-      key: 'shoutout-app'
+      key: 'shoutout'
     }).plugin(store)
   })
 }

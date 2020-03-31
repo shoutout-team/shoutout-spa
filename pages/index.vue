@@ -1,136 +1,103 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <v-col cols="12" md="8" lg="6">
-        <h1 class="display-2 mb-3 font-weight-thin">
-          shoutout.
-          <span class="kritzel-wrapper">
-            jetzt
-            <img
-              src="~/assets/kritzel.png"
-              class="kritzel"
-            >
-          </span>
-          <span class="font-weight-black">bald</span>
-        </h1>
-        <img
-          src="~/assets/wirsinddran.png"
-          alt="Wir sind dran"
-          class="index-image mb-10"
-        >
-        <p class="font-weight-bold">
-          Ihr braucht ein Shoutout oder wollt shoutouten?
-        </p>
-        <p class="mb-10">Dann lasst uns eure E-Mail Adresse da und wir schicken euch eine Benachrichtigung, sobald wir live sind.</p>
-        <!-- Begin Mailchimp Signup Form -->
-      </v-col>
-      <v-col cols="12" md="4" lg="4" justify-self="right">
-        <div class="video-container">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/WgSPyhn-6Gg?rel=0"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          />
-        </div>
-      </v-col>
-    </v-row>
-    <v-row justify="center">
-      <v-col cols="12" lg="10">
-        <div id="mc_embed_signup">
-          <form
-            id="mc-embedded-subscribe-form"
-            action="https://jetzt.us19.list-manage.com/subscribe/post?u=302cdd14aadcf8513d7086d26&amp;id=15cdd750e4"
-            method="post"
-            name="mc-embedded-subscribe-form"
-            class="validate"
-            target="_blank"
-            novalidate
-          >
-            <div id="mc_embed_signup_scroll">
-              <v-flex class="d-md-flex fillheight mb-md-12">
-                <v-text-field
-                  id="mce-EMAIL"
-                  type="email"
-                  value=""
-                  outlined
-                  tile
-                  color="#000"
-                  name="EMAIL"
-                  label="Deine E-Mail Adresse"
-                  class="required email mr-3"
-                />
-                <v-btn
-                  id="mc-embedded-subscribe"
-                  type="submit"
-                  value="Subscribe"
-                  name="subscribe"
-                  dark
-                  height="56"
-                  color="#000"
-                  tile
-                  x-large
-                  class="align-self-auto mb-10 mb-md-0"
-                >
-                  Ab auf die Liste
-                </v-btn>
-              </v-flex>
-              <p>Bis dahin gebt uns ein shoutout, liked, teilt und folgt uns, damit wir möglichst viele Menschen erreichen.</p>
-              <p class="mb-12">
-                <nuxt-link to="/start" class="font-weight-bold">Hier</nuxt-link> geht es zu unserem Prototypen den wir für den wirvsvirus Hackathon erarbeitet haben.
-              </p>
-              <div id="mce-responses" class="clear">
-                <div id="mce-error-response" class="response" style="display:none" />
-                <div id="mce-success-response" class="response" style="display:none" />
-              </div>
-              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="b_302cdd14aadcf8513d7086d26_15cdd750e4" tabindex="-1" value="">
-              </div>
-            </div>
-          </form>
-        </div>
-        <!--End mc_embed_signup-->
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <Stage />
+    <forward-section class="mb-10" />
+    <wall :title="instructionTitle" class="mb-12">
+      <card
+        v-for="(card, key) in cards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
+    <Faq class="mb-10" />
+    <wall :title="socialTitle">
+      <social-card
+        v-for="(card, key) in socialCards"
+        :key="key"
+        :content="card"
+      />
+    </wall>
+  </div>
 </template>
 
-<style lang="scss">
- .index-image {
-   width: 260px;
+<script>
+import Stage from '@/components/start/stage'
+import ForwardSection from '@/components/start/ForwardSection.vue'
+import Wall from '@/components/start/Wall.vue'
+import Card from '@/components/start/card.vue'
+import SocialCard from '@/components/start/SocialCard.vue'
+import Faq from '@/components/start/faq.vue'
 
-   @media (min-width: 1024px) {
-     transform: translateX(-20px);
-   }
- }
- .kritzel-wrapper {
-   display: inline-block;
-   position: relative;
-   overflow: visible;
- }
-
- .kritzel {
-   position: absolute;
-   top: 20%;
-   left: 0;
-   width: 100%;
- }
-
- .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 0;
-    height: 0;
-    overflow: hidden;
+export default {
+  components: {
+    Stage,
+    Wall,
+    Card,
+    SocialCard,
+    ForwardSection,
+    Faq
+  },
+  data () {
+    return {
+      instructionTitle: 'So funktioniert’s',
+      socialTitle: 'Viral statt Virus – Was geht auf Insta?',
+      cards: [
+        {
+          introductionStep: 'Um bei Shoutout als Unternehmen gelistet zu werden, musst du dich registrieren. Das ist super einfach und absolut kostenlos. Wir brauchen nur ein paar Kerndaten von dir und eine kurze Beschreibung, wie dir dein Viertel am besten helfen kann.',
+          headline: 'Registrieren',
+          number: 1
+        },
+        {
+          introductionStep: 'Mithilfe unserer Suchfunktion findest du deine Lieblingsläden im Nu. Teile mit uns deinen Standort oder gib die Postleitzahl des Viertels ein. Anschließend werden dir alle aktuell bei uns gelisteten Läden angezeigt.',
+          headline: 'Suchen',
+          number: 2
+        },
+        {
+          introductionStep: 'Hast du erstmal dein Lieblingslokal gefunden, wählst du es aus und erfährst über die Profilseite, wie du es am besten unterstützen kannst. So bekommt jedes Unternehmen die Hilfe, die es wirklich braucht.',
+          headline: 'Helfen',
+          number: 3
+        },
+        {
+          introductionStep: 'Du findest Shoutout ist ’ne gute Sache? Dann sag es der Welt. Erzähl anderen Läden von uns. Teile unsere Seite auf deinen Social Media Kanälen, schreib ’nen Song oder mal ‘n Bild. Ganz egal wie, hilf uns Deutschlands Viertel zu vernetzen.',
+          headline: 'Weiter sagen',
+          number: 4
+        }
+      ],
+      socialCards: [
+        {
+          headline: 'Platzhalter',
+          subline: 'Stell dir vor: In einigen Monaten fahren wir den ganzen Laden wieder hoch. Nur eine Sache fehlt plötzlich. Dein Friseur, der dir immer den coolen Undercut geschnitten, dein Lieblings-Döner für Samstagnacht, das süße Café mit dem langsamen WLAN... Alle weg, dein Viertel nicht mehr dasselbe. Lasst uns etwas dagegen machen, lasst uns dem Virus etwas entgegenstellen. Stay home, but stay loud.',
+          img: {
+            alt: 'Instragram 1',
+            src: require('@/assets/shoutout-instagram-1.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Liebe Betreiber von kleinen Läden: We hear you! Und wir möchten euch nicht missen. Ihr macht unser Viertel zu dem, was es ist. Deswegen möchten wir euch eine Plattform für einen kräftigen Shoutout an alle willigen Unterstützer bieten. Stay home, but stay loud.',
+          img: {
+            alt: 'Instagram 2',
+            src: require('@/assets/shoutout-instagram-2.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Es ist Zeit für einen 🗣Shoutout, damit dein Viertel auch nach dem Virus bunt und lebendig bleibt! Wir bieten kleinen Läden in deinem Viertel eine Plattform. Eine Stimme, damit ihre Probleme gehört werden. Auf einer übersichtlichen Karte findest du deine Eisdiele ums Eck oder den Buchhandel deines Vertrauens und kannst sie sinnvoll unterstützen. Setzen wir dem Virus gemeinsam etwas entgegen. Stay home, but stay loud.',
+          img: {
+            alt: 'Instagram 3',
+            src: require('@/assets/shoutout-instagram-3.jpg')
+          }
+        },
+        {
+          headline: 'Platzhalter',
+          subline: 'Shoutout! Jetzt! Unser Interview bei WDR COSMO: Dominik – unser Denker & Schreiber und nun auch unser Sprecher 💬 – hat ein Interview bei #wdrcosmo  gegeben. Hört gerne mal rein.',
+          img: {
+            alt: 'Instagram 4',
+            src: require('@/assets/shoutout-instagram-4.jpg')
+          }
+        }
+      ]
+    }
+  }
 }
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-</style>
+</script>

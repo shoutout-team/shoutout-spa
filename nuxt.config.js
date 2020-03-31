@@ -37,7 +37,8 @@ export default {
   },
   serverMiddleware: [
     // Will register file from project api directory to handle /api/* requires
-    { path: '/loaderio-6675f0444ad2b4bc8baefb7958ad98d4', handler: '~/middleware/verification.js' }
+    { path: '/loaderio-6675f0444ad2b4bc8baefb7958ad98d4', handler: '~/middleware/verification.js' },
+    { path: '/.well-known/acme-challenge/xsz5xRBXlm7eawOqCKecQ_r0u-QalwnEn855UbeteU8', handler: '~/middleware/verification.js' }
   ],
   /*
   ** Customize the progress-bar color

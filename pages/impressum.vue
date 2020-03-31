@@ -39,7 +39,7 @@ export default {
       contact: [
         {
           headline: 'Diensteanbieter',
-          text: 'shoutouto.jetzt GbR<br>Dominik Criado<br>Rankestraße 10<br>50935 Köln'
+          text: 'shoutout.jetzt GbR<br>Dominik Criado<br>Rankestraße 10<br>50935 Köln'
         },
         {
           headline: 'Kontaktmöglichkeiten',

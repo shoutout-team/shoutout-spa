@@ -1,6 +1,9 @@
 {
   "name": "shoutout",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "A simple web app to support your local gastronomy",
   "author": "Leo Reuter",
   "private": true,

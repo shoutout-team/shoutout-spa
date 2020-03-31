@@ -42,15 +42,15 @@ export default {
           content: [
             {
               title: 'Was ist Shoutout?',
-              body: 'Shoutout ist eine Plattform, die kleine Unternehmen und Unterstützer zusammenbringt, damit die Vielfalt in Deutschlands Viertel auch nach dem Virus erhalten bleibt. Mit kleinen Unternehmen meinen wir all die Läden in unseren Vierteln, die aktuell Hilfe brauchen, weil sie aufgrund der Corona-Krise kein Einkommen mehr haben und nicht Teil einer Franchise-Kette oder eines Konzerns sind.'
+              body: 'Shoutout ist eine Plattform, die kleine Unternehmen und Unterstützer zusammenbringt, damit die Vielfalt in Deutschlands Vierteln auch nach dem Virus erhalten bleibt. Mit kleinen Unternehmen meinen wir all die Läden in unseren Vierteln, die aktuell Hilfe brauchen, weil sie aufgrund der Corona-Krise kein Einkommen mehr haben und nicht Teil einer Franchise-Kette oder eines Konzerns sind.'
             },
             {
               title: 'Wie kann ich unterstützen?',
-              body: 'Das kannst du auf der Profilseite eines Ladens nachlesen. Wir wollen jedem Unternehmen die Chance geben, selber mitzuteilen, welche Unterstützung gerade am meisten hilft. Vielleicht bietet dein Lieblingsladen einen Liefererservice an, von dem du noch nichts wusstest, sucht Menschen, die beim Ausliefern der Ware helfen, bietet Gutscheine an, oder freut sich einfach nur über eine Spende. Nimm dir ne’ Minute und lies dir Ihre Profilbeschreibung durch und entscheide dann selber, wie du helfen möchtest.'
+              body: 'Das kannst du auf der Profilseite eines Ladens nachlesen. Wir wollen jedem Unternehmen die Chance geben, selber mitzuteilen, welche Unterstützung gerade am meisten hilft. Vielleicht bietet dein Lieblingsladen einen Liefererservice an, von dem du noch nichts wusstest, sucht Menschen, die beim Ausliefern der Ware helfen, bietet Gutscheine an, oder freut sich einfach nur über eine Spende. Nimm dir ’ne Minute und lies dir ihre Profilbeschreibung durch und entscheide dann selber, wie du helfen möchtest.'
             },
             {
               title: 'Gibt es einen Mindestbetrag für Spenden?',
-              body: 'Nein, wir glauben, dass jeder Cent hilft und möchten daher die Barriere so niedrig wie möglich halten. Deshalb bieten wir dir auch drei Wege an, wie du dem Unternehmen eine Spende zukommen lassen kannst (natürlich nur, wenn das Unternehmen die Spendenfunktion freigeschaltet hat).'
+              body: 'Nein. Wir glauben, dass jeder Cent hilft und möchten daher die Barriere so niedrig wie möglich halten. Deshalb bietet Shoutout dir auch drei Wege an, wie du dem Unternehmen eine Spende zukommen lassen kannst (natürlich nur, wenn das Unternehmen die Spendenfunktion freigeschaltet hat).'
             },
             {
               title: 'Bekomme ich eine Spendenbescheinigung?',
@@ -58,7 +58,7 @@ export default {
             },
             {
               title: 'An meinem Standort sind keine/nur wenige Läden gelistet. Wie kann ich das ändern?',
-              body: 'Am besten erzählst du den Läden, die dir am Herzen liegen, von unserer Plattform und schickst dem/der Inhaber/in unseren Link, damit sie sich registrieren können.'
+              body: 'Am besten erzählst du den Läden, die dir am Herzen liegen, von dieser Plattform und schickst dem/der Inhaber/in unseren Link, damit sie sich registrieren können.'
             },
             {
               title: 'Geht meine Spende komplett an meinen Lieblingsladen?',
@@ -70,15 +70,15 @@ export default {
             },
             {
               title: 'Wer steckt hinter Shoutout?',
-              body: 'Ein 10-köpfiges Team, aus Designern, Programmieren, Konzeptern und Textern, dass sich von der Arbeit kennt und mit Shoutout einen Beitrag zu dieser seltsamen Zeit leisten möchte.'
+              body: 'Ein 10-köpfiges Team aus Designern, Programmierern, Konzeptern und Textern, die unter der Woche zusammen in einer Digitalagentur arbeiten und in ihrer Freizeit mit Shoutout einen Beitrag zu dieser seltsamen Zeit leisten möchten.'
             },
             {
               title: 'Wie ist shoutout entstanden?',
-              body: 'Im Rahmen des Hackathons #WirVsVirus, welcher von der Bundesregierung ausgerichtet wurde, haben wir unsere Köpfe zusammen gesteckt und versucht, unsere Expertise zu bündeln, um dem Virus etwas entgegenzustellen. Ganz nach dem Motto „Stay home. But stay loud.” ist uns dann die Idee zu dieser Plattform gekommen, die wir innerhalb von 48 Stunden aus dem Boden gestampft haben.'
+              body: 'Im Rahmen des Hackathons #WirVsVirus, welcher von der Bundesregierung ausgerichtet wurde, haben wir unsere Köpfe zusammen gesteckt und versucht, unsere Expertise zu bündeln, um dem Virus etwas entgegenzustellen. Ganz nach dem Motto „Stay home. But stay loud.” ist uns dann die Idee zu dieser Plattform gekommen, die wir innerhalb von 48 Stunden aus dem Boden gestampft haben und nun stetig weiter entwickeln.'
             },
             {
               title: 'Wie kann ich Shoutout unterstützen?',
-              body: 'Am besten, in dem du uns bei Instagram folgst, unsere Seite teilst und kleinen Läden von dieser Plattform erzählst. Wenn du darüberhinaus noch Anregungen hast, wie wir die Plattform verbessern können oder du Ideen für weitere Features hast, kannst du uns diese gerne in einer Mail zukommen lassen: hallo@shoutout.jetzt.'
+              body: 'Am besten, indem du Shoutout bei Instagram folgst, die Seite teilst und kleinen Läden von dieser Plattform erzählst. Wenn du darüber hinaus noch Anregungen hast, wie wir die Plattform verbessern können oder du Ideen für weitere Features hast, kannst du uns diese gerne in einer Mail zukommen lassen: hallo@shoutout.jetzt.'
             }
           ],
           image: require('~/assets/faq-strich-helfer.png')

@@ -44,23 +44,23 @@ export default {
       socialTitle: 'Wir bei Instagram',
       cards: [
         {
-          introductionStep: 'Um bei uns als Unternehmen gelistet zu werden musst du dich registrieren. Das ist super einfach und absolut kostenlos. Wir brauchen nur ein paar Kerndaten von dir und eine kurze Beschreibung, wie dir dein Viertel am besten helfen kann.',
+          introductionStep: 'Um bei Shoutout als Unternehmen gelistet zu werden, musst du dich registrieren. Das ist super einfach und absolut kostenlos. Wir brauchen nur ein paar Kerndaten von dir und eine kurze Beschreibung, wie dir dein Viertel am besten helfen kann.',
           headline: 'Registrieren',
           number: 1
         },
         {
-          introductionStep: 'Mithilfe unserer Suchfunktion findest du deine Lieblingsläden in Nu. Teile mit uns deinen Standort oder gib die Postleitzahl des Viertels ein. Anschließend werden dir alle aktuell bei uns gelisteten Läden angezeigt.',
+          introductionStep: 'Mithilfe unserer Suchfunktion findest du deine Lieblingsläden im Nu. Teile mit uns deinen Standort oder gib die Postleitzahl des Viertels ein. Anschließend werden dir alle aktuell bei uns gelisteten Läden angezeigt.',
           headline: 'Suchen',
           number: 2
         },
         {
-          introductionStep: 'Hast du dein Lieblingslokal gefunden, wählst du es aus und erfährst über die  Profilseite wie du es am besten unterstützen kannst. So bekommt jedes Unternehmen die Hilfe, die es wirklich braucht.',
+          introductionStep: 'Hast du erstmal dein Lieblingslokal gefunden, wählst du es aus und erfährst über die Profilseite, wie du es am besten unterstützen kannst. So bekommt jedes Unternehmen die Hilfe, die es wirklich braucht.',
           headline: 'Helfen',
           number: 3
         },
         {
-          introductionStep: 'Du findest Shoutout ist ne gute Sache? Dann sag es der Welt. Erzähl andern Läden von uns. Teile unsere Seite auf deinen Social Media Kanälen, schreib nen Song oder mal ein Bild. Ganz egal wie, hilf uns Deutschlands Viertel zu vernetze.',
-          headline: 'Weitersagen',
+          introductionStep: 'Du findest Shoutout ist ’ne gute Sache? Dann sag es der Welt. Erzähl anderen Läden von uns. Teile unsere Seite auf deinen Social Media Kanälen, schreib ’nen Song oder mal ‘n Bild. Ganz egal wie, hilf uns Deutschlands Viertel zu vernetzen.',
+          headline: 'Weiter sagen',
           number: 4
         }
       ],

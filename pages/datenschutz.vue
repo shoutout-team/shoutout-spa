@@ -48,7 +48,7 @@ export default {
       ],
       moreInfos: [
         {
-          headline: 'Verantwortlicher und Datenschutzbeauftragter',
+          headline: '1. Verantwortlicher und Datenschutzbeauftragter',
           text: 'Verantwortlich für diese Website ist<br>shoutout.jetzt GbR<br>Dominik Criado<br>Rankestraße 10<br>50935 Köln<br>Deutschland<br>Telefon: 0049 1703190894'
         },
         {
@@ -58,7 +58,7 @@ export default {
           text: '<span class="font-weight-bold">E-Mail-Adresse:</span> hallo@shoutout.jetzt<br><span class="font-weight-bold">Impressum: </span><a target="_blank" href="https://www.shoutout.jetzt/impressum">www.shoutout.jetzt/impressum</a>'
         },
         {
-          headline: 'Übersicht der Verarbeitungen',
+          headline: '2. Übersicht der Verarbeitungen',
           text: 'Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.'
         },
         {
@@ -94,10 +94,6 @@ export default {
         },
         {
           headline: '5. Zwecke der Verarbeitung',
-          text: 'Die Daten werden teilweise erhoben, um eine fehlerfreie Bereitstellung der Website zu gewähren; andere Daten werden zur Analyse der Nutzerverhaltens verwendet, um die Website bedarfsgerechter optimieren zu können. Eine eigenständige Weiterleitung der Daten an Dritte erfolgt nicht.'
-        },
-        {
-          headline: '4. Arten der verarbeiteten Daten',
           text: `Die Daten werden teilweise erhoben, um eine fehlerfreie Bereitstellung der Website zu gewähren; andere Daten werden zur Analyse der Nutzerverhaltens verwendet, um die Website bedarfsgerechter optimieren zu können. Eine eigenständige Weiterleitung der Daten an Dritte erfolgt nicht.
           <ul>
           <li>Affiliate-Nachverfolgung.</li>
@@ -192,7 +188,7 @@ export default {
           text: `
           <ul>
           <li>
-          <span class="font-weight-bold"Amazon Web Services (AWS):</span> Webhosting und infrastrukturelle Dienstleistungen; Dienstanbieter: Amazon Web Services, Inc., 410 Terry Avenue North, Seattle WA 98109, USA; Website: <a target="_blank" href="https://aws.amazon.com/de/">https://aws.amazon.com/de/</a>; Datenschutzerklärung: <a target="_blank" href="https://aws.amazon.com/de/privacy/?nc1=f_pr">https://aws.amazon.com/de/privacy/?nc1=f_pr</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): <a target="_blank" href="https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active">https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active</a>.</li>
+          <span class="font-weight-bold">Amazon Web Services (AWS):</span> Webhosting und infrastrukturelle Dienstleistungen; Dienstanbieter: Amazon Web Services, Inc., 410 Terry Avenue North, Seattle WA 98109, USA; Website: <a target="_blank" href="https://aws.amazon.com/de/">https://aws.amazon.com/de/</a>; Datenschutzerklärung: <a target="_blank" href="https://aws.amazon.com/de/privacy/?nc1=f_pr">https://aws.amazon.com/de/privacy/?nc1=f_pr</a>; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): <a target="_blank" href="https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active">https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active</a>.</li>
           <li>3057421516.1298075 577878355.0392157 5986765652.905797 900086041.8506329 868675774.9248619 2369342004.811966 927472051.3178694 1684152895.3023255 1083276230.1670282 889486768.0584518 1127493700.5740528 850337870.659118 895245129.995671 8680427005.509615 573150196.2909567 103015527054.11111 498227445.2680965 157144152.40191388 1647800186.3734694 298757898.0371156</li>
           <li><span class="font-weight-bold">New Relic:</span> Servermonitoring und Fehlererkennung; Dienstanbieter: New Relic, Inc. Attn: Legal Department 188 Spear Street, Suite 1200 San Francisco, CA 94105, USA; Website: https://newrelic.com; Sicherheitsmaßnahmen: IP-Masking (Pseudonymisierung der IP-Adresse); Datenschutzerklärung: https://newrelic.com/termsandconditions/privacy; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): https://www.privacyshield.gov/participant?id=a2zt0000000TNPiAAO&status=Active; Löschung von Daten: Die aggregierten Daten werden nach drei Monaten gelöscht, die pseudonymisierten Daten nach sieben Tagen..</li>
           <li>485582684.53907496 2151888951.3459597 4352586255.888889 848880723.7585471 899473549.4150361 2215695245.4487534 1019018262.8262032 268154338.84348738 2699631041.5384617 268177527.26204818 971054389.6363636 956471121.0887574 1253412588.0660622 489292655.69320595 1288985127.7007723 197821383.2832551 610356745.0456674 1293770247.8980715 71812607.67741935 335228420.17021275</li>
@@ -234,7 +230,7 @@ export default {
           text: 'Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen. Wir informieren Sie, sobald durch die Änderungen eine Mitwirkungshandlung Ihrerseits (z.B. Einwilligung) oder eine sonstige individuelle Benachrichtigung erforderlich wird.<br>Sofern wir in dieser Datenschutzerklärung Adressen und Kontaktinformationen von Unternehmen und Organisationen angeben, bitten wir zu beachten, dass die Adressen sich über die Zeit ändern können und bitten die Angaben vor Kontaktaufnahme zu prüfen.'
         },
         {
-          headline: '15: Rechte der betroffenen Personen',
+          headline: '16: Rechte der betroffenen Personen',
           text: `Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die sich insbesondere aus Art. 15 bis 18 und 21 DSGVO ergeben:
           <ul>
           <li>

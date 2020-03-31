@@ -220,7 +220,7 @@ export default {
       })
       if (errorArray.length > 0) {
         e.preventDefault()
-        this.errorMessage = `Bitte prüfe folgende Daten nochmal: ${errorArray.join(', ')}`
+        this.errorMessage = `Bitte prüfe folgende Daten nochmal: ${errorArray.join(', ')}.`
       } else if (this.failure) {
         this.errorMessage = 'Bitte überprüfe deine Daten und deine Internetverbindung.'
       } else {

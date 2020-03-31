@@ -55,7 +55,7 @@ export default {
           text: '<span class="font-weight-bold">Vertretungsberechtigte Personen:</span> Dominik Criado (Konzept), Tabea Sabolowitsch (Text), Jessica Willius (Design & Social Media), Olga Liamina (Design), Johannes Zimmer (Design), Lena Overkamp (Design), Leo Reuter (Frontend), Michael Ajwani (Backend), Henry Steinhauer (Frontend), Maria Friedländer (Projektmanagement)'
         },
         {
-          text: '<span class="font-weight-bold">E-Mail-Adresse:</span> hallo@shoutout.jetzt<br><span class="font-weight-bold">Impressum</span><a href="www.shoutout.jetzt/impressum">www.shoutout.jetzt/</a>impressum'
+          text: '<span class="font-weight-bold">E-Mail-Adresse:</span> hallo@shoutout.jetzt<br><span class="font-weight-bold">Impressum: </span><a target="_blank" href="https://www.shoutout.jetzt/impressum">www.shoutout.jetzt/impressum</a>'
         },
         {
           headline: 'Übersicht der Verarbeitungen',

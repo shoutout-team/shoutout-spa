@@ -191,7 +191,7 @@ export default {
 
 .company-dialog {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .display-company {

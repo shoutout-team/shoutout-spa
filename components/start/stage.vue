@@ -22,6 +22,8 @@
                 color="#000"
                 dark
                 nuxt
+                depressed
+                tile
                 to="/signup"
                 class="pa-5 px-lg-8 py-lg-7 mb-md-8"
               >

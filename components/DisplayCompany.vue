@@ -75,7 +75,15 @@
             >
               <v-row>
                 <v-col>
-                  <v-btn color="#000" dark large class="pl-10 pr-10 mb-12" @click="showPayment = true">
+                  <v-btn
+                    color="#000"
+                    dark
+                    tile
+                    large
+                    depressed
+                    class="pl-10 pr-10 mb-12"
+                    @click="showPayment = true"
+                  >
                     Jetzt spenden
                   </v-btn>
                 </v-col>
@@ -102,7 +110,7 @@
       </v-row>
       <v-row v-if="isCompanyPreview" justify="center">
         <v-col cols="12" xl="10">
-          <v-btn color="#000" dark @click="$emit('close')">
+          <v-btn color="#000" tile depressed dark @click="$emit('close')">
             Vorschau schließen
           </v-btn>
         </v-col>
@@ -114,6 +122,7 @@
             depressed
             dark
             nuxt
+            tile
             to="/overview"
             height="40px"
             class="text-capitalize"

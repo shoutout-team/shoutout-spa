@@ -40,7 +40,7 @@
             <p>0km</p>
           </template>
           <template v-slot:append>
-            <p>21km</p>
+            <p>50km</p>
           </template>
           <template v-slot:thumb-label="{ value }">
             {{ Math.round(value / 1000) }}km

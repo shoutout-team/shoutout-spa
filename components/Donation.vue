@@ -14,11 +14,19 @@
         </h1>
       </v-col>
     </v-row>
-    <v-row v-for="(payment, key) in paymentsArray" :key="key" justify="center" class="py-7 my-3 payment__wrapper">
-      <v-col cols="4" sm="3" md="2" lg="3" xl="2">
-        <Donate-Element :payment="payment" />
-      </v-col>
-    </v-row>
+    <div v-for="(payment, key) in paymentsArray" :key="key">
+      <v-row v-if="payment.paymentInfo" justify="center" class="py-7 my-3 payment__wrapper">
+        <v-col
+          cols="4"
+          sm="3"
+          md="2"
+          lg="3"
+          xl="2"
+        >
+          <Donate-Element :payment="payment" />
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 

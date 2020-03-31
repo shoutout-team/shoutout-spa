@@ -54,11 +54,13 @@ export default {
       const tempArray = []
       Object.keys(this.payments).forEach((e, index) => {
         if (e === 'bank') {
-          tempArray.push({
-            type: e,
-            paymentInfo: this.payments[e]
-          })
-        } else {
+          if (this.payments[e].iban) {
+            tempArray.push({
+              type: e,
+              paymentInfo: this.payments[e]
+            })
+          }
+        } else if (this.payments[e]) {
           tempArray.unshift({
             type: e,
             paymentInfo: this.payments[e]

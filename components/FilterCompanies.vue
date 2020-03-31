@@ -76,6 +76,7 @@ export default {
     return {
       mdiCrosshairsGps,
       maxDistance: 10000,
+      initialActivated: true,
       activeCategories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club']
     }
   },
@@ -99,6 +100,10 @@ export default {
   },
   methods: {
     activateCategory (cat) {
+      if (this.initialActivated) {
+        this.activeCategories = []
+        this.initialActivated = false
+      }
       if (this.activeCategories.includes(cat)) {
         const index = this.activeCategories.indexOf(cat)
         this.activeCategories.splice(index, 1)

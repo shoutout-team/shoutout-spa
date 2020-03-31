@@ -13,6 +13,7 @@ export const state = () => ({
   company: {},
   categories: {},
   user: {},
+  token: null,
   initialFetchCompleted: false,
   company_request: null,
   login_request: null,
@@ -34,6 +35,9 @@ export const mutations = {
   },
   setCategories (state, payload) {
     state.categories = payload
+  },
+  setToken (state, payload) {
+    state.token = payload
   },
   setUser (state, payload) {
     state.user = payload
@@ -69,11 +73,9 @@ export const actions = {
     try {
       const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
       commit('setCompany', response.result)
-    } catch (error) {
-      this.$sentry.captureException(error)
-    }
+    } catch {}
   },
-  async initialFetch ({ commit, dispatch }) {
+  async initialFetch ({ commit, dispatch, state }) {
     const response = await this.$axios.$get(endpoints.INITIAL_ENDPOINT)
     commit('setCompanies', response.companies)
     commit('setCategories', response.categories)
@@ -84,6 +86,7 @@ export const actions = {
     commit('setLoginRequest', 'pending')
     try {
       const response = await this.$axios.$post(endpoints.LOGIN_ENDPOINT, { user: payload })
+      commit('setToken', response.token)
       this.$axios.setToken(response.token, 'Token')
       commit('setUser', response.user)
       commit('setLoginRequest', 'success')
@@ -97,6 +100,7 @@ export const actions = {
     commit('setCompany', {})
   },
   async postCompany ({ commit, state, dispatch }, payload) {
+    this.$axios.setToken(state.token, 'Token')
     commit('setCompanyRequest', 'pending')
     const company = state.company
     if (!Object.values(company).length) {

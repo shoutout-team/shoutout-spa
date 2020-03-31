@@ -63,7 +63,7 @@
                   outlined
                   tile
                   color="#000"
-                  label="Handsregisternummer"
+                  label="Handelsregisternummer"
                   class="required"
                 />
               </v-col>

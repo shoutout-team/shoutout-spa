@@ -100,6 +100,10 @@ export default {
         {
           src: require('@/assets/ueber-uns-johannes-shoutout.png'),
           alt: 'Johannes'
+        },
+        {
+          src: require('@/assets/ueber-uns-maria-shoutout.png'),
+          alt: 'Maria'
         }
       ]
     }

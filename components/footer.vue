@@ -82,9 +82,6 @@ export default {
   background-color: #eeede8;
   font-size: 15px;
   line-height: 1.5;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 
   &__button {
     color: black;

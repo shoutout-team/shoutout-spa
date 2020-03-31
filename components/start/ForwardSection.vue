@@ -43,7 +43,7 @@
 export default {
   data () {
     return {
-      headline: 'Für Vierteilfreunde und Viertelhelden',
+      headline: 'Für Viertelfreunde und Viertelhelden',
       subline: 'Shoutout ist die Plattform, die kleine Läden und Unterstützer zusammenbringt. Registriere dein Unternehmen oder supporte deinen Lieblingsladen.',
       desc: 'Du bist Bücherwurm, Bohnengourmet oder Hopfenkönig? Dann supporte jetzt dein Viertel. Suche deine Lieblingsläden und unterstütze was dir am Herzen liegt. Mit Spenden, mit Einfällen oder Reichweite.',
       img: {

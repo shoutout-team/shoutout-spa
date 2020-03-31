@@ -43,7 +43,7 @@ export default {
     return {
       imageLine: require('~/assets/strich-unter-bild2.png'),
       title: 'Rette deinen Laden',
-      paragraph: 'Du bist Bücherwurm, Bohnengourmet oder Hopfenkönig? Dann supporte jetzt dein Viertel. Suche deine Lieblingsläden und unterstütze was dir am Herzen liegt – mit Spenden, mit Einfällen oder Reichweite.',
+      paragraph: 'Du bist Zapfmeister, Cafébetreiber, Schnittschwester oder Meisterkoch? Lass es dein Viertel wissen. Registriere dein Unternehmen und nutze die Plattform für ein Shoutout – für Unterstützung, für Ideen, für Aufmerksamkeit.',
       cta: 'Jetzt registierien',
       image: require('~/assets/shoutout-stage.png')
     }

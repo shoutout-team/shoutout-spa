@@ -79,7 +79,7 @@ export default {
 .impressum {
   &__headline {
     font-family: 'theRambler';
-    font-size: 120px;
+    font-size: 106px;
   }
 }
 </style>

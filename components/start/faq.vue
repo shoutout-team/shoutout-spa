@@ -105,6 +105,10 @@ export default {
             {
               title: 'Wie kann ich meinen Kunden von Shoutout erzählen?',
               body: 'Am besten, in dem du von uns erzählst. Du könntest uns z. B. auf deiner Seite verlinken uns auf Instagram oder Facebook folgen oder auch einen ein Aushang im Schaufenster machen. '
+            },
+            {
+              title: 'Wo kann ich weitere Ideen für Shoutout loswerden?',
+              body: 'Wir freuen uns über Anregungen und Ideen, denn Shoutout ist eure Plattform! Also schreibt uns: hallo@shoutout.jetzt.'
             }
           ],
           image: require('~/assets/faq-strich-unternehmen.png')

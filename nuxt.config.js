@@ -81,10 +81,13 @@ export default {
   sentry: {
     dsn: process.env.SENTRY_AUTH_TOKEN,
     config: {
-      debug: process.env.NODE_EV === 'development',
-      environment: process.env.NODE_EV,
-      release: 'shoutout@' + process.env.npm_package_version
-    }
+      environment: process.env.NODE_EV
+    },
+    debug: process.env.NODE_ENV === 'development',
+    disabled: process.env.NODE_ENV === 'development',
+    release: 'shoutout@' + process.env.npm_package_version,
+    publishRelease: true,
+    attachCommits: true
   },
   axios: {
     proxy: true,

@@ -69,8 +69,8 @@ export const actions = {
     try {
       const response = await this.$axios.$get(endpoints.COMPANY_FETCH_ENDPOINT, { params: payload })
       commit('setCompany', response.result)
-    } catch {
-      console.log('User has no company')
+    } catch (error) {
+      this.$sentry.captureException(error)
     }
   },
   async initialFetch ({ commit, dispatch }) {

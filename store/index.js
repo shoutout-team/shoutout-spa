@@ -84,6 +84,7 @@ export const actions = {
     commit('setLoginRequest', 'pending')
     try {
       const response = await this.$axios.$post(endpoints.LOGIN_ENDPOINT, { user: payload })
+      this.$axios.setToken(response.token, 'Token')
       commit('setUser', response.user)
       commit('setLoginRequest', 'success')
       dispatch('setCompany', { keeper_token: response.user.gid })

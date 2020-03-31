@@ -62,7 +62,7 @@ export default {
       topline: 'Moin Moin, Grüß Gott und Hallo.',
       title: ['An dieser Stelle ein kleines ', 'Shoutout ', 'an uns selbst.'],
       line: require('~/assets/strich-unter-bild2.png'),
-      copyTop: 'Denn dass diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht. Aber dann kam der #wirvsvirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell. 48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit.',
+      copyTop: 'Denn dass diese Plattform so existiert, wie sie es gerade tut, hätten wir selber nie gedacht. Aber dann kam der #WirVsVirus Hackathon der Bundesregierung und plötzlich ging alles ganz schnell. 48 Stunden, viele Baustellen und ein Ziel, etwas zu der Corona-Krise beitragen – mitwirken und Lösungen finden. Shoutout ist unser Beitrag zu dieser seltsamen Zeit.',
       copyBottom: 'Von insgesamt 10 Köpfen entwickelt, 10 Arbeitskollegen, 10 Freiwillige. Wir sind ein bunter Haufen aus Designern, Programmierern, Textern und Konzeptern und wollen den kleinen Läden in Deutschlands Vierteln eine Stimme geben. Nicht nur in der Krise, sondern auch danach. Dafür stecken wir schon jetzt unsere 10 Köpfe zusammen und planen den Ausbau dieser Plattform. Also stay tuend und supporte dein Viertel mit Shoutout.',
       members: [
         {

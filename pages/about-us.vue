@@ -37,7 +37,7 @@
               </v-col>
               <v-col cols="12" sm="8" md="4" order-md="1">
                 <div>
-                  <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000">
+                  <carousel :per-page="1" :pagination-enabled="false" :autoplay="true" :autoplay-timeout="3000" :loop="true">
                     <slide
                       v-for="(img, i) in members"
                       :key="i"

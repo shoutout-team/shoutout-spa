@@ -39,7 +39,7 @@ export default {
       contact: [
         {
           headline: 'Datenschutzerklärung',
-          text: 'Shoutout ist eine Initiative die im Rahmen des Hackathons #WirvsVirus von der Bundesregierung entstanden ist. Diese Plattform wurde ins Leben gerufen, um Menschen in einer Krisensituation zu helfen. Wir wollen keinen eigenen Vorteil aus ihr schöpfen oder uns bereichern. Deshalb möchten wir Shoutout so transparent wie möglich gestalten. Um Unsicherheiten und Misstrauen entgegenzuwirken, möchten wir an dieser Stelle gerne offenlegen, welche Informationen während deines Besuchs auf unserer Seite erfasst werden und wozu wir diese Informationen nutzen. Falls du Fragen oder Bedenken hast, findest du an dieser Stelle auch nochmal unsere Kontaktinformationen. '
+          text: 'Shoutout ist eine Initiative die im Rahmen des Hackathons #WirVsVirus von der Bundesregierung entstanden ist. Diese Plattform wurde ins Leben gerufen, um Menschen in einer Krisensituation zu helfen. Wir wollen keinen eigenen Vorteil aus ihr schöpfen oder uns bereichern. Deshalb möchten wir Shoutout so transparent wie möglich gestalten. Um Unsicherheiten und Misstrauen entgegenzuwirken, möchten wir an dieser Stelle gerne offenlegen, welche Informationen während deines Besuchs auf unserer Seite erfasst werden und wozu wir diese Informationen nutzen. Falls du Fragen oder Bedenken hast, findest du an dieser Stelle auch nochmal unsere Kontaktinformationen. '
         },
         {
           headline: 'Information über die Verarbeitung Ihrer Daten gemäß Art. 13 Datenschutzgrundverordnung (DS-GVO)',

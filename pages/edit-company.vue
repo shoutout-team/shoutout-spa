@@ -102,7 +102,7 @@
                   outlined
                   tile
                   color="#000"
-                  label="Paypal Link"
+                  label="PaypalMe Link"
                   class="required"
                   :validate-on-blur="true"
                   :rules="paypalRule"
@@ -235,7 +235,6 @@
                   rows="7"
                   label="Deine Worte an die Community"
                   class="mt-6"
-                  hint="Max. 500 Zeichen"
                 />
               </v-col>
             </v-row>

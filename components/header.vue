@@ -37,9 +37,13 @@ export default {
     position: relative;
     font-size: .875rem;
     letter-spacing: 0.75px;
-    display: inline-block;
+    display: block;
     text-decoration: none;
     white-space: nowrap;
+
+    @media (min-width: 640px) {
+      display: inline;
+    }
 
     &.nuxt-link-active {
       &::after {

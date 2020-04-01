@@ -1,16 +1,18 @@
 <template>
-  <v-text-field
-    id="starting_address"
-    :value="starting_address"
-    type="text"
-    hide-details="auto"
-    width="100%"
-    tile
-    placeholder=""
-    color="#000"
-    label="Adresse"
-    v-bind="extra"
-  />
+  <v-form>
+    <v-text-field
+      id="starting_address"
+      :value="starting_address"
+      type="text"
+      hide-details="auto"
+      width="100%"
+      tile
+      placeholder=""
+      color="#000"
+      label="Adresse"
+      v-bind="extra"
+    />
+  </v-form>
 </template>
 
 <script>

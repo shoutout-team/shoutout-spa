@@ -29,7 +29,7 @@
             <div class="list-element__img">
               <v-img
                 :src="image || `https://picsum.photos/450/300?random=${headline}`"
-                contain
+                cover
                 height="100%"
                 class="list-element__img-outside"
               />

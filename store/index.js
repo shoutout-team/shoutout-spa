@@ -56,6 +56,13 @@ export const mutations = {
   },
   initialFetchCompleted (state, payload) {
     state.initialFetchCompleted = true
+  },
+  changeUser (state, payload) {
+    state.user = {
+      ...state.user,
+      name: payload.user.name,
+      avatar_key: payload.user.avatar_key
+    }
   }
 }
 
@@ -98,6 +105,12 @@ export const actions = {
   logout ({ commit }) {
     commit('setUser', {})
     commit('setCompany', {})
+  },
+  async postUser ({ commit, state, dispatch }, payload) {
+    this.$axios.setToken(state.token, 'Token')
+    await this.$axios.$post(endpoints.MEMBERS_EDIT_ENDPOINT, payload)
+    commit('changeUser', payload)
+    dispatch('initialFetch')
   },
   async postCompany ({ commit, state, dispatch }, payload) {
     this.$axios.setToken(state.token, 'Token')

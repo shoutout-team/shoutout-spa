@@ -37,7 +37,7 @@
             outlined
             tile
             color="#000"
-            label="Nachnahme des Inhabers"
+            label="Nachname des Inhabers"
             :rules="nameRules"
             :validate-on-blur="true"
             class="required"

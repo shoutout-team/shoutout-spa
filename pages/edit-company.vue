@@ -53,6 +53,8 @@
                   color="#000"
                   label="Name des Unternehmens"
                   class="required"
+                  :rules="nameRules"
+                  :validate-on-blur="true"
                 />
               </v-col>
               <v-col cols="12" sm="6" xl="5">
@@ -102,6 +104,8 @@
                   color="#000"
                   label="Paypal Link"
                   class="required"
+                  :validate-on-blur="true"
+                  :rules="paypalRule"
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="3">
@@ -114,6 +118,8 @@
                   color="#000"
                   label="GoFundMe Link"
                   class="required"
+                  :validate-on-blur="true"
+                  :rules="gofoundmeRule"
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="4">
@@ -142,6 +148,8 @@
                       color="#000"
                       label="IBAN"
                       class="required"
+                      :validate-on-blur="true"
+                      :rules="ibanRule"
                     />
                   </v-col>
                 </v-row>
@@ -165,6 +173,8 @@
                   color="#000"
                   label="Facebook"
                   class="required"
+                  :validate-on-blur="true"
+                  :rules="facebookRules"
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="3">
@@ -177,6 +187,8 @@
                   color="#000"
                   label="Instagram"
                   class="required"
+                  :validate-on-blur="true"
+                  :rules="instagramRules"
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="4">
@@ -189,6 +201,8 @@
                   color="#000"
                   label="Website"
                   class="required"
+                  :validate-on-blur="true"
+                  :rules="websiteRule"
                 />
               </v-col>
             </v-row>
@@ -271,6 +285,7 @@ import imageControllerMixin from '@/mixins/imageController.js'
 import Image from '~/assets/shoutout-icon-upload.svg'
 import AddressAutocomplete from '@/components/AddressAutocomplete.vue'
 import DisplayCompany from '@/components/DisplayCompany.vue'
+import validationMixin from '@/mixins/validations.js'
 
 export default {
   components: {
@@ -278,7 +293,7 @@ export default {
     Modal,
     DisplayCompany
   },
-  mixins: [imageControllerMixin],
+  mixins: [imageControllerMixin, validationMixin],
   data () {
     return {
       preview: false,

@@ -91,7 +91,7 @@
                 </h2>
               </v-col>
             </v-row>
-            <v-row justify="center">
+            <v-row justify="center" align="center">
               <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
@@ -117,16 +117,34 @@
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="4">
-                <v-text-field
-                  v-model="company.properties.payment.bank.iban"
-                  type="text"
-                  hide-details="auto"
-                  outlined
-                  tile
-                  color="#000"
-                  label="IBAN"
-                  class="required"
-                />
+                <v-row no-gutters>
+                  <v-col>
+                    <v-text-field
+                      v-model="company.properties.payment.bank.owner"
+                      type="text"
+                      hide-details="auto"
+                      outlined
+                      tile
+                      color="#000"
+                      label="Kontoinhaber"
+                      class="required mb-2"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters>
+                  <v-col>
+                    <v-text-field
+                      v-model="company.properties.payment.bank.iban"
+                      type="text"
+                      hide-details="auto"
+                      outlined
+                      tile
+                      color="#000"
+                      label="IBAN"
+                      class="required"
+                    />
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
             <v-row justify="center">

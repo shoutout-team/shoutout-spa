@@ -1,8 +1,8 @@
 <template>
-  <v-form>
+  <v-form @submit.prevent="geolocate">
     <v-text-field
       id="starting_address"
-      :value="starting_address"
+      v-model="starting_address"
       type="text"
       hide-details="auto"
       width="100%"
@@ -32,13 +32,16 @@ export default {
       // Destination data items
       starting_address: '',
       starting_address_obj: {},
-      startingAddressAutocomplete: null
+      startingAddressAutocomplete: null,
+      geocoder: '',
+      map: null
     }
   },
   watch: {
     starting_address_obj () {
       const elements = ['locality', 'route', 'postal_code', 'street_number']
       if (!this.starting_address_obj.place.address_components) { return }
+      console.log('geo', this.starting_address_obj)
       const geolocation = this.starting_address_obj.place.address_components.filter(e => elements.includes(e.types[0]))
       const location = {
         latitude: this.starting_address_obj.place.geometry.location.lat(),
@@ -54,9 +57,28 @@ export default {
     this.initalGoogleSetup()
   },
   methods: {
+    geolocate (e) {
+      this.geocoder.geocode({ address: this.starting_address }, (results) => {
+        const currentPlace = {
+          latitude: results[0].geometry.location.lat(),
+          longitude: results[0].geometry.location.lng()
+        }
+        this.$emit('location', currentPlace)
+      })
+    },
+    reGeolocate (coords) {
+      const latlng = new window.google.maps.LatLng(coords.latitude, coords.longitude)
+      this.geocoder.geocode({ latLng: latlng }, (results) => {
+        this.starting_address = results[1].formatted_address
+      })
+    },
     async initalGoogleSetup () {
       if (process.client) {
         await this.$gmapApiPromiseLazy({})
+        this.geocoder = new window.google.maps.Geocoder()
+        this.map = new window.google.maps.Map(document.getElementById('starting_address'))
+        const coords = this.$store.state.location.coords
+        this.reGeolocate(coords)
         this.autocompleteService = new window.google.maps.places.AutocompleteService()
         this.geocoderService = new window.google.maps.Geocoder()
         this.addChangeListener()

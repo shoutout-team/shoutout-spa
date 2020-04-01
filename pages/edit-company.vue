@@ -180,7 +180,7 @@
                   Bild von deinem Unternehmen
                 </p>
                 <v-img class="mx-auto edit-company__upload" max-width="600px" width="100%" :src="companyPicture">
-                  <input ref="fileInput" type="file" class="drop__input" @input="change($event, 'uploadCompanyPicture', 'company')">
+                  <input ref="fileInput" type="file" class="drop__input" @change="change($event, 'uploadCompanyPicture', 'company')">
                   <v-avatar color="black" class="edit-company__upload-icon">
                     <v-img :src="Icon" />
                   </v-avatar>

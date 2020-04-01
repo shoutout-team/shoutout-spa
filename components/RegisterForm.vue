@@ -118,13 +118,9 @@
             width="100%"
             max-width="426"
             type="submit"
-            @click="ValidateOnSubmit"
           >
             Jetzt registrieren
           </v-btn>
-          <p v-if="errorMessage.length > 0" class="mt-3">
-            {{ errorMessage }}
-          </p>
           <p
             v-for="(err, i) in failureMessages"
             :key="i"
@@ -163,8 +159,7 @@ export default {
         avatar_key: ''
       },
       failureMessages: {},
-      show: false,
-      errorMessage: ''
+      show: false
     }
   },
   computed: {
@@ -191,7 +186,6 @@ export default {
         this.$emit('success')
       } catch (err) {
         this.failure = true
-        this.errorMessage = 'Bitte überprüfe deine Daten und deine Internetverbindung.'
         this.failureMessages = err.response.data
       }
     }

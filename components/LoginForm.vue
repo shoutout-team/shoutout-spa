@@ -18,7 +18,7 @@
             color="#000"
             label="E-Mail Adresse"
             :validate-on-blur="true"
-            :rules="fieldRules"
+            :rules="emailRules"
             class="required"
           />
         </v-col>
@@ -32,7 +32,8 @@
             tile
             color="#000"
             label="Password"
-            :rules="fieldRules"
+            :validate-on-blur="true"
+            :rules="passwordRules"
             @click:append="show = !show"
           />
         </v-col>
@@ -62,7 +63,10 @@
 </template>
 
 <script>
+import validationMixin from '@/mixins/validations.js'
+
 export default {
+  mixins: [validationMixin],
   data () {
     return {
       valid: false,
@@ -70,10 +74,7 @@ export default {
         email: '',
         password: ''
       },
-      show: false,
-      fieldRules: [
-        v => !!v || 'Pflichtfeld'
-      ]
+      show: false
     }
   },
   computed: {

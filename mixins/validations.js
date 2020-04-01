@@ -36,11 +36,11 @@ export default {
   },
   methods: {
     validateGoFoundMeLink (gofoundme) {
-      const re = /gofundme\.com\/\S*$/
+      const re = /^(https?:\/\/)?((w{3}\.)?)gofundme\.com\/\S*$/
       return re.test(gofoundme) || gofoundme === ''
     },
     validatePaypalLink (paypal) {
-      const re = /paypal\.me\/\S*$/
+      const re = /^(https?:\/\/)?((w{3}\.)?)paypal\.me\/\S*$/
       return re.test(paypal) || paypal === ''
     },
     validateIBAN (iban) {

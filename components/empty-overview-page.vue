@@ -7,7 +7,7 @@
             Dein Viertel ist noch leer
           </h2>
           <p class="content__desc mb-1">
-            Du weist von Läden die Hilfe brauchen?<br>
+            Du weißt von Läden, die Hilfe brauchen?<br>
             Erzähl ihnen von unserer Plattform.
           </p>
           <a :href="'https://www.instagram.com/shoutout.jetzt/'" target="_blank">

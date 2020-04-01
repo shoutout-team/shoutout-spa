@@ -35,6 +35,75 @@
                 <nuxt-link v-if="$store.state.company_edit_request === 'success'" :to="`/${activeCompany.slug}`">Zu deiner Unternehmensseite</nuxt-link>
               </v-col>
             </v-row>
+            <div v-if="Object.keys(activeCompany).length" class="edit-company__profile">
+              <v-row justify="center">
+                <v-col cols="12" xl="10">
+                  <h2 class="title font-weight-bold mt-7">
+                    Infos zum Inhaber
+                  </h2>
+                </v-col>
+              </v-row>
+              <v-row justify="center" wrap>
+                <v-col cols="12" sm="6" xl="5">
+                  <v-text-field
+                    v-model="user.firstname"
+                    type="text"
+                    outlined
+                    hide-details="auto"
+                    tile
+                    color="#000"
+                    label="Vorname des Inhabers"
+                    :rules="nameRules"
+                    :validate-on-blur="true"
+                    class="required"
+                  />
+                </v-col>
+                <v-col cols="12" sm="6" xl="5">
+                  <v-text-field
+                    v-model="user.lastname"
+                    type="text"
+                    hide-details="auto"
+                    outlined
+                    tile
+                    color="#000"
+                    label="Nachname des Inhabers"
+                    :rules="nameRules"
+                    :validate-on-blur="true"
+                    class="required"
+                  />
+                </v-col>
+              </v-row>
+              <v-row justify="center">
+                <v-col cols="12" xl="10">
+                  <v-row d-flex class="align-baseline">
+                    <v-badge
+                      avatar
+                      overlap
+                      bottom
+                      offset-x="25"
+                      offset-y="25"
+                      class="mr-7 ml-3"
+                    >
+                      <template v-slot:badge class="register__profile-avatar">
+                        <v-avatar size="60">
+                          <v-img :src="Icon" />
+                        </v-avatar>
+                      </template>
+
+                      <v-avatar size="70">
+                        <v-img :src="avatarPicture" class="register__img">
+                          <input type="file" class="register__drop-input" @input="change($event, 'uploadAvatarPicture', 'user')">
+                          <v-progress-circular v-if="imageLoading" class="register__img-loader" indeterminate size="64" />
+                        </v-img>
+                      </v-avatar>
+                    </v-badge>
+                    <p class="body-2 font-weight-bold">
+                      Lade ein Portrait<br> von dir hoch
+                    </p>
+                  </v-row>
+                </v-col>
+              </v-row>
+            </div>
             <v-row justify="center">
               <v-col cols="12" xl="10">
                 <h2 class="title font-weight-bold mt-7">
@@ -299,14 +368,18 @@ export default {
       Icon: Image,
       mdiEye,
       imageLoading: false,
-      change_picture: false,
+      changePicture: false,
+      changeAvatar: false,
       failure: '',
+      uploadAvatarPicture: '',
       uploadCompanyPicture: '',
       fallbackCompanyPicture: require('~/assets/shoutout-profilbild-platzhalter.jpg'),
+      fallbackAvatarPicture: require('~/assets/shoutout-profilbild-platzhalter.jpg'),
       user: {
         firstname: '',
         lastname: '',
-        email: ''
+        email: '',
+        avatar_key: ''
       },
       company: {
         name: '',
@@ -359,6 +432,9 @@ export default {
     companyPicture () {
       return this.uploadCompanyPicture || this.activeCompany.picture_url || this.fallbackCompanyPicture
     },
+    avatarPicture () {
+      return this.uploadAvatarPicture || this.storeAvatar || this.fallbackAvatarPicture
+    },
     categoryKeys () {
       return Object.keys(this.$store.state.categories)
     },
@@ -376,17 +452,36 @@ export default {
         ...this.company,
         picture_url: this.companyPicture
       }
+    },
+    storeAvatar () {
+      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeUser.avatar_key)
+      if (!keeper) { return null }
+      return keeper.avatar_url
+    },
+    formattedUser () {
+      return {
+        user: {
+          name: `${this.user.firstname} ${this.user.lastname}`,
+          keeper_token: this.$store.state.user.gid,
+          change_avatar: this.changeAvatar,
+          avatar_key: this.user.avatar_key
+        }
+      }
     }
   },
   watch: {
     activeCompany () {
       this.setCompany()
+    },
+    activeUser () {
+      this.setUser()
     }
   },
   beforeMount () {
     this.$store.commit('setCompanyRequest', null)
     this.$store.commit('setCompanyEditRequest', null)
     this.setCompany()
+    this.setUser()
     if (this.activeUser.gid) {
       this.$store.dispatch('setCompany', { keeper_token: this.activeUser.gid })
     }
@@ -405,10 +500,19 @@ export default {
         this.company = JSON.parse(JSON.stringify(this.activeCompany))
       }
     },
+    setUser () {
+      if (Object.keys(this.activeUser).length) {
+        const user = JSON.parse(JSON.stringify(this.activeUser))
+        const name = user.name.split(' ')
+        this.user.firstname = name[0]
+        this.user.lastname = name[1]
+      }
+    },
     updateInfo () {
       if (process.client) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
+      this.$store.dispatch('postUser', this.formattedUser)
       this.$store.dispatch('postCompany', {
         ...this.company,
         title: this.company.name,
@@ -508,6 +612,32 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+.register {
+  &__drop-input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__img {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__img-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .v-badge__badge {
+    pointer-events: none;
+    cursor: pointer;
   }
 }
 </style>

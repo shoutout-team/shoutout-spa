@@ -11,6 +11,7 @@ export default {
       const content = await readFile(file)
       try {
         const ep = objectKey === 'company' ? 'PICTURE_ENDPOINT' : 'AVATAR_ENDPOINT'
+        const changeType = objectKey === 'company' ? 'changePicture' : 'changeAvatar'
         const response = await this.$axios.$post(endpoints[ep], { asset: content, filename })
         this[imageKey] = content
         this[objectKey] = {
@@ -18,7 +19,7 @@ export default {
           ...response
         }
         this.imageLoading = false
-        this.changePicture = true
+        this[changeType] = true
       } catch {
         this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2mb beträgt.'
         this.imageLoading = false

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="list-overview">
     <v-row justify="center" no-gutters>
       <v-col cols="12" xl="10">
         <v-row justify="start" align="end">
@@ -41,3 +41,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.list-overview {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+</style>

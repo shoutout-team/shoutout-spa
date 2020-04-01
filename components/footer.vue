@@ -58,7 +58,7 @@ export default {
   name: 'Footer',
   data () {
     return {
-      mail: 'hello@shoutout.jetzt',
+      mail: 'hallo@shoutout.jetzt',
       about: 'Shoutout.jetzt ist eine Plattform, die Kleinunternehmer und Unterstützer verbindet. Das Projekt entstand im Rahmen des Hackathons #WirVsVirus der Bundesregierung.'
     }
   },

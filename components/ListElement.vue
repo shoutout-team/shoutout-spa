@@ -13,19 +13,19 @@
               {{ headline }}
             </h1>
           </v-col>
-          <v-col class="pb-0">
+          <v-col cols="12" class="pb-0">
             <div class="text-right body-2 font-weight-bold">
               {{ distanceWithUnit }}
             </div>
           </v-col>
         </v-row>
         <v-row no-gutters>
-          <v-col class="py-0">
+          <v-col cols="12" class="py-0">
             <p>{{ city }}, {{ street }} {{ hnr }}</p>
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="pb-4">
+          <v-col cols="12" class="pb-4">
             <div class="list-element__img">
               <v-img
                 :src="image || `https://picsum.photos/450/300?random=${headline}`"

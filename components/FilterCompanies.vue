@@ -3,7 +3,7 @@
     <v-row justify="space-between" align="end" no-gutters class="mb-5">
       <v-col cols="12" sm="5" xl="4">
         <p class="body-1 text-left mb-0">
-          Gib deinen Standort ein oder tippe die Postleitzahl ein.
+          Gib deinen Standort frei oder tippe die Postleitzahl ein.
         </p>
         <v-row no-gutters class="mb-10 mb-sm-0">
           <v-col class="d-flex full-width align-center">
@@ -40,7 +40,7 @@
             <p>0km</p>
           </template>
           <template v-slot:append>
-            <p>21km</p>
+            <p>50km</p>
           </template>
           <template v-slot:thumb-label="{ value }">
             {{ Math.round(value / 1000) }}km

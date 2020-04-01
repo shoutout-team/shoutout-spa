@@ -21,18 +21,6 @@ export default {
     const response = await $axios.$get(`${apiUrl}/api/v1/${endpoints.GET_COMPANIES_ENDPOINT}`)
     const company = response.find(c => c.slug === params.company)
     return company ? { company } : error({ statusCode: 404, message: 'Seite nicht gefunden' })
-  },
-  computed: {
-    initialFetchCompleted () {
-      return this.$store.state.initialFetchCompleted
-    }
-  },
-  watch: {
-    initialFetchCompleted (state) {
-      if (state && !this.company) {
-
-      }
-    }
   }
 }
 </script>

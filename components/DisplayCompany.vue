@@ -73,7 +73,7 @@
               md="3"
               class="text-right"
             >
-              <v-row>
+              <v-row v-if="!noDonation">
                 <v-col>
                   <v-btn
                     color="#000"
@@ -166,6 +166,9 @@ export default {
       const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.company.keeper_avatar_key)
       if (!keeper) { return null }
       return keeper.avatar_url
+    },
+    noDonation () {
+      return !this.company.properties.payment.paypal && !this.company.properties.payment.bank.iban && !this.company.properties.payment.gofoundme
     }
   },
   mounted () {

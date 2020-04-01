@@ -32,7 +32,10 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Shoutout bringt kleine Geschäfte und Unterstützer zusammen, um die Vielfalt in deinem Viertel zu bewahren. Finde Läden in deiner Nähe, die auf deinen Support angewiesen sind!' }
+      { hid: 'description', name: 'description', content: 'Shoutout bringt kleine Geschäfte und Unterstützer zusammen, um die Vielfalt in deinem Viertel zu bewahren. Finde Läden in deiner Nähe, die auf deinen Support angewiesen sind!' },
+      { property: 'og:image', content: '/social.png' },
+      { property: 'twitter:image', content: '/social.png' }
+
     ],
     link: [
       { rel: 'icon', href: '/favicon.png' },

@@ -91,7 +91,7 @@
                 </h2>
               </v-col>
             </v-row>
-            <v-row justify="center">
+            <v-row justify="center" align="center">
               <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
@@ -117,16 +117,34 @@
                 />
               </v-col>
               <v-col cols="12" sm="4" xl="4">
-                <v-text-field
-                  v-model="company.properties.payment.bank.iban"
-                  type="text"
-                  hide-details="auto"
-                  outlined
-                  tile
-                  color="#000"
-                  label="IBAN"
-                  class="required"
-                />
+                <v-row no-gutters>
+                  <v-col>
+                    <v-text-field
+                      v-model="company.properties.payment.bank.owner"
+                      type="text"
+                      hide-details="auto"
+                      outlined
+                      tile
+                      color="#000"
+                      label="Kontoinhaber"
+                      class="required mb-2"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row no-gutters>
+                  <v-col>
+                    <v-text-field
+                      v-model="company.properties.payment.bank.iban"
+                      type="text"
+                      hide-details="auto"
+                      outlined
+                      tile
+                      color="#000"
+                      label="IBAN"
+                      class="required"
+                    />
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
             <v-row justify="center">
@@ -180,7 +198,7 @@
                   Bild von deinem Unternehmen
                 </p>
                 <v-img class="mx-auto edit-company__upload" max-width="600px" width="100%" :src="companyPicture">
-                  <input ref="fileInput" type="file" class="drop__input" @input="change($event, 'uploadCompanyPicture', 'company')">
+                  <input ref="fileInput" type="file" class="drop__input" @change="change($event, 'uploadCompanyPicture', 'company')">
                   <v-avatar color="black" class="edit-company__upload-icon">
                     <v-img :src="Icon" />
                   </v-avatar>

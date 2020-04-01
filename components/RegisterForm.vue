@@ -25,6 +25,7 @@
             color="#000"
             label="Vorname des Inhabers"
             :rules="nameRules"
+            :validate-on-blur="true"
             class="required"
           />
         </v-col>
@@ -38,6 +39,7 @@
             color="#000"
             label="Nachnahme des Inhabers"
             :rules="nameRules"
+            :validate-on-blur="true"
             class="required"
           />
         </v-col>
@@ -65,6 +67,7 @@
             hide-details="auto"
             outlined
             minlength="8"
+            :validate-on-blur="true"
             :rules="passwordRules"
             tile
             color="#000"
@@ -115,13 +118,9 @@
             width="100%"
             max-width="426"
             type="submit"
-            @click="ValidateOnSubmit"
           >
             Jetzt registrieren
           </v-btn>
-          <p v-if="errorMessage.length > 0" class="mt-3">
-            {{ errorMessage }}
-          </p>
           <p
             v-for="(err, i) in failureMessages"
             :key="i"
@@ -139,8 +138,10 @@
 import imageControllerMixin from '@/mixins/imageController.js'
 import endpoints from '@/store/utils/endpoints.js'
 import Image from '~/assets/shoutout-icon-upload.svg'
+import validationMixin from '@/mixins/validations.js'
+
 export default {
-  mixins: [imageControllerMixin],
+  mixins: [imageControllerMixin, validationMixin],
   data () {
     return {
       Icon: Image,
@@ -158,19 +159,7 @@ export default {
         avatar_key: ''
       },
       failureMessages: {},
-      passwordRules: [
-        v => !!v || 'Pflichtfeld',
-        v => v.length >= 8 || 'Passwort muss aus mindestens 8 Zeichen bestehen'
-      ],
-      emailRules: [
-        v => !!v || 'Pflichtfeld',
-        v => /.+@.+/.test(v) || 'E-Mail Adresse muss gültig sein'
-      ],
-      nameRules: [
-        v => !!v || 'Pflichtfeld'
-      ],
-      show: false,
-      errorMessage: ''
+      show: false
     }
   },
   computed: {
@@ -193,47 +182,11 @@ export default {
       try {
         this.failure = false
         await this.$axios.$post(endpoints.SIGNUP_ENDPOINT, this.formattedUser)
+        this.errorMessage = ''
         this.$emit('success')
       } catch (err) {
         this.failure = true
         this.failureMessages = err.response.data
-      }
-    },
-    validateEmail (email) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    },
-    validateUserInput (e, toValidate) {
-      switch (e) {
-        case 'password':
-          return toValidate.length > 7
-        case 'firstname':
-          return toValidate.length > 1
-        case 'lastname':
-          return toValidate.length > 1
-        case 'email':
-          return this.validateEmail(toValidate)
-      }
-    },
-    ValidateOnSubmit (e) {
-      const validateKeys = ['avatar_key', 'status']
-      const ErrorTypeMap = {
-        password: 'Passwort',
-        firstname: 'Vorname',
-        lastname: 'Nachname',
-        email: 'E-Mail'
-      }
-      const errorArray = []
-      Object.keys(this.user).filter(e => !validateKeys.includes(e)).forEach((e) => {
-        if (!this.validateUserInput(e, this.user[e])) { errorArray.push(ErrorTypeMap[e]) }
-      })
-      if (errorArray.length > 0) {
-        e.preventDefault()
-        this.errorMessage = `Bitte prüfe folgende Daten nochmal: ${errorArray.join(', ')}.`
-      } else if (this.failure) {
-        this.errorMessage = 'Bitte überprüfe deine Daten und deine Internetverbindung.'
-      } else {
-        this.errorMessage = ''
       }
     }
   }

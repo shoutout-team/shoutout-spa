@@ -4,7 +4,7 @@
       <Modal :title="fallBackModal.title" :message="fallBackModal.message" :link="fallBackModal.link.title" @link="toLogin" />
     </v-dialog>
     <v-dialog :value="preview" fullscreen hide-overlay transition="dialog-bottom-transition">
-      <DisplayCompany :company="previewCompany" :is-company-preview="true" @close="preview = false" />
+      <DisplayCompany :company="previewCompany" :preview-user="formattedUser.user" :is-company-preview="true" @close="preview = false" />
     </v-dialog>
     <v-dialog :value="!approval" fullscreen hide-overlay transition="dialog-bottom-transition">
       <Modal :title="successModal.title" :message="successModal.message" :link="successModal.link.title" @link="toOverview" />
@@ -450,7 +450,8 @@ export default {
     previewCompany () {
       return {
         ...this.company,
-        picture_url: this.companyPicture
+        picture_url: this.companyPicture,
+        avatar_url: this.avatarPicture
       }
     },
     storeAvatar () {
@@ -464,7 +465,7 @@ export default {
           name: `${this.user.firstname} ${this.user.lastname}`,
           keeper_token: this.$store.state.user.gid,
           change_avatar: this.changeAvatar,
-          avatar_key: this.user.avatar_key
+          avatar_key: this.user.avatar_key || this.activeUser.avatar_key
         }
       }
     }

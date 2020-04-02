@@ -25,6 +25,10 @@ export default {
           outlined: true
         }
       }
+    },
+    activateReGeolocate: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -33,8 +37,7 @@ export default {
       starting_address: '',
       starting_address_obj: {},
       startingAddressAutocomplete: null,
-      geocoder: '',
-      map: null
+      geocoder: ''
     }
   },
   watch: {
@@ -75,9 +78,10 @@ export default {
       if (process.client) {
         await this.$gmapApiPromiseLazy({})
         this.geocoder = new window.google.maps.Geocoder()
-        this.map = new window.google.maps.Map(document.getElementById('starting_address'))
-        const coords = this.$store.state.location.coords
-        this.reGeolocate(coords)
+        if (this.activateReGeolocate) {
+          const coords = this.$store.state.location.coords
+          this.reGeolocate(coords)
+        }
         this.autocompleteService = new window.google.maps.places.AutocompleteService()
         this.geocoderService = new window.google.maps.Geocoder()
         this.addChangeListener()

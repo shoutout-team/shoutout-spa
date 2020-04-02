@@ -141,7 +141,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">
-                <address-autocomplete @location="getAddressData" />
+                <address-autocomplete :activate-re-geolocate="false" @location="getAddressData" />
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-select
@@ -513,7 +513,9 @@ export default {
       if (process.client) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      this.$store.dispatch('postUser', this.formattedUser)
+      if (Object.keys(this.activeCompany).length) {
+        this.$store.dispatch('postUser', this.formattedUser)
+      }
       this.$store.dispatch('postCompany', {
         ...this.company,
         title: this.company.name,

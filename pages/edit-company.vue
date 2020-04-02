@@ -513,7 +513,9 @@ export default {
       if (process.client) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      this.$store.dispatch('postUser', this.formattedUser)
+      if (Object.keys(this.activeCompany).length) {
+        this.$store.dispatch('postUser', this.formattedUser)
+      }
       this.$store.dispatch('postCompany', {
         ...this.company,
         title: this.company.name,

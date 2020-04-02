@@ -60,7 +60,8 @@
                   </v-avatar>
                   <v-row>
                     <v-col>
-                      <h2 class="title">{{ company.keeper_name }}</h2>
+                      <h2 v-if="previewUser" class="title">{{ previewUser.name }}</h2>
+                      <h2 v-else class="title">{{ company.keeper_name }}</h2>
                       <p class="body-2">Inhaber/in</p>
                     </v-col>
                   </v-row>
@@ -149,6 +150,10 @@ export default {
       type: Object,
       required: true
     },
+    previewUser: {
+      type: Object,
+      default: () => {}
+    },
     isCompanyPreview: {
       type: Boolean,
       default: false
@@ -163,6 +168,7 @@ export default {
   computed: {
     image () { return this.company.picture_url || 'https://picsum.photos/1300/300' },
     avatar () {
+      if (this.company.avatar_url) { return this.company.avatar_url }
       const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.company.keeper_avatar_key)
       if (!keeper) { return null }
       return keeper.avatar_url

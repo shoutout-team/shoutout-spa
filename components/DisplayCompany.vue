@@ -60,7 +60,8 @@
                   </v-avatar>
                   <v-row>
                     <v-col>
-                      <h2 class="title">{{ previewUser.name || company.keeper_name }}</h2>
+                      <h2 v-if="previewUser" class="title">{{ previewUser.name }}</h2>
+                      <h2 v-else class="title">{{ company.keeper_name }}</h2>
                       <p class="body-2">Inhaber/in</p>
                     </v-col>
                   </v-row>

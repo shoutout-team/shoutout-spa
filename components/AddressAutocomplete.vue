@@ -40,6 +40,11 @@ export default {
       geocoder: ''
     }
   },
+  computed: {
+    location () {
+      return this.$store.state.location.coords
+    }
+  },
   watch: {
     starting_address_obj () {
       const elements = ['locality', 'route', 'postal_code', 'street_number']
@@ -53,6 +58,11 @@ export default {
         location[e.types[0]] = e.long_name
       })
       this.$emit('location', location)
+    },
+    location () {
+      if (window.google) {
+        this.reGeolocate(this.location)
+      }
     }
   },
   mounted () {
@@ -79,8 +89,7 @@ export default {
         await this.$gmapApiPromiseLazy({})
         this.geocoder = new window.google.maps.Geocoder()
         if (this.activateReGeolocate) {
-          const coords = this.$store.state.location.coords
-          this.reGeolocate(coords)
+          this.reGeolocate(this.location)
         }
         this.autocompleteService = new window.google.maps.places.AutocompleteService()
         this.geocoderService = new window.google.maps.Geocoder()

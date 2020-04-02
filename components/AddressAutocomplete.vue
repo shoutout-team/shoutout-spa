@@ -25,6 +25,10 @@ export default {
           outlined: true
         }
       }
+    },
+    activateReGeolocate: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -33,15 +37,13 @@ export default {
       starting_address: '',
       starting_address_obj: {},
       startingAddressAutocomplete: null,
-      geocoder: '',
-      map: null
+      geocoder: ''
     }
   },
   watch: {
     starting_address_obj () {
       const elements = ['locality', 'route', 'postal_code', 'street_number']
       if (!this.starting_address_obj.place.address_components) { return }
-      console.log('geo', this.starting_address_obj)
       const geolocation = this.starting_address_obj.place.address_components.filter(e => elements.includes(e.types[0]))
       const location = {
         latitude: this.starting_address_obj.place.geometry.location.lat(),
@@ -76,9 +78,10 @@ export default {
       if (process.client) {
         await this.$gmapApiPromiseLazy({})
         this.geocoder = new window.google.maps.Geocoder()
-        this.map = new window.google.maps.Map(document.getElementById('starting_address'))
-        const coords = this.$store.state.location.coords
-        this.reGeolocate(coords)
+        if (this.activateReGeolocate) {
+          const coords = this.$store.state.location.coords
+          this.reGeolocate(coords)
+        }
         this.autocompleteService = new window.google.maps.places.AutocompleteService()
         this.geocoderService = new window.google.maps.Geocoder()
         this.addChangeListener()

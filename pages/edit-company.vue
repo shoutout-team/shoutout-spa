@@ -141,7 +141,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">
-                <address-autocomplete @location="getAddressData" />
+                <address-autocomplete :activate-re-geolocate="false" @location="getAddressData" />
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-select

@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     link () {
-      return this.payment.type !== 'bank' ? { href: this.payment.paymentInfo } : { disabled: true }
+      return this.payment.type !== 'bank' ? { href: this.validatedLink(this.payment.paymentInfo) } : { disabled: true }
     }
   },
   methods: {
@@ -41,6 +41,10 @@ export default {
       if (this.payment.type === 'bank') {
         this.showIBAN = !this.showIBAN
       }
+    },
+    validatedLink (url) {
+      if (url.startsWith('http')) { return url }
+      return `https://${url}`
     }
   }
 }

@@ -5,8 +5,8 @@ require('dotenv').config()
 
 export default {
   serverMiddleware: [
-    'redirect-ssl',
-    { path: '/loaderio-6675f0444ad2b4bc8baefb7958ad98d4', handler: '~/middleware/verification.js' }
+    { path: '/loaderio-6675f0444ad2b4bc8baefb7958ad98d4.txt', handler: '~/middleware/verification.js' },
+    'redirect-ssl'
   ],
   mode: 'universal',
 

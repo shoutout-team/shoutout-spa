@@ -71,7 +71,12 @@ export default {
         cafe: require('~/assets/cafe-active.png'),
         food: require('~/assets/food-active.png'),
         coiffeur: require('~/assets/barber-active.png'),
-        shop: require('~/assets/shop-active.png')
+        shop: require('~/assets/shop-active.png'),
+        artist: require('~/assets/shop-active.png'),
+        service: require('~/assets/shop-active.png'),
+        culture: require('~/assets/shop-active.png'),
+        beauty: require('~/assets/shop-active.png'),
+        health: require('~/assets/shop-active.png')
       },
       defaultZoom: 13
     }

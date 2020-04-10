@@ -13,6 +13,7 @@
       <v-row justify="center">
         <v-col>
           <v-form
+            ref="formElement"
             name="register-form"
             class="validate"
             target="_blank"
@@ -141,7 +142,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">
-                <address-autocomplete :activate-re-geolocate="false" @location="getAddressData" />
+                <address-autocomplete :extra="{outlined: true, rules: addressRules, 'validate-on-blur': true}" :activate-re-geolocate="false" @location="getAddressData" />
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-select
@@ -151,6 +152,8 @@
                   color="black"
                   label="Kategorie"
                   no-data-text="Kategorie"
+                  :rules="nameRules"
+                  :validate-on-blur="true"
                   outlined
                 />
               </v-col>
@@ -489,12 +492,13 @@ export default {
   },
   methods: {
     getAddressData (place) {
-      this.company.latitude = place.latitude
-      this.company.longitude = place.longitude
-      this.company.city = place.locality
-      this.company.street = place.route
-      this.company.postcode = place.postal_code
-      this.company.street_number = place.street_number
+      this.company.latitude = place.latitude || ''
+      this.company.longitude = place.longitude || ''
+      this.company.city = place.locality || ''
+      this.company.street = place.route || ''
+      this.company.postcode = place.postal_code || ''
+      this.company.street_number = place.street_number || ''
+      this.addressRules = [this.validateAddress(place) || 'Bitte gib eine vollständige Adresse ein. Stadt, Straße & Hausnummer']
     },
     setCompany () {
       if (Object.keys(this.activeCompany).length) {
@@ -510,6 +514,8 @@ export default {
       }
     },
     updateInfo () {
+      const { formElement } = this.$refs
+      formElement.validate()
       if (process.client) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }

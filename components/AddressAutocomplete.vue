@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="geolocate">
+  <v-form @submit.prevent="placeChanged">
     <v-text-field
       id="starting_address"
       v-model="starting_address"
@@ -11,7 +11,7 @@
       color="#000"
       label="Adresse"
       v-bind="extra"
-      @blur="geolocate"
+      @blur="placeChanged"
     />
   </v-form>
 </template>
@@ -92,8 +92,12 @@ export default {
     },
     placeChanged () {
       const place = this.startingAddressAutocomplete.getPlace()
-      this.starting_address_obj = {
-        place
+      if (place && place.address_components) {
+        this.starting_address_obj = {
+          place
+        }
+      } else {
+        this.geolocate()
       }
     }
   }

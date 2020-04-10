@@ -31,6 +31,10 @@ export default {
       emailRules: [
         v => !!v || 'Pflichtfeld',
         v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'E-Mail Adresse muss gültig sein'
+      ],
+      addressRules: [
+        v => !!v || 'Pflichtfeld',
+        v => this.validateAddress() || 'Bitte gib eine vollständige Adresse ein. Stadt, Straße & Hausnummer'
       ]
     }
   },
@@ -57,6 +61,14 @@ export default {
     validateWebsiteURL (website) {
       const re = /(?:(?:https?|ftp):\/\/|\b(?:[a-z\d]+\.))(?:(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))?\))+(?:\((?:[^\s()<>]+|(?:\(?:[^\s()<>]+\)))?\)|[^\s`!()[\]{};:'".,<>?«»“”‘’]))?/
       return re.test(website) || website === ''
+    },
+    validateAddress () {
+      if (this.company.latitude === '' || this.company.latitude === undefined) { return false }
+      if (this.company.longitude === '' || this.company.longitude === undefined) { return false }
+      if (this.company.street === '' || this.company.street === undefined) { return false }
+      if (this.company.postcode === '' || this.company.postcode === undefined) { return false }
+      if (this.company.street_number === '' || this.company.street_number === undefined) { return false }
+      return true
     }
   }
 }

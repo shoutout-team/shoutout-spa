@@ -44,7 +44,7 @@ export default {
       imageLine: require('~/assets/strich-unter-bild2.png'),
       title: 'Rette deinen Laden',
       paragraph: 'Du bist Zapfmeister, Cafébetreiber, Schnittschwester oder Meisterkoch? Lass es dein Viertel wissen. Registriere dein Unternehmen und nutze die Plattform für ein Shoutout – für Unterstützung, für Ideen, für Aufmerksamkeit.',
-      cta: 'Jetzt registierien',
+      cta: 'Jetzt registrieren',
       image: require('~/assets/shoutout-stage.png')
     }
   }

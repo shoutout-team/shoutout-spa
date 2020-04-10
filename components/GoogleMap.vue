@@ -72,11 +72,10 @@ export default {
         food: require('~/assets/food-active.png'),
         coiffeur: require('~/assets/barber-active.png'),
         shop: require('~/assets/shop-active.png'),
-        artist: require('~/assets/shop-active.png'),
-        service: require('~/assets/shop-active.png'),
-        culture: require('~/assets/shop-active.png'),
-        beauty: require('~/assets/shop-active.png'),
-        health: require('~/assets/shop-active.png')
+        artist: require('~/assets/fallback-category-icon.svg'),
+        service: require('~/assets/fallback-category-icon.svg'),
+        beauty: require('~/assets/fallback-category-icon.svg'),
+        health: require('~/assets/fallback-category-icon.svg')
       },
       defaultZoom: 13
     }

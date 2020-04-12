@@ -166,7 +166,7 @@
               </v-col>
             </v-row>
             <v-row justify="center">
-              <v-col cols="12" sm="4" xl="3">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
                   type="text"
@@ -180,7 +180,7 @@
                   :rules="paypalRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="3">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.gofoundme"
                   type="text"
@@ -194,7 +194,7 @@
                   :rules="gofoundmeRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="3">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.ticketio"
                   type="text"
@@ -208,9 +208,7 @@
                   :rules="ticketioRule"
                 />
               </v-col>
-            </v-row>
-            <v-row justify="center">
-              <v-col cols="12" sm="4" xl="3">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.startnext"
                   type="text"
@@ -224,7 +222,21 @@
                   :rules="startnextRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="3">
+            </v-row>
+            <v-row justify="center" class="mt-5">
+              <v-col cols="12" sm="6" xl="5">
+                <v-text-field
+                  v-model="company.properties.payment.bank.owner"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="Kontoinhaber"
+                  class="required mb-2"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.bank.iban"
                   type="text"
@@ -236,18 +248,6 @@
                   class="required"
                   :validate-on-blur="true"
                   :rules="ibanRule"
-                />
-              </v-col>
-              <v-col cols="12" sm="4" xl="3">
-                <v-text-field
-                  v-model="company.properties.payment.bank.owner"
-                  type="text"
-                  hide-details="auto"
-                  outlined
-                  tile
-                  color="#000"
-                  label="Kontoinhaber"
-                  class="required mb-2"
                 />
               </v-col>
             </v-row>

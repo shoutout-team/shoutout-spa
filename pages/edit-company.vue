@@ -129,7 +129,7 @@
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-text-field
-                  v-model="company.properties.crnumber"
+                  v-model="company.properties.cr_number"
                   type="text"
                   hide-details="auto"
                   outlined
@@ -397,7 +397,7 @@ export default {
         keeper_token: '',
         properties: {
           description: '',
-          crnumber: '',
+          cr_number: '',
           notes: '',
           payment: {
             paypal: '',

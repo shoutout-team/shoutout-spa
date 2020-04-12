@@ -426,6 +426,8 @@ export default {
           payment: {
             paypal: '',
             gofoundme: '',
+            ticketio: '',
+            startnext: '',
             bank: {
               owner: '',
               iban: ''

@@ -437,6 +437,7 @@ export default {
     },
     avatarPicture () {
       return this.uploadAvatarPicture || this.storeAvatar || this.fallbackAvatarPicture
+      // return this.uploadAvatarPicture || this.activeUser.avatar_url || this.fallbackAvatarPicture
     },
     categoryKeys () {
       return Object.keys(this.$store.state.categories)
@@ -458,7 +459,11 @@ export default {
       }
     },
     storeAvatar () {
-      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeUser.avatar_key)
+      // Fixes finding not the keeper for showing already uploaded avatar #27
+      // This 'this.activeUser.avatar_key' seems to be not present. Now we fall back to 'keeper_avatar_key' on company.
+      // const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeUser.avatar_key)
+      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeCompany.keeper_avatar_key)
+
       if (!keeper) { return null }
       return keeper.avatar_url
     },

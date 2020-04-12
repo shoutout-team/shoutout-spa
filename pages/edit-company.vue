@@ -165,7 +165,7 @@
                 </h2>
               </v-col>
             </v-row>
-            <v-row justify="center" align="center">
+            <v-row justify="center">
               <v-col cols="12" sm="4" xl="3">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
@@ -194,37 +194,61 @@
                   :rules="gofoundmeRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="4">
-                <v-row no-gutters>
-                  <v-col>
-                    <v-text-field
-                      v-model="company.properties.payment.bank.owner"
-                      type="text"
-                      hide-details="auto"
-                      outlined
-                      tile
-                      color="#000"
-                      label="Kontoinhaber"
-                      class="required mb-2"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col>
-                    <v-text-field
-                      v-model="company.properties.payment.bank.iban"
-                      type="text"
-                      hide-details="auto"
-                      outlined
-                      tile
-                      color="#000"
-                      label="IBAN"
-                      class="required"
-                      :validate-on-blur="true"
-                      :rules="ibanRule"
-                    />
-                  </v-col>
-                </v-row>
+              <v-col cols="12" sm="4" xl="3">
+                <v-text-field
+                  v-model="company.properties.payment.ticketio"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="Ticket IO Link"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="ticketioRule"
+                />
+              </v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col cols="12" sm="4" xl="3">
+                <v-text-field
+                  v-model="company.properties.payment.startnext"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="StartNext Link"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="startnextRule"
+                />
+              </v-col>
+              <v-col cols="12" sm="4" xl="3">
+                <v-text-field
+                  v-model="company.properties.payment.bank.iban"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="IBAN"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="ibanRule"
+                />
+              </v-col>
+              <v-col cols="12" sm="4" xl="3">
+                <v-text-field
+                  v-model="company.properties.payment.bank.owner"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="Kontoinhaber"
+                  class="required mb-2"
+                />
               </v-col>
             </v-row>
             <v-row justify="center">

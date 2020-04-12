@@ -77,7 +77,7 @@ export default {
       mdiCrosshairsGps,
       maxDistance: 10000,
       initialActivated: true,
-      activeCategories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club', 'artist', 'service', 'beauty', 'health']
+      activeCategories: ['cafe', 'bar', 'shop', 'coiffeur', 'kiosk', 'food', 'club', 'artist', 'service', 'beauty', 'culture']
     }
   },
   computed: {

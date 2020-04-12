@@ -3,6 +3,12 @@ const IBAN = require('iban')
 export default {
   data () {
     return {
+      ticketioRule: [
+        v => this.validateTicketIoLink(v) || 'Bitte gib einen gültigen Ticket IO link ein'
+      ],
+      startnextRule: [
+        v => this.validateStartNextLink(v) || 'Bitte gib einen gültigen StartNext link ein'
+      ],
       paypalRule: [
         v => this.validatePaypalLink(v) || 'Bitte gib einen gültigen PaypalMe link ein'
       ],
@@ -39,6 +45,16 @@ export default {
     }
   },
   methods: {
+    validateTicketIoLink (ticketio) {
+      // Example: https://name.ticket.io
+      const re = /^(https?:\/\/)?((w{3}\.)?)\w+\.ticket\.io$/
+      return re.test(ticketio) || ticketio === ''
+    },
+    validateStartNextLink (startnext) {
+      // Example: https://www.startnext.com/name
+      const re = /^(https?:\/\/)?((w{3}\.)?)startnext\.com\/\S*$/
+      return re.test(startnext) || startnext === ''
+    },
     validateGoFoundMeLink (gofoundme) {
       const re = /^(https?:\/\/)?((w{3}\.)?)gofundme\.com\/\S*$/
       return re.test(gofoundme) || gofoundme === ''

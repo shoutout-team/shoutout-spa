@@ -13,6 +13,7 @@
       <v-row justify="center">
         <v-col>
           <v-form
+            ref="formElement"
             name="register-form"
             class="validate"
             target="_blank"
@@ -128,7 +129,7 @@
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-text-field
-                  v-model="company.properties.crnumber"
+                  v-model="company.properties.cr_number"
                   type="text"
                   hide-details="auto"
                   outlined
@@ -141,7 +142,7 @@
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">
-                <address-autocomplete :activate-re-geolocate="false" @location="getAddressData" />
+                <address-autocomplete :extra="{outlined: true, rules: addressRules, 'validate-on-blur': true}" :activate-re-geolocate="false" @location="getAddressData" />
               </v-col>
               <v-col cols="12" sm="6" xl="5">
                 <v-select
@@ -151,6 +152,8 @@
                   color="black"
                   label="Kategorie"
                   no-data-text="Kategorie"
+                  :rules="nameRules"
+                  :validate-on-blur="true"
                   outlined
                 />
               </v-col>
@@ -162,8 +165,8 @@
                 </h2>
               </v-col>
             </v-row>
-            <v-row justify="center" align="center">
-              <v-col cols="12" sm="4" xl="3">
+            <v-row justify="center">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.paypal"
                   type="text"
@@ -177,7 +180,7 @@
                   :rules="paypalRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="3">
+              <v-col cols="12" sm="6" xl="5">
                 <v-text-field
                   v-model="company.properties.payment.gofoundme"
                   type="text"
@@ -191,37 +194,61 @@
                   :rules="gofoundmeRule"
                 />
               </v-col>
-              <v-col cols="12" sm="4" xl="4">
-                <v-row no-gutters>
-                  <v-col>
-                    <v-text-field
-                      v-model="company.properties.payment.bank.owner"
-                      type="text"
-                      hide-details="auto"
-                      outlined
-                      tile
-                      color="#000"
-                      label="Kontoinhaber"
-                      class="required mb-2"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col>
-                    <v-text-field
-                      v-model="company.properties.payment.bank.iban"
-                      type="text"
-                      hide-details="auto"
-                      outlined
-                      tile
-                      color="#000"
-                      label="IBAN"
-                      class="required"
-                      :validate-on-blur="true"
-                      :rules="ibanRule"
-                    />
-                  </v-col>
-                </v-row>
+              <v-col cols="12" sm="6" xl="5">
+                <v-text-field
+                  v-model="company.properties.payment.ticketio"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="Ticket IO Link"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="ticketioRule"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" xl="5">
+                <v-text-field
+                  v-model="company.properties.payment.startnext"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="StartNext Link"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="startnextRule"
+                />
+              </v-col>
+            </v-row>
+            <v-row justify="center" class="mt-5">
+              <v-col cols="12" sm="6" xl="5">
+                <v-text-field
+                  v-model="company.properties.payment.bank.owner"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="Kontoinhaber"
+                  class="required mb-2"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" xl="5">
+                <v-text-field
+                  v-model="company.properties.payment.bank.iban"
+                  type="text"
+                  hide-details="auto"
+                  outlined
+                  tile
+                  color="#000"
+                  label="IBAN"
+                  class="required"
+                  :validate-on-blur="true"
+                  :rules="ibanRule"
+                />
               </v-col>
             </v-row>
             <v-row justify="center">
@@ -394,11 +421,13 @@ export default {
         keeper_token: '',
         properties: {
           description: '',
-          crnumber: '',
+          cr_number: '',
           notes: '',
           payment: {
             paypal: '',
             gofoundme: '',
+            ticketio: '',
+            startnext: '',
             bank: {
               owner: '',
               iban: ''
@@ -455,7 +484,11 @@ export default {
       }
     },
     storeAvatar () {
-      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeUser.avatar_key)
+      // Fixes finding not the keeper for showing already uploaded avatar #27
+      // This 'this.activeUser.avatar_key' seems to be not present. Now we fall back to 'keeper_avatar_key' on company.
+      // const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeUser.avatar_key)
+      const keeper = this.$store.state.keepers.find(el => el.avatar_key === this.activeCompany.keeper_avatar_key)
+
       if (!keeper) { return null }
       return keeper.avatar_url
     },
@@ -489,12 +522,13 @@ export default {
   },
   methods: {
     getAddressData (place) {
-      this.company.latitude = place.latitude
-      this.company.longitude = place.longitude
-      this.company.city = place.locality
-      this.company.street = place.route
-      this.company.postcode = place.postal_code
-      this.company.street_number = place.street_number
+      this.company.latitude = place.latitude || ''
+      this.company.longitude = place.longitude || ''
+      this.company.city = place.locality || ''
+      this.company.street = place.route || ''
+      this.company.postcode = place.postal_code || ''
+      this.company.street_number = place.street_number || ''
+      this.addressRules = [this.validateAddress(place) || 'Bitte gib eine vollständige Adresse ein. Stadt, Straße & Hausnummer']
     },
     setCompany () {
       if (Object.keys(this.activeCompany).length) {
@@ -510,6 +544,8 @@ export default {
       }
     },
     updateInfo () {
+      const { formElement } = this.$refs
+      formElement.validate()
       if (process.client) {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }

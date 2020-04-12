@@ -66,12 +66,17 @@ export default {
         infoWindowOpenStatus: false
       },
       icons: {
-        bar: require('~/assets/bar-active.png'),
         kiosk: require('~/assets/kiosk-active.png'),
+        bar: require('~/assets/bar-active.png'),
+        club: require('~/assets/bar-active.png'),
         cafe: require('~/assets/cafe-active.png'),
         food: require('~/assets/food-active.png'),
         coiffeur: require('~/assets/barber-active.png'),
-        shop: require('~/assets/shop-active.png')
+        shop: require('~/assets/shop-active.png'),
+        service: require('~/assets/fallback-category-icon.svg'),
+        beauty: require('~/assets/fallback-category-icon.svg'),
+        culture: require('~/assets/fallback-category-icon.svg'),
+        artist: require('~/assets/fallback-category-icon.svg')
       },
       defaultZoom: 13
     }

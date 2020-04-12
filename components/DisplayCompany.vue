@@ -174,7 +174,7 @@ export default {
       return keeper.avatar_url
     },
     noDonation () {
-      return !this.company.properties.payment.paypal && !this.company.properties.payment.bank.iban && !this.company.properties.payment.gofoundme
+      return !this.company.properties.payment.paypal && !this.company.properties.payment.bank.iban && !this.company.properties.payment.gofoundme && !this.company.properties.payment.ticketio && !!this.company.properties.payment.startnext
     }
   },
   mounted () {

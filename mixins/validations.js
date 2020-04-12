@@ -46,16 +46,14 @@ export default {
   },
   methods: {
     validateTicketIoLink (ticketio) {
-      // const re = /^(https?:\/\/)?((w{3}\.)?)gofundme\.com\/\S*$/
-      // return re.test(gofoundme) || gofoundme === ''
-      // TODO: Missing validation for validateTicketIoLink
-      return true
+      // Example: https://name.ticket.io
+      const re = /^(https?:\/\/)?((w{3}\.)?)\w+\.ticket\.io$/
+      return re.test(ticketio) || ticketio === ''
     },
     validateStartNextLink (startnext) {
-      // const re = /^(https?:\/\/)?((w{3}\.)?)gofundme\.com\/\S*$/
-      // return re.test(gofoundme) || gofoundme === ''
-      // TODO: Missing validation for validateTicketIoLink
-      return true
+      // Example: https://www.startnext.com/name
+      const re = /^(https?:\/\/)?((w{3}\.)?)startnext\.com\/\S*$/
+      return re.test(startnext) || startnext === ''
     },
     validateGoFoundMeLink (gofoundme) {
       const re = /^(https?:\/\/)?((w{3}\.)?)gofundme\.com\/\S*$/

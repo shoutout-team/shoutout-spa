@@ -68,7 +68,7 @@ export default {
       icons: {
         kiosk: require('~/assets/kiosk-active.png'),
         bar: require('~/assets/bar-active.png'),
-        club: require('~/assets/fallback-category-icon.svg'),
+        club: require('~/assets/bar-active.png'),
         cafe: require('~/assets/cafe-active.png'),
         food: require('~/assets/food-active.png'),
         coiffeur: require('~/assets/barber-active.png'),

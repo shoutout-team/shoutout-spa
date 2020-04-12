@@ -437,7 +437,6 @@ export default {
     },
     avatarPicture () {
       return this.uploadAvatarPicture || this.storeAvatar || this.fallbackAvatarPicture
-      // return this.uploadAvatarPicture || this.activeUser.avatar_url || this.fallbackAvatarPicture
     },
     categoryKeys () {
       return Object.keys(this.$store.state.categories)

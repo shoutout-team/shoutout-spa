@@ -21,7 +21,7 @@ export default {
         this.imageLoading = false
         this[changeType] = true
       } catch {
-        this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2mb beträgt.'
+        this.failure = 'Problem beim Bildupload. Bitte beachte dass die maximale Bildgröße 2 MB beträgt.'
         this.imageLoading = false
       }
 

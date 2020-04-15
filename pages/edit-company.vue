@@ -127,6 +127,7 @@
                   :validate-on-blur="true"
                 />
               </v-col>
+              <v-col cols="12" sm="6" xl="5" />
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">

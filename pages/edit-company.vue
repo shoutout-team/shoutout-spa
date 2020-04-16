@@ -127,18 +127,7 @@
                   :validate-on-blur="true"
                 />
               </v-col>
-              <v-col cols="12" sm="6" xl="5">
-                <v-text-field
-                  v-model="company.properties.cr_number"
-                  type="text"
-                  hide-details="auto"
-                  outlined
-                  tile
-                  color="#000"
-                  label="Handelsregisternummer"
-                  class="required"
-                />
-              </v-col>
+              <v-col cols="12" sm="6" xl="5" />
             </v-row>
             <v-row justify="center">
               <v-col cols="12" sm="6" xl="5">

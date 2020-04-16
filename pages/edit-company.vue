@@ -410,6 +410,7 @@ export default {
         keeper_token: '',
         properties: {
           description: '',
+          cr_number: '',
           notes: '',
           payment: {
             paypal: '',
